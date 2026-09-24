@@ -1,104 +1,118 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ArrowUpRight } from "lucide-react";
+import { Reveal } from "@/components/ui/Reveal";
 import { services } from "@/lib/content";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
+/* Services — white rounded stage: pill, two-tone headline and a render on the
+   left; a stacked accordion on the right where the open service is a Navy card
+   with description and tag chips, the rest collapse to title + index. */
 export function Services({ limit }: { limit?: number }) {
   const list = limit ? services.slice(0, limit) : services;
-  const [active, setActive] = useState<string | null>(list[0]?.slug ?? null);
+  const [open, setOpen] = useState(list[0].slug);
 
   return (
-    <section id="services" className="bg-white py-24 lg:py-32">
-      <div className="container-page">
-        <SectionHeader
-          num="01"
-          eyebrow="What we do"
-          title={
-            <>
-              Eight disciplines. <span className="text-ink-3">One accountable team.</span>
-            </>
-          }
-          text="Engineering, intelligence, operations and growth, delivered by the people who will still be answering your emails a year later."
-          action={
-            <Link href="/services" className="link-arrow">
-              All services <ArrowRight size={16} />
-            </Link>
-          }
-        />
+    <section id="services" className="bg-cloud px-4 pt-24 lg:pt-32">
+      <div className="mx-auto max-w-[1408px] rounded-[40px] bg-white px-6 py-16 sm:px-10 lg:px-14 lg:py-24">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+          {/* Left */}
+          <Reveal className="flex flex-col lg:col-span-5">
+            <span className="inline-flex w-fit items-center rounded-lg bg-cloud px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue ring-1 ring-navy/[0.06]">
+              01 · Services
+            </span>
+            <h2 className="mt-8 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] sm:text-5xl lg:text-[4rem]">
+              <span className="block text-ink-3">Everything it takes</span>
+              <span className="block text-navy">to ship, under one roof.</span>
+            </h2>
+            <p className="mt-6 max-w-md text-lg text-ink-2">
+              Engineering, intelligence, operations and growth, delivered by one accountable team
+              that will still be answering your emails a year later.
+            </p>
+            <div className="mt-10 hidden overflow-hidden rounded-2xl lg:block">
+              <Image
+                src="/work/Sb2qt7QJIOE.jpg"
+                alt="3D product render by MFY Innovatech"
+                width={640}
+                height={360}
+                className="h-auto w-full max-w-[420px] object-cover"
+              />
+            </div>
+            {limit && (
+              <Link href="/services" className="link-arrow mt-8 w-fit">
+                All eight services <ArrowUpRight size={16} />
+              </Link>
+            )}
+          </Reveal>
 
-        <ul className="mt-16 border-t border-line">
-          {list.map((s) => {
-            const open = active === s.slug;
-            return (
-              <li key={s.slug} id={s.slug} className="scroll-mt-28 border-b border-line">
-                <button
-                  type="button"
-                  onClick={() => setActive(open ? null : s.slug)}
-                  onMouseEnter={() => setActive(s.slug)}
-                  aria-expanded={open}
-                  className="group grid w-full grid-cols-[3rem_1fr_auto] items-center gap-4 py-6 text-left sm:grid-cols-[4rem_1fr_auto] lg:grid-cols-[6rem_1fr_1fr_auto] lg:py-7"
+          {/* Right: stacked accordion */}
+          <ul className="flex flex-col gap-4 lg:col-span-7">
+            {list.map((s) => {
+              const on = open === s.slug;
+              return (
+                <motion.li
+                  key={s.slug}
+                  id={s.slug}
+                  layout
+                  transition={{ layout: { duration: 0.5, ease } }}
+                  className={`scroll-mt-32 overflow-hidden rounded-[32px] ${
+                    on
+                      ? "bg-navy text-white shadow-[0_30px_60px_-30px_rgba(6,16,48,0.6)]"
+                      : "bg-cloud text-navy ring-1 ring-navy/[0.05] hover:bg-mist"
+                  }`}
                 >
-                  <span className="section-num">{s.num}</span>
-                  <span
-                    className={`font-display text-xl font-semibold transition-colors sm:text-2xl lg:text-[1.75rem] ${
-                      open ? "text-blue" : "text-ink group-hover:text-blue"
-                    }`}
+                  <button
+                    type="button"
+                    onClick={() => setOpen(s.slug)}
+                    aria-expanded={on}
+                    className="flex w-full items-start justify-between gap-6 p-7 text-left sm:p-8"
                   >
-                    {s.title}
-                  </span>
-                  <span className="hidden text-ink-3 lg:block">{s.short}</span>
-                  <span
-                    className={`inline-flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-500 ${
-                      open ? "rotate-45 border-blue bg-blue text-white" : "border-line-2 text-ink"
-                    }`}
-                    style={{ transitionTimingFunction: "cubic-bezier(0.16,1,0.3,1)" }}
-                  >
-                    <ArrowUpRight size={16} />
-                  </span>
-                </button>
-                <AnimatePresence initial={false}>
-                  {open && (
-                    <motion.div
-                      key="panel"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.55, ease }}
-                      className="overflow-hidden"
+                    <span
+                      className={`font-display font-semibold leading-tight tracking-[-0.02em] ${
+                        on ? "text-3xl sm:text-4xl" : "text-2xl sm:text-3xl"
+                      }`}
                     >
-                      <div className="grid gap-6 pb-8 pl-12 sm:pl-16 lg:grid-cols-[6rem_1fr_1fr_auto] lg:pl-0">
-                        <span className="hidden lg:block" />
-                        <p className="max-w-lg text-ink-2">{s.description}</p>
-                        <ul className="flex flex-wrap content-start gap-2">
-                          {s.tags.map((t) => (
-                            <li
-                              key={t}
-                              className="rounded-full border border-line bg-cloud px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-2"
-                            >
-                              {t}
-                            </li>
-                          ))}
-                        </ul>
-                        <Link
-                          href={`/services#${s.slug}`}
-                          className="link-arrow self-start lg:pt-1"
-                        >
-                          Details <ArrowRight size={16} />
-                        </Link>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </li>
-            );
-          })}
-        </ul>
+                      {s.title}
+                    </span>
+                    <span className={`shrink-0 font-mono text-sm ${on ? "text-white/60" : "text-ink-3"}`}>
+                      ({s.num})
+                    </span>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {on && (
+                      <motion.div
+                        key="body"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.45, ease }}
+                      >
+                        <div className="px-7 pb-8 sm:px-8">
+                          <p className="max-w-xl text-[0.95rem] leading-relaxed text-white/70">{s.description}</p>
+                          <ul className="mt-8 flex flex-wrap gap-2">
+                            {s.tags.map((t) => (
+                              <li
+                                key={t}
+                                className="rounded-full bg-white/10 px-4 py-2 text-sm text-white/90 ring-1 ring-white/10"
+                              >
+                                {t}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </section>
   );
