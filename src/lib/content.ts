@@ -260,6 +260,12 @@ export const videoTestimonials: VideoTestimonial[] = [
     role: "Sports medicine specialist",
     topic: "Website & Flutter mobile app",
   },
+  {
+    id: "ovGdu7ARjcs",
+    name: "Olivia",
+    role: "Business owner",
+    topic: "Website, social media & marketing",
+  },
 ];
 
 export type TextTestimonial = {
