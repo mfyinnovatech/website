@@ -9,6 +9,7 @@ import { Process } from "@/components/sections/Process";
 import { FAQ } from "@/components/sections/FAQ";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { services } from "@/lib/content";
+import { Stage } from "@/components/ui/Stage";
 
 export const metadata: Metadata = {
   alternates: { canonical: "https://mfyinnova.tech/services" },
@@ -38,15 +39,15 @@ export default function ServicesPage() {
       />
 
       {/* Group index */}
-      <section className="border-y border-line bg-white">
-        <Stagger as="ul" className="container-page grid md:grid-cols-4">
+      <Stage id="disciplines" className="!py-6 lg:!py-8">
+        <Stagger as="ul" className="grid md:grid-cols-4">
           {groups.map((g, i) => {
             const items = services.filter((s) => s.group === g);
             return (
               <StaggerItem
                 as="li"
                 key={g}
-                className={`py-8 md:px-6 ${i > 0 ? "border-t border-line md:border-l md:border-t-0" : ""} ${i === 0 ? "md:pl-0" : ""}`}
+                className={`py-6 md:px-8 ${i > 0 ? "border-t border-line md:border-l md:border-t-0" : ""} ${i === 0 ? "md:pl-0" : ""}`}
               >
                 <p className="eyebrow text-blue">{g}</p>
                 <ul className="mt-4 space-y-1.5">
@@ -62,7 +63,7 @@ export default function ServicesPage() {
             );
           })}
         </Stagger>
-      </section>
+      </Stage>
 
       <Services />
       <OneSystem num="" />

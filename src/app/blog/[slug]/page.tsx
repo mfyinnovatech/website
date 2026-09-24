@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Markdown } from "@/components/blog/Markdown";
 import { TechGrid } from "@/components/brand/TechGrid";
+import { Stage } from "@/components/ui/Stage";
 import { formatDate, getAllPosts, getPost } from "@/lib/blog";
 import { site } from "@/lib/content";
 
@@ -114,11 +115,12 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
             </div>
           </div>
         </div>
+        <div className="h-8 sm:h-12" />
       </section>
 
       {/* Body */}
-      <article className="bg-white py-12 lg:py-16">
-        <div className="container-page">
+      <Stage>
+        <article>
           <div className="mx-auto max-w-3xl">
             <Markdown content={post.content} />
 
@@ -175,8 +177,8 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
               )}
             </div>
           </div>
-        </div>
-      </article>
+        </article>
+      </Stage>
     </>
   );
 }

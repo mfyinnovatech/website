@@ -1,16 +1,16 @@
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { TechGrid } from "@/components/brand/TechGrid";
+import { Stage } from "@/components/ui/Stage";
 import { process } from "@/lib/content";
 
 export function Process() {
   return (
-    <section id="process" data-surface="dark" className="relative overflow-hidden bg-navy py-24 text-white lg:py-32">
+    <Stage id="process" tone="navy">
       <TechGrid dark fade="radial" />
-      <div className="container-page relative">
+      <div className="relative">
         <SectionHeader
           dark
-          num="06"
           eyebrow="How we work"
           title={
             <>
@@ -35,6 +35,6 @@ export function Process() {
           ))}
         </Stagger>
       </div>
-    </section>
+    </Stage>
   );
 }

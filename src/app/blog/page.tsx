@@ -5,6 +5,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { formatDate, getAllPosts } from "@/lib/blog";
 import { site } from "@/lib/content";
+import { Stage } from "@/components/ui/Stage";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -30,8 +31,8 @@ export default function BlogIndex() {
         lead="Practical guides for the people who run the systems, written by the team that builds them."
       />
 
-      <section className="bg-white py-16 lg:py-24">
-        <div className="container-page">
+      <Stage id="posts">
+        <div>
           {featured && (
             <Link
               href={`/blog/${featured.slug}`}
@@ -39,7 +40,7 @@ export default function BlogIndex() {
             >
               <div className="lg:col-span-8">
                 <p className="eyebrow text-blue">{featured.category} · Latest</p>
-                <h2 className="text-h2 mt-4 max-w-[24ch] text-ink group-hover:text-blue">{featured.title}</h2>
+                <h2 className="mt-4 max-w-[24ch] font-display text-3xl font-semibold leading-tight tracking-[-0.02em] text-ink group-hover:text-blue lg:text-4xl">{featured.title}</h2>
                 <p className="mt-4 max-w-2xl text-lg text-ink-2">{featured.description}</p>
               </div>
               <div className="flex flex-col justify-between gap-6 lg:col-span-4 lg:items-end lg:text-right">
@@ -79,7 +80,7 @@ export default function BlogIndex() {
             ))}
           </Stagger>
         </div>
-      </section>
+      </Stage>
     </>
   );
 }

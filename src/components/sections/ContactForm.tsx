@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Check, Copy, Loader2 } from "lucide-react";
 import { services, site } from "@/lib/content";
+import { Stage } from "@/components/ui/Stage";
 
 const budgets = ["Under $5k", "$5k – $15k", "$15k – $50k", "$50k+", "Not sure yet"];
 
@@ -74,12 +75,12 @@ export function ContactForm() {
   };
 
   return (
-    <section className="bg-white py-16 lg:py-24">
-      <div className="container-page grid gap-14 lg:grid-cols-12">
+    <Stage id="contact-form">
+      <div className="grid gap-14 lg:grid-cols-12">
         {/* Direct channels */}
         <div className="lg:col-span-5">
           <p className="eyebrow text-blue">Direct</p>
-          <h2 className="text-h2 mt-5 text-ink">Or skip the form.</h2>
+          <h2 className="mt-5 font-display text-3xl font-semibold tracking-[-0.02em] text-ink lg:text-4xl">Or skip the form.</h2>
           <p className="mt-5 max-w-md text-ink-2">
             Email is the channel. You will hear back within one business day, usually with a few
             questions so the first call is useful.
@@ -177,7 +178,7 @@ export function ContactForm() {
           </div>
         </form>
       </div>
-    </section>
+    </Stage>
   );
 }
 

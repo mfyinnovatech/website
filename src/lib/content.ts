@@ -639,7 +639,7 @@ export const tools: Tool[] = [
   { slug: "make", name: "Make", category: "Automation", color: "#6D00CC" },
   { slug: "hubspot", name: "HubSpot", category: "Growth", color: "#FF7A59" },
   { slug: "meta", name: "Meta Ads", category: "Growth", color: "#0467DF" },
-  { slug: "gohighlevel", name: "GoHighLevel", category: "Growth", color: "#188BF6" },
+  { slug: "gohighlevel", name: "GoHighLevel", category: "Growth", color: "#2896FB" },
   { slug: "swift", name: "Swift", category: "Mobile", color: "#F05138" },
   { slug: "kotlin", name: "Kotlin", category: "Mobile", color: "#7F52FF" },
 ];

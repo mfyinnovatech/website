@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageHeader } from "@/components/ui/PageHeader";
+import { Stage } from "@/components/ui/Stage";
 import { Team } from "@/components/sections/Team";
 import { Presence } from "@/components/sections/Presence";
 import { VideoStories } from "@/components/sections/VideoStories";
@@ -44,33 +45,14 @@ export default function AboutPage() {
         }
         lead="MFYINNOVATECH LLC is a founder-led software studio. Three founders who still design, build and analyse the work themselves, with a team that shares the same standard."
         aside={
-          <Link href="/contact" className="btn btn-navy self-start">
+          <Link href="/contact" className="btn btn-navy">
             Work with us <ArrowUpRight size={16} />
           </Link>
         }
       />
 
-      {/* Principles */}
-      <section className="relative overflow-hidden bg-white py-24 lg:py-32">
-        <div className="container-page">
-          <SectionHeader
-            eyebrow="How we think"
-            title="Three words we hold ourselves to."
-            text="They come straight from the brand guidelines, and they are the test every deliverable has to pass."
-          />
-          <Stagger as="ul" className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
-            {principles.map((p) => (
-              <StaggerItem as="li" key={p.title} className="bg-white p-8">
-                <h3 className="font-display text-3xl font-semibold text-ink">{p.title}</h3>
-                <p className="mt-5 text-ink-2">{p.text}</p>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* Story */}
-      <section data-surface="dark" className="relative overflow-hidden bg-navy py-24 text-white lg:py-32">
+      {/* Story — Navy stage */}
+      <Stage id="story" tone="navy">
         <ArchField
           bars={18}
           height={220}
@@ -78,10 +60,14 @@ export default function AboutPage() {
           animate={false}
           className="absolute inset-x-0 bottom-0 w-full"
         />
-        <div className="container-page relative grid gap-12 lg:grid-cols-12">
+        <div className="relative grid gap-12 lg:grid-cols-12">
           <Reveal className="lg:col-span-5">
-            <p className="eyebrow text-blue-soft">The studio</p>
-            <h2 className="text-h2 mt-5 text-white">One team, from the first diagram to the accounting close.</h2>
+            <span className="inline-flex items-center rounded-lg bg-navy-2 px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue-soft">
+              The studio
+            </span>
+            <h2 className="mt-7 max-w-[14ch] font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-[4rem]">
+              One team, from the first diagram to the accounting close.
+            </h2>
           </Reveal>
           <Reveal delay={0.1} className="space-y-6 text-lg text-white/70 lg:col-span-6 lg:col-start-7">
             <p>
@@ -95,17 +81,35 @@ export default function AboutPage() {
               A 3D team that models, lights and animates the product before it exists.
             </p>
             <p>
-              We are registered in the United States and work remote-first, with clients in the
-              US, Canada, Germany, Greece, Romania, the Gulf, Africa and Australia.
+              We work remote-first, with clients across North America, Europe, the Gulf, Africa
+              and Australia, and an official Odoo partnership behind every ERP engagement.
             </p>
           </Reveal>
         </div>
-      </section>
+      </Stage>
 
-      <Presence num="" />
+      {/* Principles — white stage */}
+      <Stage id="principles">
+        <SectionHeader
+          eyebrow="How we think"
+          title="Three words we hold ourselves to."
+          text="They come straight from the brand guidelines, and they are the test every deliverable has to pass."
+        />
+        <Stagger as="ul" className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
+          {principles.map((p) => (
+            <StaggerItem as="li" key={p.title} className="bg-white p-8">
+              <h3 className="font-display text-3xl font-semibold text-ink">{p.title}</h3>
+              <p className="mt-5 text-ink-2">{p.text}</p>
+            </StaggerItem>
+          ))}
+        </Stagger>
+      </Stage>
+
+      {/* Alternating from here: Navy → white → Navy → white, so no two Navy stages touch */}
       <Team num="" />
-      <VideoStories num="" />
       <Quotes num="" />
+      <VideoStories num="" />
+      <Presence num="" />
     </>
   );
 }
