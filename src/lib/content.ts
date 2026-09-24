@@ -201,50 +201,6 @@ export const videos: Video[] = [
   },
 ];
 
-export type CaseStudy = {
-  slug: string;
-  title: string;
-  sector: string;
-  services: string[];
-  summary: string;
-  result: { value: string; label: string };
-  accent: "blue" | "navy" | "ice";
-};
-
-/* Software engagements — representative, anonymized */
-export const caseStudies: CaseStudy[] = [
-  {
-    slug: "odoo-erp-rollout",
-    title: "Odoo ERP rollout across sales, inventory and accounting",
-    sector: "Distribution",
-    services: ["ERP & Odoo", "Finance operations"],
-    summary:
-      "Replaced three disconnected tools with a single Odoo instance: configured chart of accounts, multi-currency invoicing, warehouse flows and custom reporting. Delivered ahead of schedule.",
-    result: { value: "1", label: "system instead of three" },
-    accent: "blue",
-  },
-  {
-    slug: "ai-annotation-pipeline",
-    title: "Annotation pipeline and model training for a vision product",
-    sector: "AI / Computer vision",
-    services: ["AI & data"],
-    summary:
-      "Built the labeling workflow, QA gates and training loop that took a prototype model from demo to a dataset the team could trust.",
-    result: { value: "10k+", label: "labeled samples, QA-gated" },
-    accent: "navy",
-  },
-  {
-    slug: "saas-platform",
-    title: "Multi-tenant SaaS platform with analytics dashboards",
-    sector: "B2B software",
-    services: ["Web & SaaS", "Automation & cloud"],
-    summary:
-      "Designed and shipped a subscription platform with role-based access, real-time dashboards and automated onboarding through Make and custom APIs.",
-    result: { value: "99.9%", label: "uptime since launch" },
-    accent: "ice",
-  },
-];
-
 export const process = [
   {
     num: "01",

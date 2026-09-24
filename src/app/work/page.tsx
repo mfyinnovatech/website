@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://mfyinnova.tech/work" },
   title: "Work",
   description:
-    "Photoreal 3D product animations and the software, AI and Odoo ERP engagements behind them. Selected work by MFY Innovatech.",
+    "Photoreal 3D product animations for medical equipment, consumer products and packaging. Selected work by MFY Innovatech.",
 };
 
 export default function WorkPage() {
@@ -18,10 +18,10 @@ export default function WorkPage() {
         eyebrow="Selected work"
         title={
           <>
-            Products you can watch. <span className="text-ink-3">Systems you can run.</span>
+            Products you can watch <span className="text-ink-3">before they ship.</span>
           </>
         }
-        lead="Nine 3D productions released to date, from hyperbaric medical equipment to consumer packaging, alongside representative software and ERP engagements."
+        lead="Nine 3D productions released to date, from hyperbaric medical equipment to consumer packaging. Software and ERP engagements are shared on request."
       />
       <WorkGallery />
       <VideoStories num="" />
