@@ -185,7 +185,6 @@ function Connectors() {
             strokeLinecap="round"
             vectorEffect="non-scaling-stroke"
             className="connector-pulse"
-            style={{ animationDelay: `${i * 0.45}s` }}
           />
         ))}
     </svg>

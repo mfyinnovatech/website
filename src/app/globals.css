@@ -397,29 +397,21 @@ button {
   margin-bottom: -0.08em;
 }
 
-/* One-system diagram: a pulse of colour flowing along each branch into the hub */
+/* One-system diagram: colour flowing along every branch into the hub, all in sync */
 @keyframes connector-flow {
-  0% {
-    stroke-dashoffset: 1.22;
-    opacity: 0;
+  from {
+    stroke-dashoffset: 1.35;
   }
-  12% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 1;
-  }
-  100% {
-    stroke-dashoffset: -0.02;
-    opacity: 0;
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
 .connector-pulse {
-  stroke-dasharray: 0.22 1;
-  stroke-dashoffset: 1.22;
-  opacity: 0;
-  animation: connector-flow 3s linear infinite;
+  stroke-dasharray: 0.35 1;
+  stroke-dashoffset: 1.35;
+  opacity: 0.95;
+  animation: connector-flow 2.2s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
