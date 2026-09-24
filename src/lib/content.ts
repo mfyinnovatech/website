@@ -356,7 +356,7 @@ export const team: TeamMember[] = [
     featured: true,
   },
   {
-    name: "Farhan Mehboob",
+    name: "Mian Farhan",
     role: "Co-founder",
     title: "3D artist",
     bio: "Models, lights and animates the studio's product films and hero renders.",
@@ -366,7 +366,7 @@ export const team: TeamMember[] = [
     photo: "/team/farhan-mehboob.jpg",
   },
   {
-    name: "Minahil Mehboob",
+    name: "Minahil Fatima",
     role: "Co-founder",
     title: "Data analyst",
     bio: "Turns operational and ERP data into dashboards, forecasts and decisions.",
