@@ -632,6 +632,15 @@ export const clients: Client[] = [
     width: 120,
     height: 26,
   },
+  {
+    key: "corporate-fashion",
+    name: "Corporate Fashion GmbH",
+    sector: "Odoo ERP · Germany",
+    url: "https://co-fa.shop",
+    logo: "/clients/corporate-fashion.png",
+    width: 120,
+    height: 32,
+  },
 ];
 
 /* ─────────────────────────────────────────────
