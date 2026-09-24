@@ -20,7 +20,7 @@ export function PartnerStrip() {
 
         <Stagger
           as="ul"
-          className="grid grid-cols-2 divide-x divide-y divide-line md:grid-cols-3 lg:grid-cols-5 lg:divide-y-0"
+          className="grid grid-cols-2 divide-x divide-y divide-line md:grid-cols-3"
         >
           {/* Anchor cell: official Odoo partner */}
           <StaggerItem as="li" className="col-span-2 bg-cloud md:col-span-1">
