@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { services } from "@/lib/content";
+import { OdooPanel } from "@/components/brand/OdooPanel";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -34,14 +34,8 @@ export function Services({ limit }: { limit?: number }) {
               Engineering, intelligence, operations and growth, delivered by one accountable team
               that will still be answering your emails a year later.
             </p>
-            <div className="mt-10 hidden overflow-hidden rounded-2xl lg:block">
-              <Image
-                src="/work/Sb2qt7QJIOE.jpg"
-                alt="3D product render by MFY Innovatech"
-                width={640}
-                height={360}
-                className="h-auto w-full max-w-[420px] object-cover"
-              />
+            <div className="mt-10 hidden max-w-[420px] lg:block">
+              <OdooPanel />
             </div>
             {limit && (
               <Link href="/services" className="link-arrow mt-8 w-fit">
