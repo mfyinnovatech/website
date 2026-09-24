@@ -6,6 +6,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import map from "@/lib/world-map.json";
 import { presence } from "@/lib/content";
+import { Stage } from "@/components/ui/Stage";
 
 type MarkerKey = keyof typeof map.markers;
 
@@ -17,8 +18,8 @@ export function Presence({ num = "07" }: { num?: string }) {
   const markers = presence.regions.map((r) => ({ ...r, ...map.markers[r.key as MarkerKey] }));
 
   return (
-    <section id="presence" className="relative overflow-hidden bg-white py-24 lg:py-32">
-      <div className="container-page">
+    <Stage id="presence" tone="white">
+      <div>
         <SectionHeader
           num={num}
           eyebrow="Global presence"
@@ -130,6 +131,6 @@ export function Presence({ num = "07" }: { num?: string }) {
           </Reveal>
         </div>
       </div>
-    </section>
+    </Stage>
   );
 }

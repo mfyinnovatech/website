@@ -10,7 +10,7 @@ export function Team({ num = "07" }: { num?: string }) {
   const rest = team.filter((m) => m !== featured);
 
   return (
-    <section id="team" className="bg-cloud px-4 pb-4 pt-24 lg:pt-32">
+    <section id="team" className="px-4 pt-4">
       <div data-surface="dark" className="relative mx-auto max-w-[1408px] overflow-hidden rounded-[40px] bg-navy px-6 py-20 text-white sm:px-10 lg:px-14 lg:py-[120px]">
         {/* Spotlight */}
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[520px]">
@@ -30,7 +30,7 @@ export function Team({ num = "07" }: { num?: string }) {
           <span className="inline-flex items-center gap-2 rounded-lg bg-navy-2 px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue-soft">
             {num ? `${num} · ` : ""}Team
           </span>
-          <h2 className="mt-8 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-[4.5rem]">
+          <h2 className="mt-8 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-[4rem]">
             The people behind
             <br />
             the precision.

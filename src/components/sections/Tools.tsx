@@ -6,6 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { featuredTools, tools, type Tool } from "@/lib/content";
+import { Stage } from "@/components/ui/Stage";
 
 /* Tools — centred label, headline, paragraph and CTA, with white logo tiles
    floating around the copy on desktop (AgencyAI pattern) and a grid on mobile. */
@@ -14,16 +15,17 @@ import { featuredTools, tools, type Tool } from "@/lib/content";
 const spots: [number, number, number, number][] = [
   [4, 6, -12, 6.5], [15, 22, 8, 7.5], [6, 40, 14, 6], [16, 58, -6, 8], [5, 76, -18, 7], [15, 94, 10, 6.8], [26, 94, -9, 7.3],
   [90, 6, 12, 7.2], [79, 22, -9, 6.4], [88, 40, -15, 7.8], [78, 58, 7, 6.2], [89, 76, 16, 7.6], [79, 94, -8, 6.6], [68, 94, 11, 6.9],
+  [37, 94, 6, 7.1], [57, 94, -11, 6.7],
 ];
 
 export function Tools({ num = "03" }: { num?: string }) {
   const featured = featuredTools.map((s) => tools.find((t) => t.slug === s)).filter(Boolean) as Tool[];
 
   return (
-    <section id="tools" className="relative overflow-hidden bg-cloud py-24 lg:py-32">
+    <Stage id="tools" tone="white">
       {/* Desktop: floating tiles around the copy */}
-      <div className="pointer-events-none absolute inset-x-0 top-24 hidden h-[560px] lg:block">
-        <div className="container-page relative h-full">
+      <div className="pointer-events-none absolute inset-x-0 top-16 hidden h-[560px] lg:block">
+        <div className="relative mx-auto h-full max-w-[1280px]">
           {featured.map((t, i) => {
             const [left, top, rot, dur] = spots[i];
             return <FloatingTile key={t.slug} tool={t} left={left} top={top} rot={rot} dur={dur} delay={i * 0.35} />;
@@ -31,12 +33,12 @@ export function Tools({ num = "03" }: { num?: string }) {
         </div>
       </div>
 
-      <div className="container-page relative">
+      <div className="relative">
         <Reveal className="mx-auto flex max-w-2xl flex-col items-center text-center">
-          <span className="inline-flex items-center rounded-lg bg-white px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue shadow-[0_3px_3px_rgba(6,16,48,0.08)] ring-1 ring-navy/[0.06]">
+          <span className="inline-flex items-center rounded-lg bg-cloud px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue ring-1 ring-navy/[0.06]">
             {num ? `${num} · ` : ""}Tools
           </span>
-          <h2 className="mt-8 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[3.5rem]">
+          <h2 className="mt-8 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[4rem]">
             The tools behind
             <br />
             the work.
@@ -67,7 +69,7 @@ export function Tools({ num = "03" }: { num?: string }) {
             {tools.map((t) => (
               <li
                 key={t.slug}
-                className="inline-flex items-center gap-2 rounded-full border border-line bg-white px-3 py-1.5 text-sm font-medium text-ink"
+                className="inline-flex items-center gap-2 rounded-full border border-line bg-cloud px-3 py-1.5 text-sm font-medium text-ink"
               >
                 <Image src={`/tools/${t.slug}.svg`} alt="" width={14} height={14} />
                 {t.name}
@@ -76,7 +78,7 @@ export function Tools({ num = "03" }: { num?: string }) {
           </ul>
         </Reveal>
       </div>
-    </section>
+    </Stage>
   );
 }
 

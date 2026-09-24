@@ -3,13 +3,14 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { formatDate, getAllPosts } from "@/lib/blog";
+import { Stage } from "@/components/ui/Stage";
 
 export function Insights({ num = "08" }: { num?: string }) {
   const posts = getAllPosts().slice(0, 3);
   if (posts.length === 0) return null;
   return (
-    <section id="insights" className="bg-cloud py-24 lg:py-32">
-      <div className="container-page">
+    <Stage id="insights" tone="white">
+      <div>
         <SectionHeader
           num={num}
           eyebrow="From the blog"
@@ -25,9 +26,9 @@ export function Insights({ num = "08" }: { num?: string }) {
             </Link>
           }
         />
-        <Stagger as="ul" className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
+        <Stagger as="ul" className="mt-14 grid gap-4 md:grid-cols-3">
           {posts.map((p) => (
-            <StaggerItem as="li" key={p.slug} className="bg-white">
+            <StaggerItem as="li" key={p.slug} className="rounded-[28px] bg-cloud ring-1 ring-navy/[0.04]">
               <Link href={`/blog/${p.slug}`} className="group flex h-full flex-col p-7">
                 <p className="mono-label text-blue">{p.category}</p>
                 <h3 className="mt-4 font-display text-xl font-semibold leading-snug text-ink transition-colors group-hover:text-blue">
@@ -45,6 +46,6 @@ export function Insights({ num = "08" }: { num?: string }) {
           ))}
         </Stagger>
       </div>
-    </section>
+    </Stage>
   );
 }

@@ -4,12 +4,13 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { VideoCard } from "@/components/ui/VideoCard";
 import { videos } from "@/lib/content";
+import { Stage } from "@/components/ui/Stage";
 
 export function Work() {
   const featured = videos.filter((v) => v.featured).slice(0, 3);
   return (
-    <section id="work" className="relative overflow-hidden bg-white py-24 lg:py-32">
-      <div className="container-page">
+    <Stage id="work" tone="white">
+      <div>
         <SectionHeader
           num="04"
           eyebrow="Selected work"
@@ -39,7 +40,7 @@ export function Work() {
         </Stagger>
 
       </div>
-    </section>
+    </Stage>
   );
 }
 

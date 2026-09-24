@@ -5,12 +5,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { faqs } from "@/lib/content";
+import { Stage } from "@/components/ui/Stage";
 
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faq" className="bg-white py-24 lg:py-32">
-      <div className="container-page grid gap-12 lg:grid-cols-12">
+    <Stage id="faq" tone="white">
+      <div className="grid gap-12 lg:grid-cols-12">
         <div className="lg:col-span-5">
           <SectionHeader
             align="left"
@@ -58,6 +59,6 @@ export function FAQ() {
           })}
         </ul>
       </div>
-    </section>
+    </Stage>
   );
 }

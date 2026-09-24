@@ -632,6 +632,8 @@ export const tools: Tool[] = [
   { slug: "zapier", name: "Zapier", category: "Automation", color: "#FF4F00" },
   { slug: "make", name: "Make", category: "Automation", color: "#6D00CC" },
   { slug: "hubspot", name: "HubSpot", category: "Growth", color: "#FF7A59" },
+  { slug: "meta", name: "Meta Ads", category: "Growth", color: "#0467DF" },
+  { slug: "gohighlevel", name: "GoHighLevel", category: "Growth", color: "#188BF6" },
   { slug: "swift", name: "Swift", category: "Mobile", color: "#F05138" },
   { slug: "kotlin", name: "Kotlin", category: "Mobile", color: "#7F52FF" },
 ];
@@ -639,5 +641,5 @@ export const tools: Tool[] = [
 /* The tiles that float around the heading on desktop, in display order */
 export const featuredTools = [
   "odoo", "n8n", "blender", "flutter", "nextdotjs", "react", "python", "pytorch",
-  "postgresql", "docker", "figma", "wordpress", "zapier", "hubspot",
+  "postgresql", "docker", "figma", "wordpress", "zapier", "hubspot", "gohighlevel", "meta",
 ];

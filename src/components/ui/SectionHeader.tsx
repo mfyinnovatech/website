@@ -37,7 +37,7 @@ export function SectionHeader({
           {num ? `${num} · ` : ""}
           {eyebrow}
         </span>
-        <h2 className={`text-h2 mt-5 max-w-[20ch] ${titleCls}`}>{title}</h2>
+        <h2 className={`mt-7 max-w-[18ch] font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] sm:text-5xl lg:text-[4rem] ${titleCls}`}>{title}</h2>
       </Reveal>
       {(text || action) && (
         <Reveal

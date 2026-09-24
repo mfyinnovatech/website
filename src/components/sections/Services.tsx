@@ -18,7 +18,7 @@ export function Services({ limit }: { limit?: number }) {
   const [open, setOpen] = useState(list[0].slug);
 
   return (
-    <section id="services" className="bg-cloud px-4 pt-24 lg:pt-32">
+    <section id="services" className="px-4 pt-4">
       <div className="mx-auto max-w-[1408px] rounded-[40px] bg-white px-6 py-16 sm:px-10 lg:px-14 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Left */}

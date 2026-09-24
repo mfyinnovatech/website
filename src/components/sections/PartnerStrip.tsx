@@ -4,13 +4,14 @@ import { ArrowRight } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { clients, site } from "@/lib/content";
+import { Stage } from "@/components/ui/Stage";
 
 /* Trust strip — Odoo partner lockup as the anchor cell, client logos in
    hairline-divided cells. Logos render monochrome and take their colour on hover. */
 export function PartnerStrip() {
   return (
-    <section className="border-y border-line bg-white" aria-label="Partner and clients">
-      <div className="container-page">
+    <Stage tone="white" ariaLabel="Partner and clients" className="!py-8 lg:!py-10">
+      <div>
         <div className="flex items-center justify-between border-b border-line py-3.5">
           <p className="eyebrow text-ink-3">Trusted by</p>
           <Link href="/work" className="mono-label inline-flex items-center gap-1.5 text-ink-3 hover:text-blue">
@@ -67,6 +68,6 @@ export function PartnerStrip() {
           ))}
         </Stagger>
       </div>
-    </section>
+    </Stage>
   );
 }

@@ -48,13 +48,13 @@ const right = [
 
 export function OneSystem({ num = "03" }: { num?: string }) {
   return (
-    <section id="one-system" className="bg-cloud px-4 pb-4 pt-24 lg:pt-32">
+    <section id="one-system" className="px-4 pt-4">
       <div className="mx-auto max-w-[1408px] rounded-[40px] bg-white px-6 py-16 sm:px-10 lg:px-14 lg:py-24">
         <Reveal className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center rounded-lg bg-cloud px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue ring-1 ring-navy/[0.06]">
             {num ? `${num} · ` : ""}Digital transformation
           </span>
-          <h2 className="mt-8 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[4.25rem]">
+          <h2 className="mt-8 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[4rem]">
             Everything your business runs on, in one system.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-ink-2">

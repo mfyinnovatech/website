@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { testimonials } from "@/lib/content";
+import { Stage } from "@/components/ui/Stage";
 
 /* Written testimonials — one large quote at a time, crossfading to the next
    every few seconds. Arrows and a counter; pauses while hovered. */
@@ -22,10 +23,10 @@ export function Quotes({ num = "07" }: { num?: string }) {
   }, [n, paused, reduce]);
 
   return (
-    <section id="quotes" className="bg-cloud py-24 lg:py-32">
-      <div className="container-page">
+    <Stage id="quotes" tone="white">
+      <div>
         <Reveal className="mx-auto max-w-4xl text-center">
-          <span className="inline-flex items-center rounded-lg bg-white px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue ring-1 ring-navy/[0.06]">
+          <span className="inline-flex items-center rounded-lg bg-cloud px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue ring-1 ring-navy/[0.06]">
             {num ? `${num} · ` : ""}What clients wrote
           </span>
         </Reveal>
@@ -51,7 +52,7 @@ export function Quotes({ num = "07" }: { num?: string }) {
                 <figcaption className="mt-8 flex flex-col items-center gap-1.5">
                   <span className="font-display text-base font-semibold text-navy">{t.name}</span>
                   <span className="text-sm text-ink-3">{t.role}</span>
-                  <span className="mt-2 rounded-full bg-white px-3 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-blue ring-1 ring-navy/[0.05]">
+                  <span className="mt-2 rounded-full bg-cloud px-3 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-blue ring-1 ring-navy/[0.05]">
                     {t.service}
                   </span>
                 </figcaption>
@@ -84,6 +85,6 @@ export function Quotes({ num = "07" }: { num?: string }) {
           )}
         </div>
       </div>
-    </section>
+    </Stage>
   );
 }

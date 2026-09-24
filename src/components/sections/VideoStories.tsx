@@ -41,7 +41,7 @@ export function VideoStories({ num = "06" }: { num?: string }) {
   };
 
   return (
-    <section id="video-stories" className="bg-cloud px-4 pt-24 lg:pt-32">
+    <section id="video-stories" className="px-4 pt-4">
       <div
         data-surface="dark"
         className="relative mx-auto max-w-[1408px] overflow-hidden rounded-[40px] bg-navy py-16 text-white lg:py-24"

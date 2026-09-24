@@ -200,6 +200,7 @@ export function Hero() {
           ))}
         </motion.ul>
       </div>
+      <div className="h-8 sm:h-12" />
     </section>
   );
 }
