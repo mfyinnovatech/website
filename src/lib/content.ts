@@ -274,6 +274,7 @@ export type TextTestimonial = {
   role: string;
   company?: string;
   service: string;
+  rating?: number; // out of 5, shown as stars when present
 };
 
 export const testimonials: TextTestimonial[] = [
@@ -290,6 +291,13 @@ export const testimonials: TextTestimonial[] = [
     name: "Casey Skeens",
     role: "Business Development, LinkedIn recommendation for Maryam Mehboob",
     service: "ERP",
+  },
+  {
+    quote: "Rated 5.0 out of 5 on completion of the contract.",
+    name: "Upwork client",
+    role: "Contract: Odoo Expert for training AI",
+    service: "Odoo · AI",
+    rating: 5,
   },
 ];
 

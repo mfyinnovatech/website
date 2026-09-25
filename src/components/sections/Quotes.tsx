@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { testimonials } from "@/lib/content";
 import { Stage } from "@/components/ui/Stage";
@@ -46,6 +46,14 @@ export function Quotes({ num = "07" }: { num?: string }) {
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 className="text-center"
               >
+                {t.rating && (
+                  <div className="mb-6 flex items-center justify-center gap-1" aria-label={`${t.rating} out of 5 stars`}>
+                    {Array.from({ length: 5 }).map((_, k) => (
+                      <Star key={k} size={20} className={k < t.rating! ? "fill-blue text-blue" : "fill-line text-line"} />
+                    ))}
+                    <span className="ml-2 font-mono text-[12px] tracking-[0.12em] text-ink-3">{t.rating.toFixed(1)} / 5</span>
+                  </div>
+                )}
                 <blockquote className="font-display text-[1.6rem] font-medium leading-[1.3] tracking-[-0.015em] text-navy sm:text-3xl lg:text-[2.4rem] lg:leading-[1.25]">
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
