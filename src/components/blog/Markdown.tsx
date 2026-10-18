@@ -5,7 +5,7 @@ import Link from "next/link";
 function slugify(text: string) {
   return text
     .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/[^\p{L}\p{N}\s-]/gu, "")
     .trim()
     .replace(/\s+/g, "-");
 }
@@ -36,9 +36,9 @@ export function Markdown({ content }: { content: string }) {
           <h3 className="mt-9 font-display text-xl font-semibold tracking-[-0.01em] text-ink">{children}</h3>
         ),
         p: ({ children }) => <p className="mt-5 text-[1.0625rem] leading-[1.7] text-ink-2">{children}</p>,
-        ul: ({ children }) => <ul className="mt-5 list-disc space-y-2 pl-6 text-[1.0625rem] leading-[1.7] text-ink-2 marker:text-blue">{children}</ul>,
-        ol: ({ children }) => <ol className="mt-5 list-decimal space-y-2 pl-6 text-[1.0625rem] leading-[1.7] text-ink-2 marker:font-mono marker:text-blue">{children}</ol>,
-        li: ({ children }) => <li className="pl-1">{children}</li>,
+        ul: ({ children }) => <ul className="mt-5 list-disc space-y-2 ps-6 text-[1.0625rem] leading-[1.7] text-ink-2 marker:text-blue">{children}</ul>,
+        ol: ({ children }) => <ol className="mt-5 list-decimal space-y-2 ps-6 text-[1.0625rem] leading-[1.7] text-ink-2 marker:font-mono marker:text-blue">{children}</ol>,
+        li: ({ children }) => <li className="ps-1">{children}</li>,
         strong: ({ children }) => <strong className="font-semibold text-ink">{children}</strong>,
         a: ({ href = "", children }) => {
           const internal = href.startsWith("/") || href.startsWith("#");
@@ -53,7 +53,7 @@ export function Markdown({ content }: { content: string }) {
           );
         },
         blockquote: ({ children }) => (
-          <blockquote className="mt-7 border-l-2 border-blue pl-6 font-display text-xl font-medium leading-snug text-ink [&_p]:mt-0 [&_p]:text-ink [&_p]:text-xl">
+          <blockquote className="mt-7 border-s-2 border-blue ps-6 font-display text-xl font-medium leading-snug text-ink [&_p]:mt-0 [&_p]:text-ink [&_p]:text-xl">
             {children}
           </blockquote>
         ),
@@ -63,7 +63,7 @@ export function Markdown({ content }: { content: string }) {
             <table className="w-full border-collapse text-[0.95rem]">{children}</table>
           </div>
         ),
-        th: ({ children }) => <th className="border-b border-line bg-cloud px-4 py-3 text-left font-display text-sm font-semibold text-ink">{children}</th>,
+        th: ({ children }) => <th className="border-b border-line bg-cloud px-4 py-3 text-start font-display text-sm font-semibold text-ink">{children}</th>,
         td: ({ children }) => <td className="border-b border-line px-4 py-3 align-top text-ink-2">{children}</td>,
         code: ({ children }) => <code className="rounded bg-cloud px-1.5 py-0.5 font-mono text-[0.9em] text-ink">{children}</code>,
       }}

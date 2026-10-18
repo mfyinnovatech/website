@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
+import { useLocale } from "@/components/i18n/LocaleProvider";
 
 
 export type Playable = {
@@ -23,6 +24,7 @@ export function VideoLightboxProvider({ children }: { children: ReactNode }) {
   const [video, setVideo] = useState<Playable | null>(null);
   const open = useCallback((v: Playable) => setVideo(v), []);
   const close = useCallback(() => setVideo(null), []);
+  const { d } = useLocale();
 
   useEffect(() => {
     if (!video) return;
@@ -67,7 +69,7 @@ export function VideoLightboxProvider({ children }: { children: ReactNode }) {
                 <button
                   type="button"
                   onClick={close}
-                  aria-label="Close video"
+                  aria-label={d.lightbox.close}
                   className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 hover:bg-white/10"
                 >
                   <X size={18} />

@@ -4,13 +4,16 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Star } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
-import { testimonials } from "@/lib/content";
 import { Stage } from "@/components/ui/Stage";
+import { useLocale } from "@/components/i18n/LocaleProvider";
 
 /* Written testimonials — one large quote at a time, crossfading to the next
    every few seconds. Arrows and a counter; pauses while hovered. */
 export function Quotes({ num = "07" }: { num?: string }) {
   const reduce = useReducedMotion();
+  const { d, c } = useLocale();
+  const q = d.quotes;
+  const testimonials = c.testimonials;
   const [i, setI] = useState(0);
   const [paused, setPaused] = useState(false);
   const n = testimonials.length;
@@ -27,7 +30,7 @@ export function Quotes({ num = "07" }: { num?: string }) {
       <div>
         <Reveal className="mx-auto max-w-4xl text-center">
           <span className="inline-flex items-center rounded-lg bg-cloud px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue ring-1 ring-navy/[0.06]">
-            {num ? `${num} · ` : ""}What clients wrote
+            {num ? `${num} · ` : ""}{q.label}
           </span>
         </Reveal>
 
@@ -47,11 +50,11 @@ export function Quotes({ num = "07" }: { num?: string }) {
                 className="text-center"
               >
                 {t.rating && (
-                  <div className="mb-6 flex items-center justify-center gap-1" aria-label={`${t.rating} out of 5 stars`}>
+                  <div className="mb-6 flex items-center justify-center gap-1" aria-label={q.stars(t.rating)}>
                     {Array.from({ length: 5 }).map((_, k) => (
                       <Star key={k} size={20} className={k < t.rating! ? "fill-blue text-blue" : "fill-line text-line"} />
                     ))}
-                    <span className="ml-2 font-mono text-[12px] tracking-[0.12em] text-ink-3">{t.rating.toFixed(1)} / 5</span>
+                    <span className="ms-2 font-mono text-[12px] tracking-[0.12em] text-ink-3" dir="ltr">{t.rating.toFixed(1)} {q.outOf}</span>
                   </div>
                 )}
                 <blockquote className="font-display text-[1.6rem] font-medium leading-[1.3] tracking-[-0.015em] text-navy sm:text-3xl lg:text-[2.4rem] lg:leading-[1.25]">
@@ -73,21 +76,21 @@ export function Quotes({ num = "07" }: { num?: string }) {
               <button
                 type="button"
                 onClick={() => setI((v) => (v - 1 + n) % n)}
-                aria-label="Previous testimonial"
+                aria-label={q.prev}
                 className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line-2 text-navy transition-colors hover:border-navy hover:bg-navy hover:text-white"
               >
-                <ArrowLeft size={16} />
+                <ArrowLeft size={16} className="rtl:-scale-x-100" />
               </button>
-              <span className="font-mono text-[12px] tracking-[0.16em] text-ink-3">
+              <span className="font-mono text-[12px] tracking-[0.16em] text-ink-3" dir="ltr">
                 {String(i + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}
               </span>
               <button
                 type="button"
                 onClick={() => setI((v) => (v + 1) % n)}
-                aria-label="Next testimonial"
+                aria-label={q.next}
                 className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-line-2 text-navy transition-colors hover:border-navy hover:bg-navy hover:text-white"
               >
-                <ArrowRight size={16} />
+                <ArrowRight size={16} className="rtl:-scale-x-100" />
               </button>
             </div>
           )}

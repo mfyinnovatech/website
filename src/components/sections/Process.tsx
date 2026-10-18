@@ -2,22 +2,24 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { TechGrid } from "@/components/brand/TechGrid";
 import { Stage } from "@/components/ui/Stage";
-import { process } from "@/lib/content";
+import { getContent, getDict, type Locale } from "@/lib/i18n";
 
-export function Process() {
+export function Process({ locale }: { locale: Locale }) {
+  const d = getDict(locale).process;
+  const { process } = getContent(locale);
   return (
     <Stage id="process" tone="navy">
       <TechGrid dark fade="radial" />
       <div className="relative">
         <SectionHeader
           dark
-          eyebrow="How we work"
+          eyebrow={d.label}
           title={
             <>
-              Four steps, <span className="text-white/50">written down before we start.</span>
+              {d.h2a} <span className="text-white/50">{d.h2b}</span>
             </>
           }
-          text="Scope, architecture and success metrics are written down before code. If the plan changes, the estimate changes with it, in the open."
+          text={d.text}
         />
 
         <Stagger as="ol" className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-4">

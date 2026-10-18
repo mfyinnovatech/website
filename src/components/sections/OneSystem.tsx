@@ -6,61 +6,31 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, BarChart3, Boxes, Factory, Landmark, ShoppingCart, Users } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { Logo } from "@/components/ui/Logo";
+import { useLocale } from "@/components/i18n/LocaleProvider";
 
 /* One system — hub-and-spoke: six operating areas connected to a single
    MFY × Odoo database at the centre (AgencyAI "all features in one" pattern). */
 
-const left = [
-  {
-    icon: ShoppingCart,
-    title: "Sales & CRM",
-    text: "Leads, quotes and orders in one pipeline. A confirmed quote becomes the delivery, the invoice and the ledger entry without re-typing.",
-  },
-  {
-    icon: Boxes,
-    title: "Inventory & purchasing",
-    text: "Live stock across warehouses, reorder rules and supplier bills matched to receipts. What sales sees is what the warehouse has.",
-  },
-  {
-    icon: Landmark,
-    title: "Accounting & finance",
-    text: "Invoicing, bank reconciliation, multi-currency and month-end reporting from the same records the rest of the business creates.",
-  },
-];
-
-const right = [
-  {
-    icon: Factory,
-    title: "Operations",
-    text: "Manufacturing orders, projects, field service and maintenance scheduled from real demand, with costs visible per job.",
-  },
-  {
-    icon: Users,
-    title: "People & payroll",
-    text: "Employees, attendance, leave and payroll rules in the system that already holds the cost centres they belong to.",
-  },
-  {
-    icon: BarChart3,
-    title: "Data, AI & automation",
-    text: "Dashboards, forecasts and n8n automations built on one clean dataset, because every department writes to the same place.",
-  },
-];
+const leftIcons = [ShoppingCart, Boxes, Landmark];
+const rightIcons = [Factory, Users, BarChart3];
 
 export function OneSystem({ num = "03" }: { num?: string }) {
+  const { d, href } = useLocale();
+  const o = d.oneSystem;
+  const left = o.left.map((c, i) => ({ ...c, icon: leftIcons[i] }));
+  const right = o.right.map((c, i) => ({ ...c, icon: rightIcons[i] }));
   return (
     <section id="one-system" className="px-4 pt-4">
       <div className="mx-auto max-w-[1408px] rounded-[40px] bg-white px-6 py-16 sm:px-10 lg:px-14 lg:py-24">
         <Reveal className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center rounded-lg bg-cloud px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue ring-1 ring-navy/[0.06]">
-            {num ? `${num} · ` : ""}Digital transformation
+            {num ? `${num} · ` : ""}{o.label}
           </span>
           <h2 className="mt-8 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[4rem]">
-            Everything your business runs on, in one system.
+            {o.h2}
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-ink-2">
-            Digital transformation is not more software. It is fewer places where the truth lives.
-            Every department writes to the same database, so a sale updates stock, stock updates
-            purchasing, and finance closes the month from records that already exist.
+            {o.lead}
           </p>
         </Reveal>
 
@@ -95,11 +65,9 @@ export function OneSystem({ num = "03" }: { num?: string }) {
         </div>
 
         <div className="mt-12 flex flex-col items-center gap-3 text-center">
-          <p className="text-ink-2">
-            Implemented, customized and run by an official Odoo partner team.
-          </p>
-          <Link href="/services#erp-odoo" className="link-arrow">
-            How we implement Odoo <ArrowRight size={16} />
+          <p className="text-ink-2">{o.footer}</p>
+          <Link href={href("/services#erp-odoo")} className="link-arrow">
+            {o.link} <ArrowRight size={16} className="rtl:-scale-x-100" />
           </Link>
         </div>
       </div>
@@ -108,6 +76,7 @@ export function OneSystem({ num = "03" }: { num?: string }) {
 }
 
 function Hub() {
+  const { d } = useLocale();
   return (
     <div className="flex h-[160px] w-[220px] flex-col items-center justify-center gap-3 rounded-[32px] bg-blue text-white shadow-[0_30px_60px_-24px_rgba(0,48,232,0.55)]">
       <span className="flex items-center gap-3">
@@ -115,7 +84,7 @@ function Hub() {
         <span aria-hidden className="h-6 w-px bg-white/30" />
         <Image src="/partners/odoo_logo_inverted.svg" alt="Odoo" width={64} height={34} style={{ height: "auto" }} />
       </span>
-      <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/80">One database</span>
+      <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-white/80">{d.oneSystem.hub}</span>
     </div>
   );
 }

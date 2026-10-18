@@ -1,19 +1,21 @@
 import { Stage } from "@/components/ui/Stage";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { VideoCard } from "@/components/ui/VideoCard";
-import { videos } from "@/lib/content";
+import { getContent, getDict, type Locale } from "@/lib/i18n";
 
-export function WorkGallery() {
+export function WorkGallery({ locale }: { locale: Locale }) {
+  const d = getDict(locale).work.page;
+  const { videos } = getContent(locale);
   return (
     <Stage id="gallery">
       <SectionHeader
-        eyebrow="3D product animation"
+        eyebrow={d.galleryLabel}
         title={
           <>
-            Every production, <span className="text-ink-3">start to finish.</span>
+            {d.galleryH2a} <span className="text-ink-3">{d.galleryH2b}</span>
           </>
         }
-        text={`${videos.length} productions released to date. Each one modelled, lit and animated in-house before the product existed.`}
+        text={d.galleryText(videos.length)}
       />
       <ul className="mt-14 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
         {videos.map((v, i) => (

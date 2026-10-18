@@ -8,32 +8,44 @@ import { Tools } from "@/components/sections/Tools";
 import { Process } from "@/components/sections/Process";
 import { FAQ } from "@/components/sections/FAQ";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
-import { services } from "@/lib/content";
 import { Stage } from "@/components/ui/Stage";
+import { site } from "@/lib/content";
+import { getContent, getDict, isLocale, languageAlternates, localeHref, type Locale } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-  alternates: { canonical: "https://mfyinnova.tech/services" },
-  title: "Services",
-  description:
-    "Web and SaaS, mobile, AI and data, Odoo ERP, 3D animation, automation and cloud, finance operations and digital growth. Eight disciplines, one accountable team.",
-};
-
+type Params = { locale: string };
+const path = "/services";
 const groups = ["Engineering", "Intelligence", "Operations", "Growth"] as const;
 
-export default function ServicesPage() {
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  const locale: Locale = isLocale(raw) ? raw : "en";
+  const d = getDict(locale).servicesPage;
+  return {
+    title: d.metaTitle,
+    description: d.metaDescription,
+    alternates: { canonical: `${site.url}${localeHref(locale, path)}`, languages: languageAlternates(site.url, path) },
+  };
+}
+
+export default async function ServicesPage({ params }: { params: Promise<Params> }) {
+  const { locale: raw } = await params;
+  const locale: Locale = isLocale(raw) ? raw : "en";
+  const d = getDict(locale).servicesPage;
+  const { services } = getContent(locale);
+
   return (
     <>
       <PageHeader
-        eyebrow="Services"
+        eyebrow={d.eyebrow}
         title={
           <>
-            Everything it takes to ship, <span className="text-ink-3">under one roof.</span>
+            {d.h1a} <span className="text-ink-3">{d.h1b}</span>
           </>
         }
-        lead="Engineering, intelligence, operations and growth. Pick one discipline or hand us the whole system; either way you get one team that owns the outcome."
+        lead={d.lead}
         aside={
-          <Link href="/contact" className="btn btn-navy self-start">
-            Scope a project <ArrowUpRight size={16} />
+          <Link href={localeHref(locale, "/contact")} className="btn btn-navy">
+            {d.cta} <ArrowUpRight size={16} className="rtl:-scale-x-100" />
           </Link>
         }
       />
@@ -47,9 +59,9 @@ export default function ServicesPage() {
               <StaggerItem
                 as="li"
                 key={g}
-                className={`py-6 md:px-8 ${i > 0 ? "border-t border-line md:border-l md:border-t-0" : ""} ${i === 0 ? "md:pl-0" : ""}`}
+                className={`py-6 md:px-8 ${i > 0 ? "border-t border-line md:border-s md:border-t-0" : ""} ${i === 0 ? "md:ps-0" : ""}`}
               >
-                <p className="eyebrow text-blue">{g}</p>
+                <p className="eyebrow text-blue">{d.groups[g]}</p>
                 <ul className="mt-4 space-y-1.5">
                   {items.map((s) => (
                     <li key={s.slug}>
@@ -68,8 +80,8 @@ export default function ServicesPage() {
       <Services />
       <OneSystem num="" />
       <Tools num="" />
-      <Process />
-      <FAQ />
+      <Process locale={locale} />
+      <FAQ num="" />
     </>
   );
 }

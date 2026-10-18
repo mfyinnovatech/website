@@ -5,8 +5,8 @@ import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import map from "@/lib/world-map.json";
-import { presence } from "@/lib/content";
 import { Stage } from "@/components/ui/Stage";
+import { useLocale } from "@/components/i18n/LocaleProvider";
 
 type MarkerKey = keyof typeof map.markers;
 
@@ -14,6 +14,9 @@ type MarkerKey = keyof typeof map.markers;
    (scripts/generate-world-dots.mjs) with one pulsing marker per client region. */
 export function Presence({ num = "07" }: { num?: string }) {
   const reduce = useReducedMotion();
+  const { d, c } = useLocale();
+  const p = d.presence;
+  const presence = c.presence;
   const [hover, setHover] = useState<MarkerKey | null>(null);
   const markers = presence.regions.map((r) => ({ ...r, ...map.markers[r.key as MarkerKey] }));
 
@@ -22,24 +25,24 @@ export function Presence({ num = "07" }: { num?: string }) {
       <div>
         <SectionHeader
           num={num}
-          eyebrow="Global presence"
+          eyebrow={p.label}
           title={
             <>
-              One studio. <span className="text-ink-3">Clients on five continents.</span>
+              {p.h2a} <span className="text-ink-3">{p.h2b}</span>
             </>
           }
-          text="Remote-first from day one. We have shipped for companies in North America, Europe, the Gulf, Africa and Australia, with overlap hours agreed per project."
+          text={p.text}
         />
 
         <div className="mt-14 grid gap-8 lg:grid-cols-12 lg:items-center">
           {/* Map */}
           <Reveal className="lg:col-span-8">
-            <div className="relative overflow-hidden rounded-2xl border border-line bg-cloud">
+            <div className="relative overflow-hidden rounded-2xl border border-line bg-cloud" dir="ltr">
               <svg
                 viewBox={`0 0 ${map.width} ${map.height}`}
                 className="block h-auto w-full"
                 role="img"
-                aria-label="World map with MFY client locations marked"
+                aria-label={p.mapAria}
               >
                 <g fill="var(--color-line-2)">
                   {map.dots.map(([x, y], i) => (
@@ -91,9 +94,7 @@ export function Presence({ num = "07" }: { num?: string }) {
                   );
                 })}
               </svg>
-              <p className="absolute bottom-3 left-4 hidden font-mono text-[10px] uppercase tracking-[0.12em] text-ink-4 sm:block">
-                Equal Earth projection · markers show client regions
-              </p>
+              <p className="absolute bottom-3 start-4 hidden font-mono text-[10px] uppercase tracking-[0.12em] text-ink-4 sm:block">{p.projection}</p>
             </div>
           </Reveal>
 

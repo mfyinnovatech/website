@@ -3,19 +3,21 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
-import { clients, site } from "@/lib/content";
 import { Stage } from "@/components/ui/Stage";
+import { getContent, getDict, localeHref, type Locale } from "@/lib/i18n";
 
 /* Trust strip — Odoo partner lockup as the anchor cell, client logos in
    hairline-divided cells. Logos render monochrome and take their colour on hover. */
-export function PartnerStrip() {
+export function PartnerStrip({ locale }: { locale: Locale }) {
+  const d = getDict(locale).partner;
+  const { clients, site } = getContent(locale);
   return (
-    <Stage tone="white" ariaLabel="Partner and clients" className="!py-8 lg:!py-10">
+    <Stage tone="white" ariaLabel={d.aria} className="!py-8 lg:!py-10">
       <div>
         <div className="flex items-center justify-between border-b border-line py-3.5">
-          <p className="eyebrow text-ink-3">Trusted by</p>
-          <Link href="/work" className="mono-label inline-flex items-center gap-1.5 text-ink-3 hover:text-blue">
-            Selected work <ArrowRight size={13} />
+          <p className="eyebrow text-ink-3">{d.trustedBy}</p>
+          <Link href={localeHref(locale, "/work")} className="mono-label inline-flex items-center gap-1.5 text-ink-3 hover:text-blue">
+            {d.selectedWork} <ArrowRight size={13} className="rtl:-scale-x-100" />
           </Link>
         </div>
 

@@ -4,10 +4,12 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { faqs } from "@/lib/content";
 import { Stage } from "@/components/ui/Stage";
+import { useLocale } from "@/components/i18n/LocaleProvider";
 
-export function FAQ() {
+export function FAQ({ num = "10" }: { num?: string }) {
+  const { d, c } = useLocale();
+  const faqs = c.faqs;
   const [open, setOpen] = useState<number | null>(0);
   return (
     <Stage id="faq" tone="white">
@@ -15,10 +17,10 @@ export function FAQ() {
         <div className="lg:col-span-5">
           <SectionHeader
             align="left"
-            num="10"
-            eyebrow="Before we start"
-            title="Questions we get on the first call."
-            text="Answered here so the call can be about your project instead."
+            num={num}
+            eyebrow={d.faq.label}
+            title={d.faq.title}
+            text={d.faq.text}
           />
         </div>
         <ul className="border-t border-line lg:col-span-7">
@@ -30,7 +32,7 @@ export function FAQ() {
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
                   aria-expanded={isOpen}
-                  className="flex w-full items-center justify-between gap-6 py-6 text-left"
+                  className="flex w-full items-center justify-between gap-6 py-6 text-start"
                 >
                   <span className="font-display text-lg font-medium text-ink">{f.q}</span>
                   <span

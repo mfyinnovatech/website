@@ -2,14 +2,16 @@
 
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Check, Copy, Loader2 } from "lucide-react";
-import { services, site } from "@/lib/content";
 import { Stage } from "@/components/ui/Stage";
-
-const budgets = ["Under $5k", "$5k – $15k", "$15k – $50k", "$50k+", "Not sure yet"];
+import { useLocale } from "@/components/i18n/LocaleProvider";
 
 type Status = "idle" | "sending" | "sent" | "error" | "fallback";
 
 export function ContactForm() {
+  const { d, c, locale } = useLocale();
+  const t = d.contact;
+  const { site, services } = c;
+  const budgets = t.budgets;
   const [copied, setCopied] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [mailto, setMailto] = useState<string | null>(null);
@@ -38,8 +40,9 @@ export function ContactForm() {
       budget: String(fd.get("budget") ?? ""),
       message: String(fd.get("message") ?? ""),
       website: String(fd.get("website") ?? ""),
+      locale,
     };
-    const subject = `Project inquiry — ${data.company || data.name}`;
+    const subject = `${t.subject} — ${data.company || data.name}`;
     const body = [
       `Name: ${data.name}`,
       `Email: ${data.email}`,
@@ -79,14 +82,11 @@ export function ContactForm() {
       <div className="grid gap-14 lg:grid-cols-12">
         {/* Direct channels */}
         <div className="lg:col-span-5">
-          <p className="eyebrow text-blue">Direct</p>
-          <h2 className="mt-5 font-display text-3xl font-semibold tracking-[-0.02em] text-ink lg:text-4xl">Or skip the form.</h2>
-          <p className="mt-5 max-w-md text-ink-2">
-            Email is the channel. You will hear back within one business day, usually with a few
-            questions so the first call is useful.
-          </p>
+          <p className="eyebrow text-blue">{t.direct}</p>
+          <h2 className="mt-5 font-display text-3xl font-semibold tracking-[-0.02em] text-ink lg:text-4xl">{t.skip}</h2>
+          <p className="mt-5 max-w-md text-ink-2">{t.skipText}</p>
 
-          <div className="mt-8 flex items-center gap-2 rounded-xl border border-line bg-cloud p-2 pl-4 font-mono text-sm text-ink">
+          <div className="mt-8 flex items-center gap-2 rounded-xl border border-line bg-cloud p-2 ps-4 font-mono text-sm text-ink" dir="ltr">
             <span className="text-blue">❯</span>
             <a href={`mailto:${site.email}`} className="truncate hover:text-blue">
               {site.email}
@@ -94,32 +94,32 @@ export function ContactForm() {
             <button
               type="button"
               onClick={copy}
-              aria-label="Copy email address"
-              className="ml-auto inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line-2 bg-white text-ink transition-colors hover:border-blue hover:text-blue"
+              aria-label={t.copyEmail}
+              className="ms-auto inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line-2 bg-white text-ink transition-colors hover:border-blue hover:text-blue"
             >
               {copied ? <Check size={15} /> : <Copy size={15} />}
             </button>
           </div>
 
           <dl className="mt-10 divide-y divide-line border-y border-line">
-            <Row label="LinkedIn">
+            <Row label={t.rowLinkedIn}>
               <a href={site.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:text-blue">
-                Maryam Mehboob <ArrowUpRight size={14} />
+                {c.team[0].name} <ArrowUpRight size={14} className="rtl:-scale-x-100" />
               </a>
             </Row>
-            <Row label="Based">{site.location}</Row>
-            <Row label="Response">Within one business day</Row>
+            <Row label={t.rowBased}>{site.location}</Row>
+            <Row label={t.rowResponse}>{t.responseValue}</Row>
           </dl>
         </div>
 
         {/* Form */}
         <form onSubmit={onSubmit} className="rounded-2xl border border-line bg-cloud p-6 sm:p-8 lg:col-span-7">
           <div className="grid gap-5 sm:grid-cols-2">
-            <Field label="Your name" name="name" required autoComplete="name" />
-            <Field label="Work email" name="email" type="email" required autoComplete="email" />
-            <Field label="Company" name="company" autoComplete="organization" />
-            <Select label="What do you need?" name="service" options={services.map((s) => s.title)} />
-            <Select label="Budget range" name="budget" options={budgets} className="sm:col-span-2" />
+            <Field label={t.name} name="name" required autoComplete="name" />
+            <Field label={t.email} name="email" type="email" required autoComplete="email" />
+            <Field label={t.company} name="company" autoComplete="organization" />
+            <Select label={t.service} name="service" options={services.map((s) => s.title)} placeholder={t.select} />
+            <Select label={t.budget} name="budget" options={budgets} className="sm:col-span-2" placeholder={t.select} />
             {/* Honeypot — hidden from people, filled by bots */}
             <div className="hidden" aria-hidden="true">
               <label htmlFor="website">Website</label>
@@ -127,14 +127,14 @@ export function ContactForm() {
             </div>
             <div className="sm:col-span-2">
               <label className="mono-label block text-ink-3" htmlFor="message">
-                Tell us about the project
+                {t.message}
               </label>
               <textarea
                 id="message"
                 name="message"
                 required
                 rows={6}
-                placeholder="What are you trying to ship, by when, and what exists today?"
+                placeholder={t.placeholder}
                 className="mt-2 w-full resize-y rounded-xl border border-line-2 bg-white px-4 py-3 text-ink placeholder:text-ink-4 focus:border-blue focus:outline-none"
               />
             </div>
@@ -142,11 +142,11 @@ export function ContactForm() {
           <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-ink-3" aria-live="polite">
               {status === "sent" && (
-                <span className="font-semibold text-ink">Sent. We will reply within one business day.</span>
+                <span className="font-semibold text-ink">{t.sent}</span>
               )}
               {status === "error" && (
                 <span className="text-ink">
-                  Something went wrong. Email us directly at{" "}
+                  {t.errorA}{" "}
                   <a href={`mailto:${site.email}`} className="font-semibold text-blue">
                     {site.email}
                   </a>
@@ -155,23 +155,23 @@ export function ContactForm() {
               )}
               {status === "fallback" && mailto && (
                 <span className="text-ink">
-                  Email sending is not set up on this server yet.{" "}
+                  {t.fallbackA}{" "}
                   <a href={mailto} className="font-semibold text-blue">
-                    Open the message in your mail app
+                    {t.fallbackLink}
                   </a>{" "}
-                  instead.
+                  {t.fallbackB}
                 </span>
               )}
-              {(status === "idle" || status === "sending") && "Your details go straight to our inbox and nowhere else."}
+              {(status === "idle" || status === "sending") && t.idle}
             </p>
             <button type="submit" className="btn btn-primary" disabled={status === "sending"}>
               {status === "sending" ? (
                 <>
-                  Sending <Loader2 size={16} className="animate-spin" />
+                  {t.sending} <Loader2 size={16} className="animate-spin" />
                 </>
               ) : (
                 <>
-                  Send inquiry <ArrowUpRight size={16} />
+                  {t.send} <ArrowUpRight size={16} className="rtl:-scale-x-100" />
                 </>
               )}
             </button>
@@ -227,11 +227,13 @@ function Select({
   name,
   options,
   className = "",
+  placeholder = "Select…",
 }: {
   label: string;
   name: string;
   options: string[];
   className?: string;
+  placeholder?: string;
 }) {
   return (
     <div className={className}>
@@ -245,7 +247,7 @@ function Select({
         className="mt-2 h-12 w-full appearance-none rounded-xl border border-line-2 bg-white px-4 text-ink focus:border-blue focus:outline-none"
       >
         <option value="" disabled>
-          Select…
+          {placeholder}
         </option>
         {options.map((o) => (
           <option key={o} value={o}>

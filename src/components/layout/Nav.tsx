@@ -6,7 +6,9 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
-import { nav, site } from "@/lib/content";
+import { useLocale } from "@/components/i18n/LocaleProvider";
+import { LanguageSwitch } from "@/components/i18n/LanguageSwitch";
+import { splitLocale } from "@/lib/i18n";
 
 /* Header: the logo lockup sits on its own at the page's left edge; the floating
    pill in the centre carries the links and the CTA (68px, 8px padding, 100px
@@ -15,6 +17,8 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const [onDark, setOnDark] = useState(false);
   const pathname = usePathname();
+  const { d, c, nav, href } = useLocale();
+  const site = c.site;
 
   /* Swap the logo to white whenever the surface under it is dark: either an element
      marked data-surface="dark", or any ancestor with a dark computed background. */
@@ -88,7 +92,8 @@ export function Nav() {
     };
   }, [open]);
 
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+  const bare = splitLocale(pathname || "/")[1];
+  const isActive = (h: string) => (h === "/" ? bare === "/" : bare.startsWith(h));
 
   const pillClass =
     "flex items-center rounded-[100px] bg-white/55 shadow-[inset_0_0_36px_0_#ffffff,0_1px_0_0_rgba(6,16,48,0.04)] ring-1 ring-navy/[0.06] backdrop-blur-[44px]";
@@ -109,8 +114,8 @@ export function Nav() {
         {/* Logo — outside the pill */}
         <Link
           id="site-logo"
-          href="/"
-          aria-label="MFY Innovatech — home"
+          href={href("/")}
+          aria-label={d.nav.logoAria}
           className="pointer-events-auto relative block h-[60px] w-[104px] justify-self-start sm:h-[68px] sm:w-[124px] lg:w-[140px]"
         >
           <span
@@ -130,12 +135,12 @@ export function Nav() {
         </Link>
 
         {/* Centre pill: links + CTA (desktop) */}
-        <div className={`pointer-events-auto hidden h-[68px] gap-7 p-2 pl-8 lg:flex ${pillClass}`}>
+        <div className={`pointer-events-auto hidden h-[68px] gap-7 p-2 ps-8 lg:flex ${pillClass}`}>
           <nav aria-label="Primary" className="flex items-center gap-[28px]">
             {nav.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                href={href(item.href)}
                 className={`font-display text-[15px] font-semibold leading-6 transition-colors duration-150 ${
                   isActive(item.href) ? "text-blue" : "text-navy hover:text-blue"
                 }`}
@@ -144,11 +149,12 @@ export function Nav() {
               </Link>
             ))}
           </nav>
+          <LanguageSwitch className="text-navy hover:text-blue" />
           <Link
-            href="/contact"
+            href={href("/contact")}
             className="inline-flex h-[52px] shrink-0 items-center gap-2 whitespace-nowrap rounded-[100px] bg-navy px-6 font-display text-[15px] font-semibold text-white transition-colors duration-200 hover:bg-blue"
           >
-            Start a project <ArrowUpRight size={16} strokeWidth={2.2} />
+            {d.nav.cta} <ArrowUpRight size={16} strokeWidth={2.2} className="rtl:-scale-x-100" />
           </Link>
         </div>
 
@@ -156,17 +162,17 @@ export function Nav() {
         <div className="relative col-start-3 justify-self-end lg:hidden">
           <div className={`pointer-events-auto h-[60px] gap-1.5 p-1.5 ${pillClass}`}>
             <Link
-              href="/contact"
+              href={href("/contact")}
               className="inline-flex h-12 items-center gap-2 whitespace-nowrap rounded-[100px] bg-navy px-5 font-display text-[15px] font-semibold text-white transition-colors hover:bg-blue"
             >
-              Start <ArrowUpRight size={16} strokeWidth={2.2} />
+              {d.nav.ctaShort} <ArrowUpRight size={16} strokeWidth={2.2} className="rtl:-scale-x-100" />
             </Link>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="mobile-menu"
-              aria-label={open ? "Close menu" : "Open menu"}
+              aria-label={open ? d.nav.closeMenu : d.nav.openMenu}
               className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-white text-navy ring-1 ring-navy/10 transition-colors hover:bg-cloud"
             >
               {open ? <X size={20} /> : <Menu size={20} />}
@@ -181,30 +187,30 @@ export function Nav() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -8, scale: 0.98 }}
                 transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
-                className="pointer-events-auto absolute right-0 top-[calc(100%+10px)] w-[calc(100vw-2*var(--page-x))] max-w-sm rounded-[28px] bg-white p-3 shadow-[0_24px_60px_-24px_rgba(6,16,48,0.35)] ring-1 ring-navy/[0.08]"
+                className="pointer-events-auto absolute end-0 top-[calc(100%+10px)] w-[calc(100vw-2*var(--page-x))] max-w-sm rounded-[28px] bg-white p-3 shadow-[0_24px_60px_-24px_rgba(6,16,48,0.35)] ring-1 ring-navy/[0.08]"
               >
                 <ul className="divide-y divide-line">
                   {nav.map((item) => (
                     <li key={item.href}>
                       <Link
-                        href={item.href}
+                        href={href(item.href)}
                         onClick={() => setOpen(false)}
                         className={`flex items-center justify-between px-4 py-4 font-display text-xl font-semibold ${
                           isActive(item.href) ? "text-blue" : "text-navy"
                         }`}
                       >
                         {item.label}
-                        <ArrowUpRight size={18} className="text-ink-3" />
+                        <ArrowUpRight size={18} className="text-ink-3 rtl:-scale-x-100" />
                       </Link>
                     </li>
                   ))}
                 </ul>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="mt-2 block px-4 pb-2 pt-3 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3"
-                >
-                  {site.email}
-                </a>
+                <div className="mt-2 flex items-center justify-between px-4 pb-2 pt-3">
+                  <a href={`mailto:${site.email}`} className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3">
+                    {site.email}
+                  </a>
+                  <LanguageSwitch className="text-navy" />
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

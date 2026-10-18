@@ -8,7 +8,7 @@ import { TechGrid } from "@/components/brand/TechGrid";
 import { GridTiles } from "@/components/brand/GridTiles";
 import { ArchField } from "@/components/brand/ArchField";
 import { useLightbox } from "@/components/ui/VideoLightbox";
-import { videos } from "@/lib/content";
+import { useLocale } from "@/components/i18n/LocaleProvider";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -18,15 +18,17 @@ function Words({ text, accent, delay = 0 }: { text: string; accent?: string; del
   return (
     <>
       {words.map((w, i) => (
-        <span key={i} className="clip-reveal mr-[0.22em]">
-          <motion.span
-            className="inline-block"
-            initial={reduce ? false : { y: "110%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1, ease, delay: delay + i * 0.06 }}
-          >
-            {w}
-          </motion.span>
+        <span key={i}>
+          <span className="clip-reveal">
+            <motion.span
+              className="inline-block"
+              initial={reduce ? false : { y: "110%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1, ease, delay: delay + i * 0.06 }}
+            >
+              {w}
+            </motion.span>
+          </span>{" "}
         </span>
       ))}
       {accent && (
@@ -45,11 +47,12 @@ function Words({ text, accent, delay = 0 }: { text: string; accent?: string; del
   );
 }
 
-const disciplines = ["Software & AI", "ERP · Odoo", "3D animation", "Finance ops"];
-
 export function Hero() {
   const reduce = useReducedMotion();
   const { open } = useLightbox();
+  const { d, c, href } = useLocale();
+  const h = d.hero;
+  const videos = c.videos;
   const reel = videos.find((v) => v.featured) ?? videos[0];
 
   return (
@@ -70,15 +73,15 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease, delay: 0.1 }}
             >
-              Software studio · Clients on five continents
+              {h.pill}
             </motion.p>
 
             <h1 className="text-display mt-8 max-w-[13ch] text-ink">
               <span className="block">
-                <Words text="Enterprise software," delay={0.2} />
+                <Words text={h.line1} delay={0.2} />
               </span>
               <span className="block">
-                <Words text="delivered with" accent="precision." delay={0.35} />
+                <Words text={h.line2} accent={h.accent} delay={0.35} />
               </span>
             </h1>
 
@@ -88,9 +91,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease, delay: 0.7 }}
             >
-              We design, build and run the systems enterprises depend on: web and mobile products,
-              AI and data, Odoo ERP and 3D visualization. Numbers over adjectives, shipped on the
-              date we said.
+              {h.lead}
             </motion.p>
 
             <motion.div
@@ -99,11 +100,11 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease, delay: 0.85 }}
             >
-              <Link href="/contact" className="btn btn-navy">
-                Start a project <ArrowUpRight size={16} />
+              <Link href={href("/contact")} className="btn btn-navy">
+                {h.primary} <ArrowUpRight size={16} className="rtl:-scale-x-100" />
               </Link>
-              <Link href="/work" className="btn btn-ghost">
-                See our work <ArrowRight size={16} />
+              <Link href={href("/work")} className="btn btn-ghost">
+                {h.secondary} <ArrowRight size={16} className="rtl:-scale-x-100" />
               </Link>
             </motion.div>
           </div>
@@ -114,18 +115,18 @@ export function Hero() {
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            aria-label="Disciplines"
+            aria-label={h.disciplinesAria}
           >
             <ArchField
               bars={7}
               height={150}
               color="var(--color-ice)"
-              className="absolute -right-2 bottom-0 w-[92%]"
+              className="absolute -end-2 bottom-0 w-[92%]"
             />
-            <ol className="relative space-y-3 pb-2 text-right">
-              {disciplines.map((d, i) => (
-                <li key={d} className="mono-label flex items-center justify-end gap-3 text-ink-2">
-                  {d}
+            <ol className="relative space-y-3 pb-2 text-end">
+              {h.disciplines.map((item, i) => (
+                <li key={item} className="mono-label flex items-center justify-end gap-3 text-ink-2">
+                  {item}
                   <span className="font-mono text-[11px] text-blue">0{i + 1}</span>
                 </li>
               ))}
@@ -143,8 +144,8 @@ export function Hero() {
           <button
             type="button"
             onClick={() => open({ id: reel.id, title: reel.title, category: reel.category, orientation: "landscape" })}
-            aria-label={`Play reel: ${reel.title}`}
-            className="group relative block w-full overflow-hidden rounded-2xl bg-navy text-left"
+            aria-label={`${h.playReel}: ${reel.title}`}
+            className="group relative block w-full overflow-hidden rounded-2xl bg-navy text-start"
           >
             <div className="relative aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9]">
               <Image
@@ -164,15 +165,15 @@ export function Hero() {
               <Cross className="bottom-5 right-5 hidden sm:block" />
 
               <span className="absolute left-1/2 top-1/2 inline-flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-navy shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:bg-blue group-hover:text-white sm:h-20 sm:w-20">
-                <Play size={22} fill="currentColor" className="ml-1" />
+                <Play size={22} fill="currentColor" className="ms-1" />
               </span>
 
               <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-6 text-white sm:flex-row sm:items-end sm:justify-between sm:gap-4 sm:p-8">
                 <div>
-                  <p className="eyebrow text-blue-soft">Reel 01 · 3D product animation</p>
+                  <p className="eyebrow text-blue-soft">{h.reelLabel}</p>
                   <p className="mt-2 font-display text-lg font-medium sm:text-xl">{reel.title}</p>
                 </div>
-                <p className="mono-label hidden text-white/60 sm:block">Modeled · lit · animated in-house</p>
+                <p className="mono-label hidden text-white/60 sm:block">{h.reelNote}</p>
               </div>
             </div>
           </button>
@@ -185,14 +186,10 @@ export function Hero() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.25 }}
         >
-          {[
-            ["50+", "projects delivered"],
-            ["9", "3D productions released"],
-            ["Odoo", "official partner"],
-          ].map(([v, l], i) => (
+          {h.proof.map(([v, l], i) => (
             <li
               key={l}
-              className={`flex items-baseline gap-3 py-5 ${i === 1 ? "sm:px-8" : i === 2 ? "sm:pl-8" : "sm:pr-8"}`}
+              className={`flex items-baseline gap-3 py-5 ${i === 1 ? "sm:px-8" : i === 2 ? "sm:ps-8" : "sm:pe-8"}`}
             >
               <span className="font-display text-2xl font-semibold text-ink">{v}</span>
               <span className="mono-label text-ink-3">{l}</span>

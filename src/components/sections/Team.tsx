@@ -1,11 +1,14 @@
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { MonogramTile } from "@/components/brand/MonogramTile";
-import { team, type TeamMember } from "@/lib/content";
+import type { TeamMember } from "@/lib/content";
 import Image from "next/image";
+import { getContent, getDict, type Locale } from "@/lib/i18n";
 
 /* Team — dark rounded stage with a spotlight from the top, centred label and
    headline, one large featured card beside stacked compact cards. */
-export function Team({ num = "07" }: { num?: string }) {
+export function Team({ locale, num = "07" }: { locale: Locale; num?: string }) {
+  const d = getDict(locale);
+  const { team } = getContent(locale);
   return (
     <section id="team" className="px-4 pt-4">
       <div data-surface="dark" className="relative mx-auto max-w-[1408px] overflow-hidden rounded-[40px] bg-navy px-6 py-20 text-white sm:px-10 lg:px-14 lg:py-[120px]">
@@ -25,12 +28,12 @@ export function Team({ num = "07" }: { num?: string }) {
         {/* Header */}
         <Reveal className="relative mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-lg bg-navy-2 px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue-soft">
-            {num ? `${num} · ` : ""}Team
+            {num ? `${num} · ` : ""}{d.team.label}
           </span>
           <h2 className="mt-8 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-[4rem]">
-            The people behind
+            {d.team.h2a}
             <br />
-            the precision.
+            {d.team.h2b}
           </h2>
         </Reveal>
 
@@ -39,7 +42,7 @@ export function Team({ num = "07" }: { num?: string }) {
         <Stagger className="relative mt-14 grid gap-6 lg:mt-20 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-2">
           {team.slice(0, 4).map((m) => (
             <StaggerItem key={m.name} className="h-full">
-              <FeaturedCard m={m} />
+              <FeaturedCard m={m} d={d} />
             </StaggerItem>
           ))}
         </Stagger>
@@ -72,7 +75,7 @@ function Portrait({ m, size }: { m: TeamMember; size: "lg" | "sm" }) {
   );
 }
 
-function Socials({ m, size = "md" }: { m: TeamMember; size?: "md" }) {
+function Socials({ m, d, size = "md" }: { m: TeamMember; d: ReturnType<typeof getDict>; size?: "md" }) {
   const btn =
     "inline-flex h-[52px] w-[52px] items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-blue";
   const has = (href: string) => href && href !== "#";
@@ -80,12 +83,12 @@ function Socials({ m, size = "md" }: { m: TeamMember; size?: "md" }) {
   return (
     <div className="flex gap-3" data-size={size}>
       {has(m.linkedin) && (
-        <a href={m.linkedin} target="_blank" rel="noreferrer" aria-label={`${m.name} on LinkedIn`} className={btn}>
+        <a href={m.linkedin} target="_blank" rel="noreferrer" aria-label={`${m.name} ${d.team.onLinkedIn}`} className={btn}>
           <LinkedInIcon />
         </a>
       )}
       {has(m.instagram) && (
-        <a href={m.instagram} target="_blank" rel="noreferrer" aria-label={`${m.name} on Instagram`} className={btn}>
+        <a href={m.instagram} target="_blank" rel="noreferrer" aria-label={`${m.name} ${d.team.onInstagram}`} className={btn}>
           <InstagramIcon />
         </a>
       )}
@@ -93,7 +96,7 @@ function Socials({ m, size = "md" }: { m: TeamMember; size?: "md" }) {
   );
 }
 
-function FeaturedCard({ m }: { m: TeamMember }) {
+function FeaturedCard({ m, d }: { m: TeamMember; d: ReturnType<typeof getDict> }) {
   return (
     <article className="flex h-full flex-col rounded-[40px] bg-navy-2 p-8 sm:p-10">
       <Portrait m={m} size="lg" />
@@ -105,7 +108,7 @@ function FeaturedCard({ m }: { m: TeamMember }) {
           </p>
           <p className="mt-4 max-w-md text-[0.95rem] text-white/70">{m.bio}</p>
         </div>
-        <Socials m={m} />
+        <Socials m={m} d={d} />
       </div>
     </article>
   );

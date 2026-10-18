@@ -2,28 +2,30 @@ import Link from "next/link";
 import { Mail } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { BackToTop } from "./BackToTop";
-import { site, team } from "@/lib/content";
+import { getContent, getDict, localeHref, type Locale } from "@/lib/i18n";
+import { LanguageSwitch } from "@/components/i18n/LanguageSwitch";
 
 /* Footer — light ground, faded lockup behind a centred mark tile, "Get connected"
    heading, four white social pills, hairline, then quick links · copyright · back to top. */
 
-const quickLinks = [
-  { label: "Services", href: "/services" },
-  { label: "Work", href: "/work" },
-  { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
-  { label: "Privacy", href: "/privacy" },
-  { label: "Terms", href: "/terms" },
-];
-
-export function Footer() {
+export function Footer({ locale }: { locale: Locale }) {
+  const d = getDict(locale).footer;
+  const { site, team } = getContent(locale);
   const year = new Date().getFullYear();
   const founder = team[0];
+  const quickLinks = [
+    { label: d.links.services, href: "/services" },
+    { label: d.links.work, href: "/work" },
+    { label: d.links.about, href: "/about" },
+    { label: d.links.blog, href: "/blog" },
+    { label: d.links.privacy, href: "/privacy" },
+    { label: d.links.terms, href: "/terms" },
+  ];
   const pills = [
-    { label: "LinkedIn", href: site.linkedin, icon: <LinkedInGlyph /> },
-    { label: "Instagram", href: founder.instagram, icon: <InstagramGlyph /> },
-    { label: "Odoo partner", href: site.partner.url, icon: <OdooGlyph /> },
-    { label: "Email us", href: `mailto:${site.email}`, icon: <Mail size={15} strokeWidth={2.2} /> },
+    { label: d.linkedin, href: site.linkedin, icon: <LinkedInGlyph /> },
+    { label: d.instagram, href: founder.instagram, icon: <InstagramGlyph /> },
+    { label: d.odoo, href: site.partner.url, icon: <OdooGlyph /> },
+    { label: d.email, href: `mailto:${site.email}`, icon: <Mail size={15} strokeWidth={2.2} /> },
   ];
 
   return (
@@ -39,9 +41,9 @@ export function Footer() {
             <Logo kind="mark" variant="white" width={44} />
           </span>
           <p className="mt-8 max-w-[18ch] font-display text-2xl font-semibold leading-snug text-navy">
-            Get connected with MFY Innovatech
+            {d.heading}
           </p>
-          <p className="mt-3 text-ink-2">Odoo, AI and 3D notes, straight from the studio.</p>
+          <p className="mt-3 text-ink-2">{d.sub}</p>
 
           <ul className="mt-12 grid w-full gap-4 sm:grid-cols-2 lg:flex lg:w-auto lg:justify-center">
             {pills.map((p) => {
@@ -75,7 +77,7 @@ export function Footer() {
               {quickLinks.map((l) => (
                 <Link
                   key={l.href}
-                  href={l.href}
+                  href={localeHref(locale, l.href)}
                   className="border-b border-navy pb-px font-display text-[15px] font-semibold text-navy transition-colors hover:border-blue hover:text-blue"
                 >
                   {l.label}
@@ -83,9 +85,10 @@ export function Footer() {
               ))}
             </nav>
             <p className="text-[15px] text-ink-3 lg:text-center">
-              © {year} {site.legalName}. All rights reserved.
+              © {year} {site.legalName}. {d.rights}
             </p>
-            <div className="lg:justify-self-end">
+            <div className="flex items-center gap-6 lg:justify-self-end">
+              <LanguageSwitch className="text-navy hover:text-blue" />
               <BackToTop />
             </div>
           </div>

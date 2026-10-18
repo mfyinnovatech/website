@@ -5,8 +5,9 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
-import { featuredTools, tools, type Tool } from "@/lib/content";
+import type { Tool } from "@/lib/content";
 import { Stage } from "@/components/ui/Stage";
+import { useLocale } from "@/components/i18n/LocaleProvider";
 
 /* Tools — centred label, headline, paragraph and CTA, with white logo tiles
    floating around the copy on desktop (AgencyAI pattern) and a grid on mobile. */
@@ -19,6 +20,9 @@ const spots: [number, number, number, number][] = [
 ];
 
 export function Tools({ num = "03" }: { num?: string }) {
+  const { d, c, href } = useLocale();
+  const t = d.tools;
+  const { tools, featuredTools } = c;
   const featured = featuredTools.map((s) => tools.find((t) => t.slug === s)).filter(Boolean) as Tool[];
 
   return (
@@ -36,20 +40,18 @@ export function Tools({ num = "03" }: { num?: string }) {
       <div className="relative">
         <Reveal className="mx-auto flex max-w-2xl flex-col items-center text-center">
           <span className="inline-flex items-center rounded-lg bg-cloud px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue ring-1 ring-navy/[0.06]">
-            {num ? `${num} · ` : ""}Tools
+            {num ? `${num} · ` : ""}{t.label}
           </span>
           <h2 className="mt-8 font-display text-[2.5rem] font-semibold leading-[1.02] tracking-[-0.03em] text-navy sm:text-5xl lg:text-[4rem]">
-            The tools behind
+            {t.h2a}
             <br />
-            the work.
+            {t.h2b}
           </h2>
           <p className="mt-6 max-w-xl text-lg text-ink-2">
-            One stack across ERP, web, mobile, AI and 3D: Odoo for the business core, Next.js and
-            Flutter for products, Python for models and data, Blender for the films, n8n for the
-            automations that tie it together.
+            {t.lead}
           </p>
-          <Link href="/contact" className="btn btn-navy mt-10">
-            Start a project <ArrowUpRight size={16} />
+          <Link href={href("/contact")} className="btn btn-navy mt-10">
+            {t.cta} <ArrowUpRight size={16} className="rtl:-scale-x-100" />
           </Link>
         </Reveal>
 
@@ -64,7 +66,7 @@ export function Tools({ num = "03" }: { num?: string }) {
 
         {/* Full stack as named chips */}
         <Reveal delay={0.1} className="mt-16 lg:mt-[420px]">
-          <p className="mono-label text-center text-ink-3">Full stack</p>
+          <p className="mono-label text-center text-ink-3">{t.fullStack}</p>
           <ul className="mt-5 flex flex-wrap justify-center gap-2">
             {tools.map((t) => (
               <li

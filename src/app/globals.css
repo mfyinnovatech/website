@@ -419,3 +419,41 @@ button {
     animation: none;
   }
 }
+
+/* ─────────────────────────────────────────────
+   Arabic (RTL) typography. IBM Plex Sans Arabic takes over both the display
+   and body roles; tracking is zeroed because letter-spacing breaks Arabic
+   joining, and headlines get more leading for ascenders and marks.
+   ───────────────────────────────────────────── */
+html[lang="ar"] {
+  --font-display: var(--font-arabic), "IBM Plex Sans Arabic", "Noto Kufi Arabic", system-ui, sans-serif;
+  --font-sans: var(--font-arabic), "IBM Plex Sans Arabic", "Noto Sans Arabic", system-ui, sans-serif;
+  --font-mono: var(--font-arabic), ui-monospace, monospace;
+}
+html[lang="ar"] * {
+  letter-spacing: 0 !important;
+}
+html[lang="ar"] body {
+  line-height: 1.75;
+}
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] .text-display,
+html[lang="ar"] .text-h1,
+html[lang="ar"] .text-h2 {
+  line-height: 1.28 !important;
+  font-weight: 700;
+}
+html[lang="ar"] .text-display {
+  font-size: clamp(2.5rem, 5.4vw, 4.5rem);
+}
+html[lang="ar"] .mono-label,
+html[lang="ar"] .eyebrow {
+  font-weight: 500;
+  text-transform: none;
+}
+/* Latin-only pieces (emails, URLs, ids) keep their direction inside RTL text */
+html[lang="ar"] [dir="ltr"] {
+  unicode-bidi: isolate;
+}
