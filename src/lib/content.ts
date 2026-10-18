@@ -326,6 +326,16 @@ export const team: TeamMember[] = [
     featured: true,
   },
   {
+    name: "Dr. TRA",
+    role: "Senior technology expert",
+    title: "Assistant professor & software engineer",
+    bio: "Brings academic rigour and senior engineering practice to architecture reviews, research-led builds and the standards every release has to meet.",
+    initials: "TRA",
+    linkedin: "#",
+    instagram: "#",
+    photo: "/team/dr-tra.jpg",
+  },
+  {
     name: "Mian Farhan",
     role: "Co-founder",
     title: "3D artist",
@@ -344,16 +354,6 @@ export const team: TeamMember[] = [
     linkedin: "https://www.linkedin.com/in/minahil-fatima-802120332/",
     instagram: "#",
     photo: "/team/minahil-mehboob.jpg",
-  },
-  {
-    name: "Dr. TRA",
-    role: "Senior technology expert",
-    title: "Assistant professor & software engineer",
-    bio: "Brings academic rigour and senior engineering practice to architecture reviews, research-led builds and the standards every release has to meet.",
-    initials: "TRA",
-    linkedin: "#",
-    instagram: "#",
-    photo: "/team/dr-tra.jpg",
   },
 ];
 
