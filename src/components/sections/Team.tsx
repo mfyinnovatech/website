@@ -6,9 +6,6 @@ import Image from "next/image";
 /* Team — dark rounded stage with a spotlight from the top, centred label and
    headline, one large featured card beside stacked compact cards. */
 export function Team({ num = "07" }: { num?: string }) {
-  const featured = team.find((m) => m.featured) ?? team[0];
-  const rest = team.filter((m) => m !== featured);
-
   return (
     <section id="team" className="px-4 pt-4">
       <div data-surface="dark" className="relative mx-auto max-w-[1408px] overflow-hidden rounded-[40px] bg-navy px-6 py-20 text-white sm:px-10 lg:px-14 lg:py-[120px]">
@@ -37,24 +34,14 @@ export function Team({ num = "07" }: { num?: string }) {
           </h2>
         </Reveal>
 
-        {/* Cards */}
-        <Stagger className="relative mt-14 grid gap-6 lg:mt-20 lg:grid-cols-2">
-          <StaggerItem>
-            <FeaturedCard m={featured} />
-          </StaggerItem>
-          <div className="grid gap-6">
-            {rest.map((m) => (
-              <StaggerItem key={m.name}>
-                {/* Below lg every member gets the same full card, so the photos match in size */}
-                <div className="lg:hidden">
-                  <FeaturedCard m={m} />
-                </div>
-                <div className="hidden h-full lg:block">
-                  <CompactCard m={m} />
-                </div>
-              </StaggerItem>
-            ))}
-          </div>
+        {/* Cards — one 2×2 grid filled column-first, so Maryam sits above Dr. TRA and
+           Farhan above Minahil, and every row shares the same height. */}
+        <Stagger className="relative mt-14 grid gap-6 lg:mt-20 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-2">
+          {team.slice(0, 4).map((m) => (
+            <StaggerItem key={m.name} className="h-full">
+              <FeaturedCard m={m} />
+            </StaggerItem>
+          ))}
         </Stagger>
       </div>
     </section>
@@ -124,22 +111,6 @@ function FeaturedCard({ m }: { m: TeamMember }) {
   );
 }
 
-function CompactCard({ m }: { m: TeamMember }) {
-  return (
-    <article className="flex h-full flex-col justify-between rounded-[40px] bg-navy-2 p-8 sm:p-10">
-      <div className="flex items-start justify-between gap-6">
-        <Portrait m={m} size="sm" />
-        <Socials m={m} />
-      </div>
-      <div className="mt-8">
-        <p className="font-display text-lg font-semibold text-white">{m.name}</p>
-        <p className="mt-1 text-white/60">
-          {m.role} · {m.title}. <span className="text-white/45">{m.bio}</span>
-        </p>
-      </div>
-    </article>
-  );
-}
 
 function LinkedInIcon() {
   return (
