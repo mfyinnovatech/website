@@ -88,27 +88,20 @@ function Portrait({ m, size }: { m: TeamMember; size: "lg" | "sm" }) {
 function Socials({ m, size = "md" }: { m: TeamMember; size?: "md" }) {
   const btn =
     "inline-flex h-[52px] w-[52px] items-center justify-center rounded-full bg-white/10 text-white transition-colors hover:bg-blue";
-  const pending = (href: string) => href === "#";
+  const has = (href: string) => href && href !== "#";
+  if (!has(m.linkedin) && !has(m.instagram)) return null;
   return (
     <div className="flex gap-3" data-size={size}>
-      <a
-        href={m.linkedin}
-        target={pending(m.linkedin) ? undefined : "_blank"}
-        rel="noreferrer"
-        aria-label={`${m.name} on LinkedIn`}
-        className={`${btn} ${pending(m.linkedin) ? "opacity-50" : ""}`}
-      >
-        <LinkedInIcon />
-      </a>
-      <a
-        href={m.instagram}
-        target={pending(m.instagram) ? undefined : "_blank"}
-        rel="noreferrer"
-        aria-label={`${m.name} on Instagram`}
-        className={`${btn} ${pending(m.instagram) ? "opacity-50" : ""}`}
-      >
-        <InstagramIcon />
-      </a>
+      {has(m.linkedin) && (
+        <a href={m.linkedin} target="_blank" rel="noreferrer" aria-label={`${m.name} on LinkedIn`} className={btn}>
+          <LinkedInIcon />
+        </a>
+      )}
+      {has(m.instagram) && (
+        <a href={m.instagram} target="_blank" rel="noreferrer" aria-label={`${m.name} on Instagram`} className={btn}>
+          <InstagramIcon />
+        </a>
+      )}
     </div>
   );
 }
