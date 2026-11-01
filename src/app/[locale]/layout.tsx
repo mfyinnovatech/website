@@ -11,12 +11,16 @@ import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { CtaBand } from "@/components/layout/CtaBand";
 import { VideoLightboxProvider } from "@/components/ui/VideoLightbox";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap" });
 const source = Source_Sans_3({ subsets: ["latin"], style: ["normal", "italic"], variable: "--font-source", display: "swap" });
 const mono = DM_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-dm-mono", display: "swap" });
 /* Arabic: IBM Plex Sans Arabic carries both display and body roles */
-const arabic = IBM_Plex_Sans_Arabic({ subsets: ["arabic", "latin"], weight: ["400", "500", "600", "700"], variable: "--font-arabic", display: "swap", preload: false });
+/* Arabic: only the two weights the RTL styles use (400 body, 700 headings), which
+   halves the font files Arabic pages download. Not preloaded: English pages never use it. */
+const arabic = IBM_Plex_Sans_Arabic({ subsets: ["arabic", "latin"], weight: ["400", "700"], variable: "--font-arabic", display: "swap", preload: false });
 
 type Params = { locale: string };
 
@@ -78,6 +82,9 @@ export default async function RootLayout({ children, params }: { children: React
             <Footer locale={locale} />
           </VideoLightboxProvider>
         </LocaleProvider>
+        {/* Cookieless, anonymous traffic and real-user speed data (enable both in the Vercel dashboard) */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

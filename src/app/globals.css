@@ -426,9 +426,10 @@ button {
    joining, and headlines get more leading for ascenders and marks.
    ───────────────────────────────────────────── */
 html[lang="ar"] {
-  --font-display: var(--font-arabic), "IBM Plex Sans Arabic", "Noto Kufi Arabic", system-ui, sans-serif;
-  --font-sans: var(--font-arabic), "IBM Plex Sans Arabic", "Noto Sans Arabic", system-ui, sans-serif;
-  --font-mono: var(--font-arabic), ui-monospace, monospace;
+  /* IBM Plex Sans Arabic covers Arabic and Latin; the brand fonts are a further fallback */
+  --font-display: var(--font-arabic), var(--font-sora), "Noto Kufi Arabic", system-ui, sans-serif;
+  --font-sans: var(--font-arabic), var(--font-source), "Noto Sans Arabic", system-ui, sans-serif;
+  --font-mono: var(--font-arabic), var(--font-dm-mono), ui-monospace, monospace;
 }
 html[lang="ar"] * {
   letter-spacing: 0 !important;
@@ -445,12 +446,15 @@ html[lang="ar"] .text-h2 {
   line-height: 1.28 !important;
   font-weight: 700;
 }
+/* Only 400 and 700 are loaded for Arabic: map the in-between weights explicitly */
+html[lang="ar"] .font-medium { font-weight: 400; }
+html[lang="ar"] .font-semibold { font-weight: 700; }
 html[lang="ar"] .text-display {
   font-size: clamp(2.5rem, 5.4vw, 4.5rem);
 }
 html[lang="ar"] .mono-label,
 html[lang="ar"] .eyebrow {
-  font-weight: 500;
+  font-weight: 400;
   text-transform: none;
 }
 /* Latin-only pieces (emails, URLs, ids) keep their direction inside RTL text */

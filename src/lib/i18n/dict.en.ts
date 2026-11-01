@@ -287,6 +287,7 @@ export const en = {
       collect: [
         "Information you send us directly, such as your name, email address, company and project details when you contact us by email.",
         "Basic technical information your browser sends, such as IP address, browser type and pages visited, used only to keep the site running and secure.",
+        "Anonymous usage and speed statistics from Vercel Web Analytics and Speed Insights. They use no cookies and do not identify you.",
       ],
       useH: "How we use it",
       use: "To reply to your inquiry, prepare proposals, deliver contracted work and meet legal and accounting obligations. We do not sell personal information and we do not use it for advertising.",
