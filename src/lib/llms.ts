@@ -31,6 +31,7 @@ export function buildLlmsTxt({ full = false } = {}) {
   L.push(`- Founder: ${c.team[0].name} (${c.team[0].title})`);
   L.push(`- Languages: English, Arabic`);
   L.push(`- Contact: ${site.email}`);
+  L.push(`- LinkedIn: ${site.linkedinCompany}`);
   L.push(`- Instagram: ${site.instagram}`);
   L.push(`- Facebook: ${site.facebook}`);
   L.push(`- Founder on LinkedIn: ${site.linkedin}`);
