@@ -69,6 +69,30 @@ export function ContactForm() {
         body: JSON.stringify(data),
       });
       if (res.ok) {
+        const out = (await res.json().catch(() => ({}))) as {
+          deliver?: { url: string; fields: Record<string, string> };
+        };
+        // Checks passed; deliver from the browser through FormSubmit when the server asks to
+        if (out.deliver) {
+          let delivered = false;
+          try {
+            const relay = await fetch(out.deliver.url, {
+              method: "POST",
+              headers: { "Content-Type": "application/json", Accept: "application/json" },
+              body: JSON.stringify(out.deliver.fields),
+            });
+            const r = (await relay.json().catch(() => ({}))) as { success?: string | boolean };
+            delivered = relay.ok && String(r.success) === "true";
+          } catch {
+            delivered = false; // relay unreachable (offline, blocked by an extension)
+          }
+          if (!delivered) {
+            // Not activated yet (or declined): let the visitor email directly instead
+            setMailto(fallback);
+            setStatus("fallback");
+            return;
+          }
+        }
         setStatus("sent");
         form.reset();
         return;

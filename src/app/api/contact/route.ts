@@ -5,10 +5,11 @@ import { site } from "@/lib/content";
 
 /* POST /api/contact — delivers the inquiry by email.
    1. If SMTP is configured (SMTP_HOST/USER/PASS, see .env.example), it sends directly.
-   2. Otherwise it relays through FormSubmit (formsubmit.co), which needs no password:
-      the first message triggers an "Activate Form" email to CONTACT_TO, and once that
-      link is clicked every inquiry is forwarded to the inbox. Until then the API
-      answers 503 and the form offers the visitor a mailto fallback. */
+   2. Otherwise, after all spam checks pass, it tells the browser to deliver the
+      message through FormSubmit (formsubmit.co), which needs no password. The first
+      message triggers an "Activate Form" email to CONTACT_TO; once that link is
+      clicked every inquiry is forwarded to the inbox. Until then FormSubmit declines
+      and the form offers the visitor a mailto fallback. */
 
 export const runtime = "nodejs";
 
@@ -188,9 +189,13 @@ export async function POST(req: Request) {
   }
 }
 
-/* FormSubmit relay (no credentials). Sent server-side so the visitor's browser never
-   talks to a third party directly; Origin/Referer identify the site for activation. */
-async function relayViaFormSubmit(f: {
+/* FormSubmit refuses requests from server/datacenter IPs (403), so delivery
+   happens from the visitor's browser, which is how FormSubmit is meant to be used.
+   The server only hands out the delivery endpoint after every check above has
+   passed, so the inbox address never appears in the site's code.
+   Set FORMSUBMIT_ALIAS to the random alias FormSubmit gives after activation to
+   avoid exposing the address even in that response. */
+function relayViaFormSubmit(f: {
   name: string;
   email: string;
   company: string;
@@ -199,16 +204,12 @@ async function relayViaFormSubmit(f: {
   message: string;
   subject: string;
 }) {
-  try {
-    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(TO)}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-        Origin: site.url,
-        Referer: `${site.url}/contact`,
-      },
-      body: JSON.stringify({
+  const target = process.env.FORMSUBMIT_ALIAS || TO;
+  return NextResponse.json({
+    ok: true,
+    deliver: {
+      url: `https://formsubmit.co/ajax/${encodeURIComponent(target)}`,
+      fields: {
         _subject: f.subject,
         _replyto: f.email,
         _template: "table",
@@ -220,16 +221,7 @@ async function relayViaFormSubmit(f: {
         Budget: f.budget || "-",
         Message: f.message,
         Source: `${site.url}/contact`,
-      }),
-      signal: AbortSignal.timeout(15000),
-    });
-    const data = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string };
-    if (res.ok && String(data.success) === "true") return NextResponse.json({ ok: true });
-    // Not yet activated, or refused: let the visitor fall back to their own mail app
-    console.error("[contact] formsubmit did not accept:", res.status, data.message);
-    return NextResponse.json({ ok: false, error: "not_configured" }, { status: 503 });
-  } catch (err) {
-    console.error("[contact] formsubmit relay failed:", err);
-    return NextResponse.json({ ok: false, error: "not_configured" }, { status: 503 });
-  }
+      },
+    },
+  });
 }
