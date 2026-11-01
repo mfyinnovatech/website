@@ -374,7 +374,7 @@ export const faqs = [
   },
   {
     q: "Who owns the code and the 3D source files?",
-    a: "You do. On final payment you receive the repositories, the Odoo modules and the native 3D scene files, not just the renders.",
+    a: "You do. At handover you receive the repositories, the Odoo modules and the native 3D scene files, not just the renders.",
   },
   {
     q: "What happens when requirements change mid-project?",

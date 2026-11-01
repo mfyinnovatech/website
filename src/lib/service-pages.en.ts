@@ -20,7 +20,7 @@ export const servicePagesEn: Record<string, ServicePageCopy> = {
     h1: "Custom software development, built to hold up under real load.",
     lead: "We design and build web applications and multi-tenant SaaS platforms from the first architecture diagram to production, then stay on to run them.",
     answer:
-      "MFY Innovatech is a custom software development company that builds web applications and SaaS platforms for growing businesses. We work in React, Next.js, Node and Postgres, write the scope and architecture down before code, and hand over the repositories on final payment. Most web scopes get a written fixed estimate within 48 hours of a discovery call.",
+      "MFY Innovatech is a custom software development company that builds web applications and SaaS platforms for growing businesses. We work in React, Next.js, Node and Postgres, write the scope and architecture down before code, and hand over the repositories at the end of the project. Most web scopes get a written fixed estimate within 48 hours of a discovery call.",
     fit: [
       "You have outgrown spreadsheets or off-the-shelf tools and need software shaped to your process.",
       "You are launching a SaaS product and need multi-tenant architecture from day one.",
@@ -36,7 +36,7 @@ export const servicePagesEn: Record<string, ServicePageCopy> = {
     faqs: [
       { q: "How much does custom software development cost?", a: "It depends on scope: user roles, screens, integrations and how much already exists. Discovery is free, and most web scopes get a written fixed estimate within 48 hours. Larger platforms are estimated per phase, so you only commit to the next milestone." },
       { q: "Which technologies do you use?", a: "Mostly React and Next.js for front-ends, Node and Postgres on the back end, and WordPress or WooCommerce when a content site is the better fit. The stack is chosen in the written scope, with the reasons." },
-      { q: "Who owns the code?", a: "You do. On final payment you receive the repositories and everything needed to run the software, not just a login." },
+      { q: "Who owns the code?", a: "You do. At handover you receive the repositories and everything needed to run the software, not just a login." },
       { q: "Can you take over an existing project?", a: "Often, yes. We audit the codebase first, agree what to keep and what to fix, then work in short iterations with working software at every review." },
     ],
   },
@@ -64,7 +64,7 @@ export const servicePagesEn: Record<string, ServicePageCopy> = {
       { q: "Flutter, React Native or native: which should I choose?", a: "For most business apps, Flutter or React Native gives you both platforms from one codebase at lower cost. We recommend native Swift or Kotlin when the app depends heavily on device features or performance, and explain the choice in the written scope." },
       { q: "How long does it take to build an app?", a: "It depends on the screens, integrations and backend. After discovery you get milestones with dates in the written scope, and a working build to test at every review." },
       { q: "Do you publish the app to the stores?", a: "Yes. We prepare the listings, submit for review and manage releases on the App Store and Google Play under your own developer accounts." },
-      { q: "Who owns the app and its code?", a: "You do. On final payment you receive the repositories and store assets, and the apps stay in your developer accounts." },
+      { q: "Who owns the app and its code?", a: "You do. At handover you receive the repositories and store assets, and the apps stay in your developer accounts." },
     ],
   },
   "ai-data": {
@@ -144,7 +144,7 @@ export const servicePagesEn: Record<string, ServicePageCopy> = {
     faqs: [
       { q: "What do you need to start a 3D animation?", a: "CAD files are ideal, but drawings, reference photos or a physical sample work too. We agree the shots, style and length in a short brief before modeling starts." },
       { q: "Can you animate a product that does not exist yet?", a: "Yes. Most of our films show products before or around launch, built from engineering files and design references." },
-      { q: "Do we receive the 3D files?", a: "Yes. On final payment you receive the native scene files as well as the rendered videos and images." },
+      { q: "Do we receive the 3D files?", a: "Yes. At handover you receive the native scene files as well as the rendered videos and images." },
       { q: "Which industries do you work with?", a: "Medical equipment, consumer health, footwear and packaging so far. The same process works for any physical product." },
     ],
   },

@@ -240,7 +240,7 @@ export const en = {
     eyebrow: "Contact",
     h1a: "Tell us what you need to ship.",
     h1b: "We'll reply with questions.",
-    lead: "Free discovery call, written estimate within 48 hours for most scopes. You only move to paid work once scope and milestones are approved.",
+    lead: "Free discovery call, and a written estimate within 48 hours for most scopes.",
     direct: "Direct",
     skip: "Or skip the form.",
     skipText: "Email is the channel. You will hear back within one business day, usually with a few questions so the first call is useful.",
