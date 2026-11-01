@@ -13,7 +13,7 @@ export const site = {
   email: "maryam@mfyinnova.tech",
   linkedin: "https://www.linkedin.com/in/maryammehboobalam/", // founder's profile: visitors connect with her directly
   /* Company profiles (also published as the organization's sameAs for search and AI engines) */
-  linkedinCompany: "https://www.linkedin.com/company/mfyinnovatech/", // data only; the visible LinkedIn button stays the founder's profile
+  linkedinCompany: "https://www.linkedin.com/company/mfyinnovatech/",
   instagram: "https://www.instagram.com/mfyinnovatech/",
   facebook: "https://www.facebook.com/mfyinnovatech/",
   location: "Remote-first · Clients on five continents",

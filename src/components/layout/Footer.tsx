@@ -21,7 +21,8 @@ export function Footer({ locale }: { locale: Locale }) {
     { label: d.links.terms, href: "/terms" },
   ];
   const pills = [
-    { label: d.linkedin, href: site.linkedin, icon: <LinkedInGlyph /> },
+    { label: d.linkedin, href: site.linkedinCompany, icon: <LinkedInGlyph /> },
+    { label: d.founderLinkedin, href: site.linkedin, icon: <LinkedInGlyph /> },
     { label: d.instagram, href: site.instagram, icon: <InstagramGlyph /> },
     { label: d.facebook, href: site.facebook, icon: <FacebookGlyph /> },
     { label: d.odoo, href: null as string | null, icon: <OdooGlyph /> },
@@ -46,7 +47,9 @@ export function Footer({ locale }: { locale: Locale }) {
           <p className="mt-3 text-ink-2">{d.sub}</p>
 
           <ul className="mt-12 grid w-full gap-4 sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center">
-            {pills.map((p) => {
+            {pills.map((p, i) => {
+              /* An odd pill out on the two-column tablet grid spans the full row */
+              const span = pills.length % 2 === 1 && i === pills.length - 1 ? "sm:col-span-2 lg:col-span-1" : "";
               const base =
                 "flex h-[72px] items-center justify-between gap-6 rounded-3xl bg-white px-6 shadow-[0_14px_34px_-22px_rgba(6,16,48,0.35)] ring-1 ring-navy/[0.05] lg:min-w-[210px] lg:px-10";
               const inner = (
@@ -60,7 +63,7 @@ export function Footer({ locale }: { locale: Locale }) {
               if (!p.href) {
                 /* Badge only — shown, not linked */
                 return (
-                  <li key={p.label} className="sm:last:col-span-2">
+                  <li key={p.label} className={span}>
                     <div className={base}>{inner}</div>
                   </li>
                 );
@@ -68,7 +71,7 @@ export function Footer({ locale }: { locale: Locale }) {
               const external = p.href.startsWith("http");
               const pending = p.href === "#";
               return (
-                <li key={p.label} className="sm:last:col-span-2">
+                <li key={p.label} className={span}>
                   <a
                     href={p.href}
                     target={external ? "_blank" : undefined}

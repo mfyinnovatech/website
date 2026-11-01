@@ -172,6 +172,7 @@ export const ar: Dict = {
     heading: "تواصل مع MFY Innovatech",
     sub: "ملاحظات عن Odoo والذكاء الاصطناعي والثلاثي الأبعاد، مباشرة من الاستوديو.",
     linkedin: "LinkedIn",
+    founderLinkedin: "مريم على LinkedIn",
     instagram: "Instagram",
     facebook: "Facebook",
     odoo: "شريك Odoo",

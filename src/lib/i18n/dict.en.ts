@@ -169,6 +169,7 @@ export const en = {
     heading: "Get connected with MFY Innovatech",
     sub: "Odoo, AI and 3D notes, straight from the studio.",
     linkedin: "LinkedIn",
+    founderLinkedin: "Maryam on LinkedIn",
     instagram: "Instagram",
     facebook: "Facebook",
     odoo: "Odoo partner",
