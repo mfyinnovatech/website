@@ -13,8 +13,10 @@ import { site } from "@/lib/content";
 
 export const runtime = "nodejs";
 
-const TO = process.env.CONTACT_TO ?? "maryam56mehboob@gmail.com";
-const FROM = process.env.CONTACT_FROM ?? process.env.SMTP_USER ?? "";
+/* Empty env values (variables added in Vercel but left blank) count as unset */
+const env = (k: string) => process.env[k]?.trim() || undefined;
+const TO = env("CONTACT_TO") ?? "maryam56mehboob@gmail.com";
+const FROM = env("CONTACT_FROM") ?? env("SMTP_USER") ?? "";
 
 type Payload = {
   name?: string;
@@ -94,7 +96,7 @@ function esc(s: string) {
 }
 
 export async function POST(req: Request) {
-  const smtp = Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
+  const smtp = Boolean(env("SMTP_HOST") && env("SMTP_USER") && env("SMTP_PASS"));
 
   if (!sameSite(req)) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
 
@@ -204,7 +206,7 @@ function relayViaFormSubmit(f: {
   message: string;
   subject: string;
 }) {
-  const target = process.env.FORMSUBMIT_ALIAS || TO;
+  const target = env("FORMSUBMIT_ALIAS") ?? TO;
   return NextResponse.json({
     ok: true,
     deliver: {
