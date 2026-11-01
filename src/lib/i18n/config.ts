@@ -1,14 +1,12 @@
 /* ─────────────────────────────────────────────
    Locales. English lives at the root (/about), Arabic under /ar (/ar/about).
-   Visitors from Kuwait are sent to Arabic by the proxy; a cookie remembers
-   an explicit choice from the language switch.
+   English is the default everywhere. The proxy sends a first-time visitor to
+   Arabic only when the browser's preferred language is Arabic; a cookie
+   remembers an explicit choice from the language switch.
    ───────────────────────────────────────────── */
 export const locales = ["en", "ar"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
-
-/* ISO country codes that default to Arabic (Vercel sets x-vercel-ip-country) */
-export const arabicCountries = ["KW"];
 
 export const LOCALE_COOKIE = "NEXT_LOCALE";
 
