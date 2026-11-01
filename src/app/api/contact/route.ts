@@ -2,9 +2,12 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { site } from "@/lib/content";
 
-/* POST /api/contact — sends the inquiry by email over SMTP.
-   Configure in .env.local (see .env.example). Works with Gmail (App Password),
-   Google Workspace, or Resend's SMTP endpoint. */
+/* POST /api/contact — delivers the inquiry by email.
+   1. If SMTP is configured (SMTP_HOST/USER/PASS, see .env.example), it sends directly.
+   2. Otherwise it relays through FormSubmit (formsubmit.co), which needs no password:
+      the first message triggers an "Activate Form" email to CONTACT_TO, and once that
+      link is clicked every inquiry is forwarded to the inbox. Until then the API
+      answers 503 and the form offers the visitor a mailto fallback. */
 
 export const runtime = "nodejs";
 
@@ -38,10 +41,7 @@ function esc(s: string) {
 }
 
 export async function POST(req: Request) {
-  const configured = Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
-  if (!configured) {
-    return NextResponse.json({ ok: false, error: "not_configured" }, { status: 503 });
-  }
+  const smtp = Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
 
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
   if (limited(ip)) return NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 });
@@ -66,6 +66,10 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 });
   }
 
+  const subject = `New inquiry — ${company || name}${service ? ` · ${service}` : ""}`;
+
+  if (!smtp) return relayViaFormSubmit({ name, email, company, service, budget, message, subject });
+
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT ?? 465),
@@ -73,7 +77,6 @@ export async function POST(req: Request) {
     auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
   });
 
-  const subject = `New inquiry — ${company || name}${service ? ` · ${service}` : ""}`;
   const text = [
     `Name: ${name}`,
     `Email: ${email}`,
@@ -111,5 +114,51 @@ export async function POST(req: Request) {
   } catch (err) {
     console.error("[contact] send failed:", err);
     return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
+  }
+}
+
+/* FormSubmit relay (no credentials). Sent server-side so the visitor's browser never
+   talks to a third party directly; Origin/Referer identify the site for activation. */
+async function relayViaFormSubmit(f: {
+  name: string;
+  email: string;
+  company: string;
+  service: string;
+  budget: string;
+  message: string;
+  subject: string;
+}) {
+  try {
+    const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(TO)}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Origin: site.url,
+        Referer: `${site.url}/contact`,
+      },
+      body: JSON.stringify({
+        _subject: f.subject,
+        _replyto: f.email,
+        _template: "table",
+        _captcha: "false",
+        Name: f.name,
+        Email: f.email,
+        Company: f.company || "-",
+        Service: f.service || "-",
+        Budget: f.budget || "-",
+        Message: f.message,
+        Source: `${site.url}/contact`,
+      }),
+      signal: AbortSignal.timeout(15000),
+    });
+    const data = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string };
+    if (res.ok && String(data.success) === "true") return NextResponse.json({ ok: true });
+    // Not yet activated, or refused: let the visitor fall back to their own mail app
+    console.error("[contact] formsubmit did not accept:", res.status, data.message);
+    return NextResponse.json({ ok: false, error: "not_configured" }, { status: 503 });
+  } catch (err) {
+    console.error("[contact] formsubmit relay failed:", err);
+    return NextResponse.json({ ok: false, error: "not_configured" }, { status: 503 });
   }
 }

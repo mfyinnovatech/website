@@ -291,7 +291,7 @@ export const en = {
       useH: "How we use it",
       use: "To reply to your inquiry, prepare proposals, deliver contracted work and meet legal and accounting obligations. We do not sell personal information and we do not use it for advertising.",
       thirdH: "Third parties",
-      third: "Video previews on this site are embedded from YouTube in privacy-enhanced mode. YouTube may set cookies once you press play. Contact form submissions are emailed to us and are not stored in a database.",
+      third: "Video previews on this site are embedded from YouTube in privacy-enhanced mode. YouTube may set cookies once you press play. Contact form submissions are delivered to our inbox through FormSubmit, an email relay service, and are not stored in a database by us.",
       retentionH: "Retention and your rights",
       retention: (email: string) => `We keep correspondence for as long as needed to serve you and satisfy legal requirements. You can ask us to access, correct or delete your personal information at any time by writing to ${email}.`,
     },
