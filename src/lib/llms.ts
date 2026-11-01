@@ -31,6 +31,9 @@ export function buildLlmsTxt({ full = false } = {}) {
   L.push(`- Founder: ${c.team[0].name} (${c.team[0].title})`);
   L.push(`- Languages: English, Arabic`);
   L.push(`- Contact: ${site.email}`);
+  L.push(`- Instagram: ${site.instagram}`);
+  L.push(`- Facebook: ${site.facebook}`);
+  L.push(`- Founder on LinkedIn: ${site.linkedin}`);
   L.push(`- Response time: within one business day`);
   L.push(`- Pricing: free discovery call; written fixed estimates within 48 hours for most web, mobile and AI scopes; Odoo rollouts priced per phase`);
   L.push("");

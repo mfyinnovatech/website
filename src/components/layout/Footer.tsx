@@ -10,9 +10,8 @@ import { LanguageSwitch } from "@/components/i18n/LanguageSwitch";
 
 export function Footer({ locale }: { locale: Locale }) {
   const d = getDict(locale).footer;
-  const { site, team } = getContent(locale);
+  const { site } = getContent(locale);
   const year = new Date().getFullYear();
-  const founder = team[0];
   const quickLinks = [
     { label: d.links.services, href: "/services" },
     { label: d.links.work, href: "/work" },
@@ -23,7 +22,8 @@ export function Footer({ locale }: { locale: Locale }) {
   ];
   const pills = [
     { label: d.linkedin, href: site.linkedin, icon: <LinkedInGlyph /> },
-    { label: d.instagram, href: founder.instagram, icon: <InstagramGlyph /> },
+    { label: d.instagram, href: site.instagram, icon: <InstagramGlyph /> },
+    { label: d.facebook, href: site.facebook, icon: <FacebookGlyph /> },
     { label: d.odoo, href: null as string | null, icon: <OdooGlyph /> },
     { label: d.email, href: `mailto:${site.email}`, icon: <Mail size={15} strokeWidth={2.2} /> },
   ];
@@ -45,7 +45,7 @@ export function Footer({ locale }: { locale: Locale }) {
           </p>
           <p className="mt-3 text-ink-2">{d.sub}</p>
 
-          <ul className="mt-12 grid w-full gap-4 sm:grid-cols-2 lg:flex lg:w-auto lg:justify-center">
+          <ul className="mt-12 grid w-full gap-4 sm:grid-cols-2 lg:flex lg:flex-wrap lg:justify-center">
             {pills.map((p) => {
               const base =
                 "flex h-[72px] items-center justify-between gap-6 rounded-3xl bg-white px-6 shadow-[0_14px_34px_-22px_rgba(6,16,48,0.35)] ring-1 ring-navy/[0.05] lg:min-w-[210px] lg:px-10";
@@ -60,7 +60,7 @@ export function Footer({ locale }: { locale: Locale }) {
               if (!p.href) {
                 /* Badge only — shown, not linked */
                 return (
-                  <li key={p.label}>
+                  <li key={p.label} className="sm:last:col-span-2">
                     <div className={base}>{inner}</div>
                   </li>
                 );
@@ -68,7 +68,7 @@ export function Footer({ locale }: { locale: Locale }) {
               const external = p.href.startsWith("http");
               const pending = p.href === "#";
               return (
-                <li key={p.label}>
+                <li key={p.label} className="sm:last:col-span-2">
                   <a
                     href={p.href}
                     target={external ? "_blank" : undefined}
@@ -115,6 +115,14 @@ function LinkedInGlyph() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
       <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+    </svg>
+  );
+}
+
+function FacebookGlyph() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+      <path d="M13.5 22v-8.2h2.77l.41-3.2H13.5V8.56c0-.93.26-1.56 1.59-1.56h1.7V4.14A22.8 22.8 0 0 0 14.31 4C11.85 4 10.17 5.5 10.17 8.25v2.36H7.4v3.2h2.77V22h3.33z" />
     </svg>
   );
 }

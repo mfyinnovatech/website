@@ -173,6 +173,7 @@ export const ar: Dict = {
     sub: "ملاحظات عن Odoo والذكاء الاصطناعي والثلاثي الأبعاد، مباشرة من الاستوديو.",
     linkedin: "LinkedIn",
     instagram: "Instagram",
+    facebook: "Facebook",
     odoo: "شريك Odoo",
     email: "راسلنا",
     links: { services: "الخدمات", work: "أعمالنا", about: "من نحن", blog: "المدونة", privacy: "الخصوصية", terms: "الشروط" },

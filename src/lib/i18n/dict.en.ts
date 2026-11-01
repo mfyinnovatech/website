@@ -170,6 +170,7 @@ export const en = {
     sub: "Odoo, AI and 3D notes, straight from the studio.",
     linkedin: "LinkedIn",
     instagram: "Instagram",
+    facebook: "Facebook",
     odoo: "Odoo partner",
     email: "Email us",
     links: { services: "Services", work: "Work", about: "About", blog: "Blog", privacy: "Privacy", terms: "Terms" },
