@@ -8,10 +8,12 @@ import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } fro
    - depth parallax against the cursor
    - a pulse that travels along a grid row and lights each tile it passes
    [col, row, depth] */
+/* Tiles stay in rows 0–2 on the right: the Kuwait Towers dot art stands in the
+   rows below, and tiles over it would clutter the skyline. */
 const cells: [number, number, number][] = [
-  [13, 1, 1], [15, 2, 2], [17, 0, 1], [14, 4, 2], [16, 5, 1], [13, 6, 1], [15, 7, 2], [17, 3, 1], [1, 0, 1],
+  [13, 1, 1], [15, 2, 2], [17, 0, 1], [11, 2, 1], [16, 1, 1], [18, 2, 2], [19, 1, 1], [1, 0, 1],
 ];
-const pulseRows = [1, 4, 6, 2, 5];
+const pulseRows = [1, 2, 4, 1, 2];
 const PULSE_S = 3.2;
 const PERIOD_MS = 5200;
 

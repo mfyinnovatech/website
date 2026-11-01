@@ -6,7 +6,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
 import { TechGrid } from "@/components/brand/TechGrid";
 import { GridTiles } from "@/components/brand/GridTiles";
-import { ArchField } from "@/components/brand/ArchField";
+import { DotLandmarks } from "@/components/brand/DotLandmarks";
 import { useLightbox } from "@/components/ui/VideoLightbox";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 
@@ -109,23 +109,21 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Discipline index with the brand's arch field behind it */}
+          {/* Dot landmarks (Kuwait Towers, Faisal Mosque, Statue of Liberty) with the
+              discipline index. Phones and tablets: one row under the buttons, list at
+              the start and landmarks at the end. Desktop: landmarks stand over the
+              list in the right-hand column. */}
           <motion.aside
-            className="relative hidden lg:col-span-3 lg:flex lg:flex-col lg:justify-end"
+            className="relative flex flex-row-reverse items-end justify-between gap-6 lg:col-span-3 lg:flex-col lg:items-stretch lg:justify-end lg:gap-0"
             initial={reduce ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
             aria-label={h.disciplinesAria}
           >
-            <ArchField
-              bars={7}
-              height={150}
-              color="var(--color-ice)"
-              className="absolute -end-2 bottom-0 w-[92%]"
-            />
-            <ol className="relative space-y-3 pb-2 text-end">
+            <DotLandmarks labels={h.landmarks} className="w-[132px] shrink-0 sm:w-[172px] lg:mb-6 lg:w-full lg:max-w-[260px] lg:self-end" />
+            <ol className="relative space-y-3 pb-2 text-start lg:text-end">
               {h.disciplines.map((item, i) => (
-                <li key={item} className="mono-label flex items-center justify-end gap-3 text-ink-2">
+                <li key={item} className="mono-label flex items-center justify-start gap-3 text-ink-2 lg:justify-end">
                   {item}
                   <span className="font-mono text-[11px] text-blue">0{i + 1}</span>
                 </li>

@@ -457,3 +457,15 @@ html[lang="ar"] .eyebrow {
 html[lang="ar"] [dir="ltr"] {
   unicode-bidi: isolate;
 }
+
+/* Kuwait Towers dot art: a few sphere discs catch the light in turn */
+@keyframes dot-glint {
+  0%, 82%, 100% { fill: inherit; }
+  88% { fill: #ffffff; }
+}
+.dot-glint {
+  animation: dot-glint 4.2s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .dot-glint { animation: none; }
+}
