@@ -16,6 +16,11 @@ export const site = {
   linkedinCompany: "https://www.linkedin.com/company/mfyinnovatech/",
   instagram: "https://www.instagram.com/mfyinnovatech/",
   facebook: "https://www.facebook.com/mfyinnovatech/",
+  /* Phone lines; country codes match the labels in the dictionaries */
+  phones: [
+    { country: "KW", display: "+965 5566 3826", tel: "+96555663826" },
+    { country: "PK", display: "+92 335 9078929", tel: "+923359078929" },
+  ],
   location: "Remote-first · Clients on five continents",
   partner: {
     name: "Odoo",

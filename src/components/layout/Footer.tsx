@@ -84,6 +84,16 @@ export function Footer({ locale }: { locale: Locale }) {
               );
             })}
           </ul>
+
+          <p className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[15px] text-ink-2">
+            <span className="mono-label text-ink-3">{d.call}</span>
+            {site.phones.map((ph) => (
+              <a key={ph.tel} href={`tel:${ph.tel}`} className="inline-flex items-center gap-2 font-display font-semibold text-navy hover:text-blue">
+                <span className="font-normal text-ink-3">{getDict(locale).contact.phoneLabels[ph.country]}</span>
+                <span dir="ltr">{ph.display}</span>
+              </a>
+            ))}
+          </p>
         </div>
 
         {/* Bottom row */}

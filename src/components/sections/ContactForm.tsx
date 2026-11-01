@@ -138,6 +138,13 @@ export function ContactForm() {
                 {c.team[0].name} <ArrowUpRight size={14} className="rtl:-scale-x-100" />
               </a>
             </Row>
+            {site.phones.map((ph) => (
+              <Row key={ph.tel} label={t.phoneLabels[ph.country]}>
+                <a href={`tel:${ph.tel}`} dir="ltr" className="font-mono text-[15px] hover:text-blue">
+                  {ph.display}
+                </a>
+              </Row>
+            ))}
             <Row label={t.rowBased}>{site.location}</Row>
             <Row label={t.rowResponse}>{t.responseValue}</Row>
           </dl>

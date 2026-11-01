@@ -53,12 +53,17 @@ export function organizationGraph(locale: Locale) {
         "Workflow automation",
         "Finance operations",
       ],
-      contactPoint: {
-        "@type": "ContactPoint",
-        contactType: "sales",
-        email: site.email,
-        availableLanguage: ["English", "Arabic"],
-      },
+      telephone: site.phones[0].tel,
+      contactPoint: [
+        { "@type": "ContactPoint", contactType: "sales", email: site.email, availableLanguage: ["English", "Arabic"] },
+        ...site.phones.map((ph) => ({
+          "@type": "ContactPoint",
+          contactType: "sales",
+          telephone: ph.tel,
+          areaServed: ph.country,
+          availableLanguage: ph.country === "KW" ? ["English", "Arabic"] : ["English", "Urdu"],
+        })),
+      ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: getDict(locale).servicesPage.metaTitle,
