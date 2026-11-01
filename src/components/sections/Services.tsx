@@ -7,6 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/Reveal";
 import { OdooPanel } from "@/components/brand/OdooPanel";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { servicePath } from "@/lib/service-pages";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -99,6 +100,12 @@ export function Services({ limit, num = "01" }: { limit?: number; num?: string }
                               </li>
                             ))}
                           </ul>
+                          <Link
+                            href={href(servicePath(s.slug))}
+                            className="mt-8 inline-flex items-center gap-2 font-display text-[15px] font-semibold text-white hover:text-blue-soft"
+                          >
+                            {d.servicesPage.learnMore}: {s.title} <ArrowUpRight size={16} className="rtl:-scale-x-100" />
+                          </Link>
                         </div>
                       </motion.div>
                     )}

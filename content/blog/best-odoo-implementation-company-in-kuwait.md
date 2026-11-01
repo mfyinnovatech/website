@@ -39,7 +39,7 @@ The best Odoo implementation company in Kuwait is the one that does all six well
 
 ### 1. Official Odoo partner status
 
-Odoo lists its partners publicly. Ask for the partner page and verify it on odoo.com. Official partners have trained staff, access to Odoo's support channels and a direct line to Odoo when something in the core product needs a fix. MFY Innovatech is an [official Odoo partner](/services#erp-odoo); we would expect any partner you shortlist to show you the same.
+Odoo lists its partners publicly. Ask for the partner page and verify it on odoo.com. Official partners have trained staff, access to Odoo's support channels and a direct line to Odoo when something in the core product needs a fix. MFY Innovatech is an [official Odoo partner](/services/erp-implementation); we would expect any partner you shortlist to show you the same.
 
 ### 2. Kuwaiti dinar and three-decimal accounting
 

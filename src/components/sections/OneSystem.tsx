@@ -66,7 +66,7 @@ export function OneSystem({ num = "03" }: { num?: string }) {
 
         <div className="mt-12 flex flex-col items-center gap-3 text-center">
           <p className="text-ink-2">{o.footer}</p>
-          <Link href={href("/services#erp-odoo")} className="link-arrow">
+          <Link href={href("/services/erp-implementation")} className="link-arrow">
             {o.link} <ArrowRight size={16} className="rtl:-scale-x-100" />
           </Link>
         </div>

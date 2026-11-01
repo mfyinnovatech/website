@@ -1,5 +1,6 @@
 import { site } from "@/lib/content";
 import { getContent, getDict, localeHref, type Locale } from "@/lib/i18n";
+import { servicePath } from "@/lib/service-pages";
 
 /* ─────────────────────────────────────────────
    Structured data (schema.org JSON-LD) shared across pages.
@@ -65,10 +66,10 @@ export function organizationGraph(locale: Locale) {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            "@id": `${pageUrl(locale, "/services")}#${s.slug}`,
+            "@id": `${pageUrl(locale, servicePath(s.slug))}#service`,
             name: s.title,
             description: s.short,
-            url: `${pageUrl(locale, "/services")}#${s.slug}`,
+            url: pageUrl(locale, servicePath(s.slug)),
           },
         })),
       },
@@ -99,14 +100,14 @@ export function serviceNodes(locale: Locale) {
   const c = getContent(locale);
   return c.services.map((s) => ({
     "@type": "Service",
-    "@id": `${pageUrl(locale, "/services")}#${s.slug}`,
+    "@id": `${pageUrl(locale, servicePath(s.slug))}#service`,
     name: s.title,
     description: s.description,
     serviceType: s.title,
     category: getDict(locale).servicesPage.groups[s.group],
     provider: { "@id": ORG_ID },
     areaServed: { "@type": "Place", name: "Worldwide" },
-    url: `${pageUrl(locale, "/services")}#${s.slug}`,
+    url: pageUrl(locale, servicePath(s.slug)),
     inLanguage: locale,
   }));
 }

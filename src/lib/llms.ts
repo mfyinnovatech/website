@@ -2,6 +2,7 @@ import { site } from "@/lib/content";
 import { getAllPosts, getPost } from "@/lib/blog";
 import { getContent, getDict } from "@/lib/i18n";
 import { pageUrl } from "@/lib/seo";
+import { servicePath } from "@/lib/service-pages";
 
 /* ─────────────────────────────────────────────
    llms.txt (llmstxt.org): a plain-Markdown briefing for AI assistants and
@@ -41,7 +42,7 @@ export function buildLlmsTxt({ full = false } = {}) {
 
   L.push("## Services", "");
   c.services.forEach((s, i) => {
-    L.push(`- [${s.title}](${pageUrl("en", "/services")}#${s.slug}): ${s.description} (Arabic: ${ar.services[i].title}, ${pageUrl("ar", "/services")}#${s.slug})`);
+    L.push(`- [${s.title}](${pageUrl("en", servicePath(s.slug))}): ${s.description} (Arabic: ${ar.services[i].title}, ${pageUrl("ar", servicePath(s.slug))})`);
   });
   L.push("");
 

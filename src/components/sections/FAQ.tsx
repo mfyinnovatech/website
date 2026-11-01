@@ -7,9 +7,23 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Stage } from "@/components/ui/Stage";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 
-export function FAQ({ num = "10" }: { num?: string }) {
+type FaqItem = { q: string; a: string };
+
+export function FAQ({
+  num = "10",
+  items,
+  eyebrow,
+  title,
+  text,
+}: {
+  num?: string;
+  items?: FaqItem[];
+  eyebrow?: string;
+  title?: string;
+  text?: string;
+}) {
   const { d, c } = useLocale();
-  const faqs = c.faqs;
+  const faqs = items ?? c.faqs;
   const [open, setOpen] = useState<number | null>(0);
   return (
     <Stage id="faq" tone="white">
@@ -18,9 +32,9 @@ export function FAQ({ num = "10" }: { num?: string }) {
           <SectionHeader
             align="left"
             num={num}
-            eyebrow={d.faq.label}
-            title={d.faq.title}
-            text={d.faq.text}
+            eyebrow={eyebrow ?? d.faq.label}
+            title={title ?? d.faq.title}
+            text={text ?? d.faq.text}
           />
         </div>
         <ul className="border-t border-line lg:col-span-7">

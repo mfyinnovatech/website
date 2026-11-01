@@ -13,6 +13,7 @@ import { site } from "@/lib/content";
 import { getContent, getDict, isLocale, languageAlternates, localeHref, type Locale } from "@/lib/i18n";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { pageGraph, pageUrl, serviceNodes } from "@/lib/seo";
+import { servicePath } from "@/lib/service-pages";
 
 type Params = { locale: string };
 const path = "/services";
@@ -42,7 +43,7 @@ export default async function ServicesPage({ params }: { params: Promise<Params>
     trail: [{ name: d.metaTitle, path }],
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: services.map((s, i) => ({ "@type": "ListItem", position: i + 1, item: { "@id": `${pageUrl(locale, path)}#${s.slug}` } })),
+      itemListElement: services.map((s, i) => ({ "@type": "ListItem", position: i + 1, item: { "@id": `${pageUrl(locale, servicePath(s.slug))}#service` } })),
     },
     extra: serviceNodes(locale),
   });
@@ -80,9 +81,9 @@ export default async function ServicesPage({ params }: { params: Promise<Params>
                 <ul className="mt-4 space-y-1.5">
                   {items.map((s) => (
                     <li key={s.slug}>
-                      <a href={`#${s.slug}`} className="font-display font-medium text-ink hover:text-blue">
+                      <Link href={localeHref(locale, servicePath(s.slug))} className="font-display font-medium text-ink hover:text-blue">
                         {s.title}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

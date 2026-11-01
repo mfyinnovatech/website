@@ -179,7 +179,7 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
                 <Link href={L("/contact")} className="btn btn-white">
                   {d.start} <ArrowUpRight size={16} className="rtl:-scale-x-100" />
                 </Link>
-                <Link href={L("/services#erp-odoo")} className="btn btn-ghost-dark">
+                <Link href={L("/services/erp-implementation")} className="btn btn-ghost-dark">
                   {d.odooServices}
                 </Link>
               </div>
