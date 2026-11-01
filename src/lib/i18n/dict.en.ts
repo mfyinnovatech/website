@@ -31,7 +31,7 @@ export const en = {
     secondary: "See our work",
     disciplinesAria: "Disciplines",
     disciplines: ["Software & AI", "ERP · Odoo", "3D animation", "Finance ops"],
-    landmarks: ["Kuwait City · Kuwait Towers", "Islamabad · Faisal Mosque", "New York · Statue of Liberty"],
+    landmarksCaption: "Across the globe",
     playReel: "Play reel",
     reelLabel: "Reel 01 · 3D product animation",
     reelNote: "Modeled · lit · animated in-house",

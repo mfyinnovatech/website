@@ -120,7 +120,7 @@ export function Hero() {
             transition={{ duration: 1, delay: 1 }}
             aria-label={h.disciplinesAria}
           >
-            <DotLandmarks labels={h.landmarks} className="w-[132px] shrink-0 sm:w-[172px] lg:mb-6 lg:w-full lg:max-w-[260px] lg:self-end" />
+            <DotLandmarks caption={h.landmarksCaption} className="w-[132px] shrink-0 sm:w-[172px] lg:mb-6 lg:w-full lg:max-w-[260px] lg:self-end" />
             <ol className="relative space-y-3 pb-2 text-start lg:text-end">
               {h.disciplines.map((item, i) => (
                 <li key={item} className="mono-label flex items-center justify-start gap-3 text-ink-2 lg:justify-end">

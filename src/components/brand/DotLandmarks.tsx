@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 /* Landmarks drawn in the hero's dot language, cycling every few seconds:
    Kuwait Towers → Faisal Mosque (Islamabad) → Statue of Liberty (New York).
@@ -275,7 +275,7 @@ const DELAY = SCENES.map((s) => s.map((d) => Math.round(((BASE - d.y) / BASE) * 
 
 export const LANDMARK_COUNT = SCENES.length;
 
-export function DotLandmarks({ labels, className = "" }: { labels: string[]; className?: string }) {
+export function DotLandmarks({ caption, className = "" }: { caption: string; className?: string }) {
   const reduce = useReducedMotion();
   const clip = useId().replace(/:/g, "");
   const ref = useRef<HTMLDivElement>(null);
@@ -339,20 +339,7 @@ export function DotLandmarks({ labels, className = "" }: { labels: string[]; cla
           ))}
         </g>
       </svg>
-      <div className="relative mt-3 h-8">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.p
-            key={scene}
-            className="mono-label absolute inset-x-0 text-balance text-center text-[10px] leading-snug text-ink-3 sm:text-[11px]"
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.5 }}
-          >
-            {labels[scene]}
-          </motion.p>
-        </AnimatePresence>
-      </div>
+      <p className="mono-label mt-3 text-balance text-center text-[10px] leading-snug text-ink-3 sm:text-[11px]">{caption}</p>
     </div>
   );
 }
