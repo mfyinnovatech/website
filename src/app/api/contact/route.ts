@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { checkBotId } from "botid/server";
 import { site } from "@/lib/content";
 
 /* POST /api/contact — delivers the inquiry by email.
@@ -22,7 +23,58 @@ type Payload = {
   budget?: string;
   message?: string;
   website?: string; // honeypot — must stay empty
+  startedAt?: number; // when the form was shown (ms), for the time trap
 };
+
+/* ── Spam protection, in order ──────────────────────────────────
+   1. Origin check: only the site's own pages may post here.
+   2. Vercel BotID: invisible browser check; failing visitors get the mailto
+      fallback (503) so a real person is never silently lost.
+   3. Size cap and per-IP / per-email rate limits.
+   4. Honeypot field, time trap (submitted < 3 s after the form appeared) and
+      link-spam heuristics: silently accepted and dropped, so bots learn nothing.
+   5. Duplicate suppression: the same message twice within 10 minutes.
+   6. Header-injection guard: line breaks stripped from header fields.
+   The rate-limit and duplicate memory lives in the serverless instance, so it is
+   best-effort; BotID and the origin check are the hard gates. */
+
+const ALLOWED_HOSTS = new Set(["www.mfyinnova.tech", "mfyinnova.tech", "localhost:3000", "127.0.0.1:3000"]);
+function sameSite(req: Request) {
+  const src = req.headers.get("origin") ?? req.headers.get("referer");
+  if (!src) return false;
+  try {
+    const host = new URL(src).host;
+    return ALLOWED_HOSTS.has(host) || /^mfyinnovatech[-a-z0-9]*\.vercel\.app$/.test(host);
+  } catch {
+    return false;
+  }
+}
+
+const oneLine = (s: string) => s.replace(/[\r\n\t]+/g, " ").replace(/[<>"]/g, "").trim();
+const linkCount = (s: string) => (s.match(/(https?:\/\/|www\.)/gi) ?? []).length;
+
+const recent = new Map<string, number>(); // message fingerprint → time
+function duplicate(key: string) {
+  const now = Date.now();
+  for (const [k, t] of recent) if (now - t > 10 * 60 * 1000) recent.delete(k);
+  if (recent.has(key)) return true;
+  recent.set(key, now);
+  return false;
+}
+
+const perEmail = new Map<string, { n: number; t: number }>();
+function emailLimited(email: string) {
+  const now = Date.now();
+  const h = perEmail.get(email);
+  if (!h || now - h.t > 60 * 60 * 1000) {
+    perEmail.set(email, { n: 1, t: now });
+    return false;
+  }
+  h.n += 1;
+  return h.n > 3;
+}
+
+const drop = () => NextResponse.json({ ok: true }); // looks like success to a bot
 
 const hits = new Map<string, { n: number; t: number }>();
 function limited(ip: string) {
@@ -33,7 +85,7 @@ function limited(ip: string) {
     return false;
   }
   h.n += 1;
-  return h.n > 5;
+  return h.n > 3;
 }
 
 function esc(s: string) {
@@ -43,28 +95,47 @@ function esc(s: string) {
 export async function POST(req: Request) {
   const smtp = Boolean(process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS);
 
+  if (!sameSite(req)) return NextResponse.json({ ok: false, error: "forbidden" }, { status: 403 });
+
+  const verdict = await checkBotId();
+  if (verdict.isBot) {
+    console.warn("[contact] blocked by BotID");
+    return NextResponse.json({ ok: false, error: "verification" }, { status: 503 });
+  }
+
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
   if (limited(ip)) return NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 });
 
+  const raw = await req.text();
+  if (raw.length > 20_000) return NextResponse.json({ ok: false, error: "too_large" }, { status: 413 });
   let body: Payload;
   try {
-    body = (await req.json()) as Payload;
+    body = JSON.parse(raw) as Payload;
   } catch {
     return NextResponse.json({ ok: false, error: "bad_json" }, { status: 400 });
   }
 
-  if (body.website) return NextResponse.json({ ok: true }); // bot filled the honeypot; pretend success
+  if (body.website) return drop(); // honeypot filled
+  const elapsed = Date.now() - Number(body.startedAt ?? 0);
+  if (!body.startedAt || elapsed < 3000) return drop(); // filled faster than a person can type
 
-  const name = (body.name ?? "").trim().slice(0, 120);
+  const name = oneLine(body.name ?? "").slice(0, 120);
   const email = (body.email ?? "").trim().slice(0, 200);
-  const company = (body.company ?? "").trim().slice(0, 160);
-  const service = (body.service ?? "").trim().slice(0, 120);
-  const budget = (body.budget ?? "").trim().slice(0, 60);
+  const company = oneLine(body.company ?? "").slice(0, 160);
+  const service = oneLine(body.service ?? "").slice(0, 120);
+  const budget = oneLine(body.budget ?? "").slice(0, 60);
   const message = (body.message ?? "").trim().slice(0, 5000);
 
   if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || !message) {
     return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 });
   }
+
+  if (linkCount(name) > 0 || linkCount(company) > 0 || linkCount(message) > 3) {
+    console.warn("[contact] dropped as link spam");
+    return drop();
+  }
+  if (emailLimited(email.toLowerCase())) return NextResponse.json({ ok: false, error: "rate_limited" }, { status: 429 });
+  if (duplicate(`${email.toLowerCase()}|${message.slice(0, 500)}`)) return drop();
 
   const subject = `New inquiry — ${company || name}${service ? ` · ${service}` : ""}`;
 

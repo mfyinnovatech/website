@@ -40,12 +40,12 @@ export function proxy(req: NextRequest) {
     return NextResponse.redirect(url, 308);
   }
 
-  // Bare path: decide between English (rewrite) and Arabic (redirect)
+  // Bare path: English unless the browser's own top language is Arabic.
+  // A saved "en" choice keeps Arabic-language browsers on English. A saved "ar"
+  // choice does NOT redirect: the site's default stays English for everyone else.
   const cookie = req.cookies.get(LOCALE_COOKIE)?.value;
   let locale: Locale = defaultLocale;
-  if (isLocale(cookie)) {
-    locale = cookie;
-  } else if (prefersArabic(req.headers.get("accept-language"))) {
+  if (cookie !== "en" && prefersArabic(req.headers.get("accept-language"))) {
     locale = "ar";
   }
 

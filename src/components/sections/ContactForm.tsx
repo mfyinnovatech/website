@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 import { ArrowUpRight, Check, Copy, Loader2 } from "lucide-react";
 import { Stage } from "@/components/ui/Stage";
 import { useLocale } from "@/components/i18n/LocaleProvider";
@@ -15,6 +15,11 @@ export function ContactForm() {
   const [copied, setCopied] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [mailto, setMailto] = useState<string | null>(null);
+  /* When the form became interactive: the server rejects instant (bot) submissions */
+  const startedAt = useRef(0);
+  useEffect(() => {
+    startedAt.current = Date.now();
+  }, []);
 
   const copy = async () => {
     try {
@@ -26,8 +31,9 @@ export function ContactForm() {
     }
   };
 
-  /* Sends through /api/contact (SMTP). If the server isn't configured yet,
-     falls back to a pre-filled email in the visitor's mail client. */
+  /* Sends through /api/contact. If delivery isn't available (not activated yet,
+     or the bot check could not verify the browser), falls back to a pre-filled
+     email in the visitor's own mail client so no inquiry is lost. */
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -40,6 +46,7 @@ export function ContactForm() {
       budget: String(fd.get("budget") ?? ""),
       message: String(fd.get("message") ?? ""),
       website: String(fd.get("website") ?? ""),
+      startedAt: startedAt.current,
       locale,
     };
     const subject = `${t.subject} — ${data.company || data.name}`;
