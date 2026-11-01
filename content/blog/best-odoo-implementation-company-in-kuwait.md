@@ -88,8 +88,8 @@ Kuwait's Odoo demand comes mostly from distribution and trading companies, contr
 
 ## How MFY Innovatech works with Kuwaiti companies
 
-We are an official Odoo partner working remote-first with clients in Kuwait, the UAE, Saudi Arabia and Qatar, with overlap hours agreed per project. Our process is written down before we build: [discover, define, build, run](/services#process). Discovery is free, phase-one estimates are fixed, and changes are priced in the open before we continue.
+We are an official Odoo partner working remote-first with clients in Kuwait, the UAE, Saudi Arabia and Qatar, with overlap hours agreed per project. Our process is written down before we build: [discover, define, build, run](/services#process). Scope and milestones are agreed in writing, and any change is discussed openly before we continue.
 
 Two things set us apart from a pure software vendor. First, we have a 3D and product team, so the same studio that structures your ERP can produce the launch films for your products. Second, our accounting team also runs the books inside Odoo for clients who want it, which means the chart of accounts is designed by people who will close the month in it.
 
-If you are comparing Odoo implementation companies in Kuwait, [send us your requirements](/contact). You will get questions back within one business day, and a written estimate within 48 hours for most scopes.
+If you are comparing Odoo implementation companies in Kuwait, [send us your requirements](/contact). You will get questions back within one business day.

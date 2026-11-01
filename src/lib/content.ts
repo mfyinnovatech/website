@@ -370,8 +370,8 @@ export const founders = team;
 
 export const faqs = [
   {
-    q: "Do you take fixed-price projects?",
-    a: "Yes, once scope is defined. Discovery is free, and most web, mobile and AI scopes get a written fixed estimate within 48 hours. Larger Odoo rollouts are priced per phase after a discovery call.",
+    q: "How does a project start?",
+    a: "With a conversation about your business, your current systems and the outcome you need. We then agree the scope, milestones and success measures in writing before anything is built.",
   },
   {
     q: "Can you work inside our existing Odoo or codebase?",

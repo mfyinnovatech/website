@@ -38,7 +38,7 @@ export function buildLlmsTxt({ full = false } = {}) {
   L.push(`- Facebook: ${site.facebook}`);
   L.push(`- Founder on LinkedIn: ${site.linkedin}`);
   L.push(`- Response time: within one business day`);
-  L.push(`- Pricing: free discovery call; written fixed estimates within 48 hours for most web, mobile and AI scopes; Odoo rollouts priced per phase`);
+  L.push(`- How projects start: a conversation about the business and its goals, then scope, milestones and success measures agreed in writing before building`);
   L.push("");
 
   L.push("## Services", "");

@@ -20,7 +20,7 @@ export const servicePagesEn: Record<string, ServicePageCopy> = {
     h1: "Custom software development, built to hold up under real load.",
     lead: "We design and build web applications and multi-tenant SaaS platforms from the first architecture diagram to production, then stay on to run them.",
     answer:
-      "MFY Innovatech is a custom software development company that builds web applications and SaaS platforms for growing businesses. We work in React, Next.js, Node and Postgres, write the scope and architecture down before code, and hand over the repositories at the end of the project. Most web scopes get a written fixed estimate within 48 hours of a discovery call.",
+      "MFY Innovatech is a custom software development company that builds web applications and SaaS platforms for growing businesses. We work in React, Next.js, Node and Postgres, write the scope and architecture down before code, and hand over the repositories at the end of the project.",
     fit: [
       "You have outgrown spreadsheets or off-the-shelf tools and need software shaped to your process.",
       "You are launching a SaaS product and need multi-tenant architecture from day one.",
@@ -34,7 +34,7 @@ export const servicePagesEn: Record<string, ServicePageCopy> = {
       { title: "Infrastructure and support", text: "Hosting, monitoring and releases set up so the software stays fast and available after launch." },
     ],
     faqs: [
-      { q: "How much does custom software development cost?", a: "It depends on scope: user roles, screens, integrations and how much already exists. Discovery is free, and most web scopes get a written fixed estimate within 48 hours. Larger platforms are estimated per phase, so you only commit to the next milestone." },
+      { q: "How much does custom software development cost?", a: "It depends on scope: user roles, screens, integrations and how much already exists. We agree the scope and milestones in writing first, so you know exactly what will be built before work starts." },
       { q: "Which technologies do you use?", a: "Mostly React and Next.js for front-ends, Node and Postgres on the back end, and WordPress or WooCommerce when a content site is the better fit. The stack is chosen in the written scope, with the reasons." },
       { q: "Who owns the code?", a: "You do. At handover you receive the repositories and everything needed to run the software, not just a login." },
       { q: "Can you take over an existing project?", a: "Often, yes. We audit the codebase first, agree what to keep and what to fix, then work in short iterations with working software at every review." },
@@ -47,7 +47,7 @@ export const servicePagesEn: Record<string, ServicePageCopy> = {
     h1: "iOS and Android apps that feel native on both platforms.",
     lead: "We design, build and publish mobile apps that ship through the App Store and Google Play without drama, and stay maintainable for years.",
     answer:
-      "MFY Innovatech builds iOS and Android apps with Flutter and React Native for one shared codebase, and with Swift and Kotlin where native code matters. We handle design, development, store submission and updates, and you own the source code. Mobile scopes usually get a written fixed estimate within 48 hours of a discovery call.",
+      "MFY Innovatech builds iOS and Android apps with Flutter and React Native for one shared codebase, and with Swift and Kotlin where native code matters. We handle design, development, store submission and updates, and you own the source code.",
     fit: [
       "You need one app on both iOS and Android without paying for two teams.",
       "Your customers, staff or field teams need to work from their phones.",

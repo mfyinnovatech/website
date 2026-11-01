@@ -287,7 +287,7 @@ export const en = {
     faqHeading: "Frequently asked questions",
     talk: "Talk to the team",
     haveProject: "Have a project like this?",
-    projectText: "Discovery is free and the estimate is written. You will hear back within one business day.",
+    projectText: "Tell us what you need and where things stand today. You will hear back within one business day.",
     start: "Start a project",
     odooServices: "Odoo services",
     allPosts: "All posts",
