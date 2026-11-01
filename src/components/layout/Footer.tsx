@@ -24,7 +24,7 @@ export function Footer({ locale }: { locale: Locale }) {
   const pills = [
     { label: d.linkedin, href: site.linkedin, icon: <LinkedInGlyph /> },
     { label: d.instagram, href: founder.instagram, icon: <InstagramGlyph /> },
-    { label: d.odoo, href: site.partner.url, icon: <OdooGlyph /> },
+    { label: d.odoo, href: null as string | null, icon: <OdooGlyph /> },
     { label: d.email, href: `mailto:${site.email}`, icon: <Mail size={15} strokeWidth={2.2} /> },
   ];
 
@@ -47,6 +47,24 @@ export function Footer({ locale }: { locale: Locale }) {
 
           <ul className="mt-12 grid w-full gap-4 sm:grid-cols-2 lg:flex lg:w-auto lg:justify-center">
             {pills.map((p) => {
+              const base =
+                "flex h-[72px] items-center justify-between gap-6 rounded-3xl bg-white px-6 shadow-[0_14px_34px_-22px_rgba(6,16,48,0.35)] ring-1 ring-navy/[0.05] lg:min-w-[210px] lg:px-10";
+              const inner = (
+                <>
+                  <span className="font-display text-lg font-semibold text-navy">{p.label}</span>
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-navy text-white transition-colors group-hover:bg-blue">
+                    {p.icon}
+                  </span>
+                </>
+              );
+              if (!p.href) {
+                /* Badge only — shown, not linked */
+                return (
+                  <li key={p.label}>
+                    <div className={base}>{inner}</div>
+                  </li>
+                );
+              }
               const external = p.href.startsWith("http");
               const pending = p.href === "#";
               return (
@@ -55,14 +73,9 @@ export function Footer({ locale }: { locale: Locale }) {
                     href={p.href}
                     target={external ? "_blank" : undefined}
                     rel={external ? "noreferrer" : undefined}
-                    className={`group flex h-[72px] items-center justify-between gap-6 rounded-3xl bg-white px-6 shadow-[0_14px_34px_-22px_rgba(6,16,48,0.35)] ring-1 ring-navy/[0.05] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-20px_rgba(0,48,232,0.35)] lg:min-w-[210px] lg:px-10 ${
-                      pending ? "opacity-60" : ""
-                    }`}
+                    className={`group ${base} transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-20px_rgba(0,48,232,0.35)] ${pending ? "opacity-60" : ""}`}
                   >
-                    <span className="font-display text-lg font-semibold text-navy">{p.label}</span>
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-navy text-white transition-colors group-hover:bg-blue">
-                      {p.icon}
-                    </span>
+                    {inner}
                   </a>
                 </li>
               );

@@ -27,20 +27,14 @@ export function PartnerStrip({ locale }: { locale: Locale }) {
         >
           {/* Anchor cell: official Odoo partner */}
           <StaggerItem as="li" className="col-span-2 bg-cloud md:col-span-1">
-            <a
-              href={site.partner.url}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`${site.partner.label} — odoo.com`}
-              className="group flex h-full min-h-[7.5rem] flex-col items-center justify-center gap-3 px-6 py-6 text-center"
-            >
+            <div className="flex h-full min-h-[7.5rem] flex-col items-center justify-center gap-3 px-6 py-6 text-center">
               <span className="flex items-center gap-3">
                 <Logo kind="mark" variant="blue" width={46} />
                 <span aria-hidden className="h-6 w-px bg-line-2" />
                 <Image src="/partners/odoo_logo.svg" alt="Odoo" width={66} height={36} style={{ height: "auto" }} />
               </span>
               <span className="eyebrow text-blue">{site.partner.label}</span>
-            </a>
+            </div>
           </StaggerItem>
 
           {clients.map((c) => (

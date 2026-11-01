@@ -28,10 +28,10 @@ export function localeHref(locale: Locale, href: string): string {
   return `/${locale}${href}`;
 }
 
-/* Strip a locale prefix from a pathname → [locale, bare path] */
+/* Strip a locale prefix from a pathname → [locale, bare path]. English pages are
+   rewritten internally to /en/..., so "en" must be stripped too. */
 export function splitLocale(pathname: string): [Locale, string] {
   for (const l of locales) {
-    if (l === defaultLocale) continue;
     if (pathname === `/${l}`) return [l, "/"];
     if (pathname.startsWith(`/${l}/`)) return [l, pathname.slice(l.length + 1)];
   }

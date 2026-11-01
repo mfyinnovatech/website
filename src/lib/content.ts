@@ -7,7 +7,7 @@
 export const site = {
   name: "MFY Innovatech",
   legalName: "MFYINNOVATECH LLC",
-  url: "https://mfyinnova.tech",
+  url: "https://www.mfyinnova.tech",
   description:
     "MFY Innovatech is an official Odoo partner and software studio building custom web and mobile products, AI and data solutions, Odoo ERP implementations and 3D product animation for companies on five continents.",
   email: "maryam@mfyinnova.tech",
@@ -16,7 +16,6 @@ export const site = {
   partner: {
     name: "Odoo",
     label: "Official Odoo partner",
-    url: "https://www.odoo.com",
   },
 };
 
