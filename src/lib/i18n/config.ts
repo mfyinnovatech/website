@@ -8,7 +8,9 @@ export const locales = ["en", "ar"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
 
-export const LOCALE_COOKIE = "NEXT_LOCALE";
+/* Renamed from NEXT_LOCALE on 2026-11-01 so cookies saved by the old
+   location-based redirect no longer pin visitors to Arabic. */
+export const LOCALE_COOKIE = "mfy_lang";
 
 export function isLocale(v: string | undefined | null): v is Locale {
   return !!v && (locales as readonly string[]).includes(v);

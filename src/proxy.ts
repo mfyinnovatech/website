@@ -27,20 +27,17 @@ export function proxy(req: NextRequest) {
 
   const first = pathname.split("/")[1];
 
-  // Explicit non-default locale prefix (/ar): serve it, remember it
+  // Explicit non-default locale prefix (/ar): serve it. Visiting a URL is not
+  // a language choice, so no cookie is written here; only the switch does that.
   if (isLocale(first) && first !== defaultLocale) {
-    const res = NextResponse.next();
-    if (req.cookies.get(LOCALE_COOKIE)?.value !== first) res.cookies.set(LOCALE_COOKIE, first, cookieOpts);
-    return res;
+    return NextResponse.next();
   }
 
   // /en/... → canonical bare path
   if (first === defaultLocale) {
     const url = req.nextUrl.clone();
     url.pathname = pathname.slice(defaultLocale.length + 1) || "/";
-    const res = NextResponse.redirect(url, 308);
-    res.cookies.set(LOCALE_COOKIE, defaultLocale, cookieOpts);
-    return res;
+    return NextResponse.redirect(url, 308);
   }
 
   // Bare path: decide between English (rewrite) and Arabic (redirect)
@@ -56,9 +53,7 @@ export function proxy(req: NextRequest) {
     const url = req.nextUrl.clone();
     url.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
     url.search = search;
-    const res = NextResponse.redirect(url, 307);
-    res.cookies.set(LOCALE_COOKIE, locale, cookieOpts);
-    return res;
+    return NextResponse.redirect(url, 307);
   }
 
   const url = req.nextUrl.clone();
@@ -81,8 +76,6 @@ function prefersArabic(header: string | null): boolean {
     .sort((a, b) => b.q - a.q || a.i - b.i);
   return ranked[0]?.lang === "ar";
 }
-
-const cookieOpts = { path: "/", maxAge: 60 * 60 * 24 * 365, sameSite: "lax" as const };
 
 export const config = {
   matcher: ["/((?!_next/static|_next/image).*)"],

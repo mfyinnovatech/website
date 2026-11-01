@@ -50,6 +50,9 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
         ? ["شريك Odoo", "تنفيذ Odoo", "تطبيق ERP", "تطوير برمجيات مخصصة", "الذكاء الاصطناعي", "رسوم ثلاثية الأبعاد للمنتجات", "تطوير تطبيقات Flutter", "Odoo الكويت", "MFY Innovatech"]
         : ["Odoo partner", "Odoo implementation", "ERP implementation", "custom software development", "AI development", "3D product animation", "Flutter app development", "MFY Innovatech"],
     alternates: { canonical: home, languages: languageAlternates(site.url, "/") },
+    /* Chrome's "Translate this page?" bar produces a machine-translated copy of the
+       Arabic pages. We have a real English site, so point people to the switch instead. */
+    ...(locale === "ar" ? { other: { google: "notranslate" } } : {}),
   };
 }
 
