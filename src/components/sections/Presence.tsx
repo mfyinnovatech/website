@@ -10,6 +10,13 @@ import { useLocale } from "@/components/i18n/LocaleProvider";
 
 type MarkerKey = keyof typeof map.markers;
 
+/* All land dots as ONE path (two arcs per dot) instead of thousands of <circle>
+   elements: identical look, a far smaller DOM. Built once at module load. */
+const DOT_R = 1.9;
+const landPath = map.dots
+  .map(([x, y]) => `M${x - DOT_R} ${y}a${DOT_R} ${DOT_R} 0 1 0 ${DOT_R * 2} 0a${DOT_R} ${DOT_R} 0 1 0 ${-DOT_R * 2} 0`)
+  .join("");
+
 /* Global presence — dot-matrix world map generated from Natural Earth
    (scripts/generate-world-dots.mjs) with one pulsing marker per client region. */
 export function Presence({ num = "07" }: { num?: string }) {
@@ -44,11 +51,7 @@ export function Presence({ num = "07" }: { num?: string }) {
                 role="img"
                 aria-label={p.mapAria}
               >
-                <g fill="var(--color-line-2)">
-                  {map.dots.map(([x, y], i) => (
-                    <circle key={i} cx={x} cy={y} r={1.9} />
-                  ))}
-                </g>
+                <path d={landPath} fill="var(--color-line-2)" />
                 {markers.map((m, i) => {
                   const on = hover === m.key;
                   return (

@@ -3,8 +3,12 @@ import { site } from "@/lib/content";
 import { getAllPosts, hasTranslation } from "@/lib/blog";
 import { languageAlternates, localeHref, locales } from "@/lib/i18n";
 
+/* Last real change to the static pages. Bump this when page copy changes, so
+   search engines can trust lastmod (a value that changes on every deploy is ignored). */
+const PAGES_UPDATED = new Date("2026-11-02");
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const now = PAGES_UPDATED;
   const paths = ["/", "/services", "/work", "/about", "/blog", "/contact", "/privacy", "/terms"];
   const pages = paths.flatMap((p) =>
     locales.map((l) => ({
@@ -23,6 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: new Date(p.updated ?? p.date),
         changeFrequency: "monthly" as const,
         priority: 0.7,
+        alternates: { languages: languageAlternates(site.url, `/blog/${p.slug}`) },
       }))
   );
   return [...pages, ...posts];

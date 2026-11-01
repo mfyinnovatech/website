@@ -7,6 +7,8 @@ import { Stage } from "@/components/ui/Stage";
 import { formatDate, getAllPosts } from "@/lib/blog";
 import { site } from "@/lib/content";
 import { getDict, isLocale, languageAlternates, localeHref, type Locale } from "@/lib/i18n";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { pageGraph, pageUrl } from "@/lib/seo";
 
 type Params = { locale: string };
 const path = "/blog";
@@ -34,9 +36,26 @@ export default async function BlogIndex({ params }: { params: Promise<Params> })
   const posts = getAllPosts(locale);
   const [featured, ...rest] = posts;
   const L = (p: string) => localeHref(locale, p);
+  const ld = pageGraph(locale, {
+    type: "CollectionPage",
+    path,
+    name: d.metaTitle,
+    description: d.metaDescription,
+    trail: [{ name: d.metaTitle, path }],
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: posts.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: pageUrl(locale, `/blog/${p.slug}`),
+        name: p.title,
+      })),
+    },
+  });
 
   return (
     <>
+      <JsonLd data={ld} />
       <PageHeader
         eyebrow={d.eyebrow}
         title={

@@ -29,7 +29,7 @@ export function LanguageSwitch({ className = "", compact = false }: { className?
       onClick={choose}
       lang={target}
       hrefLang={target}
-      aria-label={d.nav.switchAria}
+      title={d.nav.switchAria}
       className={`inline-flex items-center gap-1.5 whitespace-nowrap font-display text-[15px] font-semibold transition-colors ${className}`}
     >
       <Globe size={15} strokeWidth={2.2} />

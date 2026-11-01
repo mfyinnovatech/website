@@ -1,7 +1,8 @@
 ---
 title: "Why ERP Projects Go Over Budget, and the Fixed-Scope Approach That Avoids It"
 seoTitle: "Why ERP Projects Go Over Budget (and How to Prevent It)"
-description: "Most ERP implementations run over time and budget for the same five reasons. Here is what causes it, and the written-scope, phased approach that keeps an Odoo project on the number you signed."
+description: "Why most ERP projects run over budget, and the written-scope, phased approach that keeps an Odoo implementation on the number you signed."
+summary: "ERP projects go over budget for five reasons: scope that was never written down, customizing the software to copy old processes, dirty data found at migration, no owner inside the company and training left to the last week. A written, phased scope that keeps phase one close to standard Odoo, data cleanup from week one, a named owner and changes priced before work continues usually take a first phase live in 8 to 14 weeks with a 10 to 15 percent contingency."
 date: "2026-09-16"
 author: "Maryam Mehboob"
 category: "ERP delivery"

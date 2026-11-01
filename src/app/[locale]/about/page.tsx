@@ -11,7 +11,9 @@ import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { ArchField } from "@/components/brand/ArchField";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { site } from "@/lib/content";
-import { getDict, isLocale, languageAlternates, localeHref, type Locale } from "@/lib/i18n";
+import { getContent, getDict, isLocale, languageAlternates, localeHref, type Locale } from "@/lib/i18n";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { FOUNDER_ID, ORG_ID, pageGraph } from "@/lib/seo";
 
 type Params = { locale: string };
 const path = "/about";
@@ -31,9 +33,31 @@ export default async function AboutPage({ params }: { params: Promise<Params> })
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : "en";
   const d = getDict(locale).about;
+  const { team } = getContent(locale);
+  const real = (u: string) => !!u && u !== "#";
+  const people = team.map((m, i) => ({
+    "@type": "Person",
+    "@id": i === 0 ? FOUNDER_ID : `${site.url}/#person-${i}`,
+    name: m.name,
+    jobTitle: `${m.role} · ${m.title}`,
+    description: m.bio,
+    image: m.photo ? `${site.url}${m.photo}` : undefined,
+    worksFor: { "@id": ORG_ID },
+    sameAs: [m.linkedin, m.instagram].filter(real),
+  }));
+  const ld = pageGraph(locale, {
+    type: "AboutPage",
+    path,
+    name: d.metaTitle,
+    description: d.metaDescription,
+    trail: [{ name: d.metaTitle, path }],
+    mainEntity: { "@id": ORG_ID },
+    extra: people,
+  });
 
   return (
     <>
+      <JsonLd data={ld} />
       <PageHeader
         eyebrow={d.eyebrow}
         title={

@@ -3,7 +3,7 @@ export const en = {
   meta: {
     title: "MFY Innovatech — Odoo Partner, Custom Software, AI & 3D Studio",
     description:
-      "MFY Innovatech is an official Odoo partner and software studio building custom web and mobile products, AI and data solutions, Odoo ERP implementations and 3D product animation for companies on five continents.",
+      "Official Odoo partner and software studio: custom web and mobile apps, AI and data, Odoo ERP implementation and 3D product animation for clients worldwide.",
     ogAlt: "MFY Innovatech",
   },
   nav: {
@@ -100,6 +100,7 @@ export const en = {
       eyebrow: "Selected work",
       h1a: "Products you can watch",
       h1b: "before they ship.",
+      metaDescription: "Photoreal 3D product animations for medical equipment, consumer products and packaging, modeled, lit and animated in-house by MFY Innovatech.",
       lead: "Nine 3D productions released to date, from hyperbaric medical equipment to consumer packaging. Software and ERP engagements are shared on request.",
       galleryLabel: "3D product animation",
       galleryH2a: "Every production,",
@@ -269,12 +270,15 @@ export const en = {
     odooServices: "Odoo services",
     allPosts: "All posts",
     feedTitle: "MFY Innovatech — Blog",
+    summaryLabel: "Short answer",
   },
   legal: {
     lastUpdated: "Last updated September 2026.",
     eyebrow: "Legal",
     privacyTitle: "Privacy policy",
     termsTitle: "Terms of service",
+    privacyDescription: "How MFY Innovatech collects, uses and protects the information you share through this website, and how to access or delete it.",
+    termsDescription: "The terms that govern use of the MFY Innovatech website, its content, portfolio material and our project engagements.",
     privacy: {
       intro: (legal: string, url: string) => `${legal} (“MFY”, “we”) operates ${url}. This policy explains what we collect when you use the site and how we use it.`,
       collectH: "What we collect",

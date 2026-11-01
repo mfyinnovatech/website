@@ -163,6 +163,7 @@ export function Nav() {
           <div className={`pointer-events-auto h-[60px] gap-1.5 p-1.5 ${pillClass}`}>
             <Link
               href={href("/contact")}
+              aria-label={d.nav.cta}
               className="inline-flex h-12 items-center gap-2 whitespace-nowrap rounded-[100px] bg-navy px-5 font-display text-[15px] font-semibold text-white transition-colors hover:bg-blue"
             >
               {d.nav.ctaShort} <ArrowUpRight size={16} strokeWidth={2.2} className="rtl:-scale-x-100" />

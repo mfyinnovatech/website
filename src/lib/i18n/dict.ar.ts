@@ -4,9 +4,9 @@ import type { Dict } from "./dict.en";
    as used by Kuwaiti companies in formal copy). Brand and product names stay Latin. */
 export const ar: Dict = {
   meta: {
-    title: "MFY Innovatech — شريك Odoo، برمجيات مخصصة، ذكاء اصطناعي واستوديو ثلاثي الأبعاد",
+    title: "MFY Innovatech — شريك Odoo وبرمجيات وذكاء اصطناعي",
     description:
-      "MFY Innovatech شريك Odoo رسمي واستوديو برمجيات يبني منتجات ويب وجوال مخصصة، وحلول ذكاء اصطناعي وبيانات، وتطبيقات Odoo ERP، ورسوماً ثلاثية الأبعاد للمنتجات لشركات في خمس قارات.",
+      "شريك Odoo رسمي واستوديو برمجيات: تطبيقات ويب وجوال مخصصة، ذكاء اصطناعي وبيانات، تنفيذ Odoo ERP ورسوم ثلاثية الأبعاد للمنتجات لعملاء حول العالم.",
     ogAlt: "MFY Innovatech",
   },
   nav: {
@@ -103,6 +103,7 @@ export const ar: Dict = {
       eyebrow: "أعمال مختارة",
       h1a: "منتجات تشاهدها",
       h1b: "قبل أن تُشحن.",
+      metaDescription: "رسوم ثلاثية الأبعاد واقعية للمعدات الطبية والمنتجات الاستهلاكية والعبوات، نمذجة وإضاءة وتحريك داخل استوديو MFY Innovatech.",
       lead: "تسعة إنتاجات ثلاثية الأبعاد حتى اليوم، من المعدات الطبية للعلاج بالأكسجين المضغوط إلى عبوات المنتجات الاستهلاكية. مشاريع البرمجيات وERP نشاركها عند الطلب.",
       galleryLabel: "رسوم ثلاثية الأبعاد للمنتجات",
       galleryH2a: "كل إنتاج،",
@@ -272,12 +273,15 @@ export const ar: Dict = {
     odooServices: "خدمات Odoo",
     allPosts: "كل المقالات",
     feedTitle: "MFY Innovatech — المدونة",
+    summaryLabel: "الإجابة المختصرة",
   },
   legal: {
     lastUpdated: "آخر تحديث: سبتمبر 2026.",
     eyebrow: "قانوني",
     privacyTitle: "سياسة الخصوصية",
     termsTitle: "شروط الخدمة",
+    privacyDescription: "كيف تجمع MFY Innovatech المعلومات التي تشاركها عبر هذا الموقع وتستخدمها وتحميها، وكيف تطلب الاطلاع عليها أو حذفها.",
+    termsDescription: "الشروط التي تحكم استخدام موقع MFY Innovatech ومحتواه ومواد أعماله وتعاقدات مشاريعنا.",
     privacy: {
       intro: (legal: string, url: string) => `تدير ${legal} («MFY»، «نحن») الموقع ${url}. توضح هذه السياسة ما نجمعه عند استخدامك للموقع وكيف نستخدمه.`,
       collectH: "ما نجمعه",

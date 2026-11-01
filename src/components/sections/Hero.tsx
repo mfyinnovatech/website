@@ -10,37 +10,27 @@ import { DotLandmarks } from "@/components/brand/DotLandmarks";
 import { useLightbox } from "@/components/ui/VideoLightbox";
 import { useLocale } from "@/components/i18n/LocaleProvider";
 
-const ease = [0.16, 1, 0.3, 1] as const;
 
+/* Headline words rise out of a clip. Pure CSS, so the animation starts on first
+   paint instead of waiting for JavaScript (keeps the headline fast on phones). */
 function Words({ text, accent, delay = 0 }: { text: string; accent?: string; delay?: number }) {
-  const reduce = useReducedMotion();
   const words = text.split(" ");
   return (
     <>
       {words.map((w, i) => (
         <span key={i}>
           <span className="clip-reveal">
-            <motion.span
-              className="inline-block"
-              initial={reduce ? false : { y: "110%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1, ease, delay: delay + i * 0.06 }}
-            >
+            <span className="word-rise" style={{ animationDelay: `${delay + i * 0.06}s` }}>
               {w}
-            </motion.span>
+            </span>
           </span>{" "}
         </span>
       ))}
       {accent && (
         <span className="clip-reveal">
-          <motion.span
-            className="inline-block text-blue"
-            initial={reduce ? false : { y: "110%" }}
-            animate={{ y: 0 }}
-            transition={{ duration: 1, ease, delay: delay + words.length * 0.06 }}
-          >
+          <span className="word-rise text-blue" style={{ animationDelay: `${delay + words.length * 0.06}s` }}>
             {accent}
-          </motion.span>
+          </span>
         </span>
       )}
     </>
@@ -67,14 +57,12 @@ export function Hero() {
         <div className="grid gap-10 pt-6 sm:pt-10 lg:grid-cols-12 lg:pt-12">
           {/* Copy */}
           <div className="lg:col-span-9">
-            <motion.p
-              className="inline-flex items-center rounded-lg bg-white px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue ring-1 ring-navy/[0.06]"
-              initial={reduce ? false : { opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease, delay: 0.1 }}
+            <p
+              className="rise inline-flex items-center rounded-lg bg-white px-4 py-1.5 font-mono text-[12px] uppercase tracking-[0.14em] text-blue ring-1 ring-navy/[0.06]"
+              style={{ animationDelay: "0.1s" }}
             >
               {h.pill}
-            </motion.p>
+            </p>
 
             <h1 className="text-display mt-8 max-w-[13ch] text-ink">
               <span className="block">
@@ -85,28 +73,20 @@ export function Hero() {
               </span>
             </h1>
 
-            <motion.p
-              className="text-lead mt-8 max-w-[50ch]"
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease, delay: 0.7 }}
-            >
+            {/* Visible from the first paint (only a short rise), so it can be the
+                Largest Contentful Paint without waiting for JavaScript */}
+            <p className="rise text-lead mt-8 max-w-[50ch]" style={{ animationDelay: "0.3s" }}>
               {h.lead}
-            </motion.p>
+            </p>
 
-            <motion.div
-              className="mt-9 flex flex-wrap gap-3"
-              initial={reduce ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease, delay: 0.85 }}
-            >
+            <div className="rise mt-9 flex flex-wrap gap-3" style={{ animationDelay: "0.4s" }}>
               <Link href={href("/contact")} className="btn btn-navy">
                 {h.primary} <ArrowUpRight size={16} className="rtl:-scale-x-100" />
               </Link>
               <Link href={href("/work")} className="btn btn-ghost">
                 {h.secondary} <ArrowRight size={16} className="rtl:-scale-x-100" />
               </Link>
-            </motion.div>
+            </div>
           </div>
 
           {/* Dot landmarks (Kuwait Towers, Faisal Mosque, Statue of Liberty) with the
@@ -133,16 +113,10 @@ export function Hero() {
         </div>
 
         {/* Reel panel — the first proof: a real MFY 3D production */}
-        <motion.div
-          className="mt-14 sm:mt-16 lg:mt-20"
-          initial={reduce ? false : { opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.1, ease, delay: 1 }}
-        >
+        <div className="rise mt-14 sm:mt-16 lg:mt-20" style={{ animationDelay: "0.5s", ["--rise" as string]: "32px" }}>
           <button
             type="button"
             onClick={() => open({ id: reel.id, title: reel.title, category: reel.category, orientation: "landscape" })}
-            aria-label={`${h.playReel}: ${reel.title}`}
             className="group relative block w-full overflow-hidden rounded-2xl bg-navy text-start"
           >
             <div className="relative aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9]">
@@ -162,6 +136,7 @@ export function Hero() {
               <Cross className="bottom-5 left-5 hidden sm:block" />
               <Cross className="bottom-5 right-5 hidden sm:block" />
 
+              <span className="sr-only">{h.playReel}: </span>
               <span className="absolute left-1/2 top-1/2 inline-flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-navy shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:bg-blue group-hover:text-white sm:h-20 sm:w-20">
                 <Play size={22} fill="currentColor" className="ms-1" />
               </span>
@@ -175,7 +150,7 @@ export function Hero() {
               </div>
             </div>
           </button>
-        </motion.div>
+        </div>
 
         {/* Proof cells */}
         <motion.ul

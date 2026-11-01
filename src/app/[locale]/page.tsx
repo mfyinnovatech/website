@@ -10,7 +10,9 @@ import { FAQ } from "@/components/sections/FAQ";
 import { Insights } from "@/components/sections/Insights";
 import { PartnerStrip } from "@/components/sections/PartnerStrip";
 import { OneSystem } from "@/components/sections/OneSystem";
-import { getContent, isLocale, type Locale } from "@/lib/i18n";
+import { getContent, getDict, isLocale, type Locale } from "@/lib/i18n";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { pageGraph, pageUrl } from "@/lib/seo";
 
 type Params = { locale: string };
 
@@ -18,15 +20,24 @@ export default async function Home({ params }: { params: Promise<Params> }) {
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : "en";
   const { faqs } = getContent(locale);
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    inLanguage: locale,
-    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
-  };
+  const d = getDict(locale);
+  const ld = pageGraph(locale, {
+    type: "WebPage",
+    path: "/",
+    name: d.meta.title,
+    description: d.meta.description,
+    extra: [
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl(locale, "/")}#faq`,
+        inLanguage: locale,
+        mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      },
+    ],
+  });
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <JsonLd data={ld} />
       <Hero />
       <PartnerStrip locale={locale} />
       <Services limit={6} />

@@ -1,7 +1,8 @@
 ---
 title: "AI in ERP in 2026: What Actually Works, and What Is Still a Demo"
 seoTitle: "AI in ERP 2026: What Works and What Is Still a Demo"
-description: "AI features are in every ERP pitch this year. Here is what delivers measurable value inside an ERP today, what is still demo-ware, and how to adopt AI in Odoo without breaking your data."
+description: "What AI really delivers inside an ERP in 2026, what is still a demo, and how to adopt AI in Odoo without breaking your data."
+summary: "In 2026, AI inside an ERP reliably delivers on four jobs: reading supplier bills and receipts, forecasting demand and reorders, flagging accounting anomalies and answering reporting questions in plain language. Autonomous agents that change master data, catch-all chat assistants and AI that replaces the implementation are still demos. Clean your data first, start with one measurable workflow and keep a human approval on anything that posts to the ledger."
 date: "2026-09-20"
 author: "Farhan Mehboob"
 category: "ERP trends"

@@ -11,6 +11,8 @@ import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Stage } from "@/components/ui/Stage";
 import { site } from "@/lib/content";
 import { getContent, getDict, isLocale, languageAlternates, localeHref, type Locale } from "@/lib/i18n";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { pageGraph, pageUrl, serviceNodes } from "@/lib/seo";
 
 type Params = { locale: string };
 const path = "/services";
@@ -32,9 +34,22 @@ export default async function ServicesPage({ params }: { params: Promise<Params>
   const locale: Locale = isLocale(raw) ? raw : "en";
   const d = getDict(locale).servicesPage;
   const { services } = getContent(locale);
+  const ld = pageGraph(locale, {
+    type: "WebPage",
+    path,
+    name: d.metaTitle,
+    description: d.metaDescription,
+    trail: [{ name: d.metaTitle, path }],
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: services.map((s, i) => ({ "@type": "ListItem", position: i + 1, item: { "@id": `${pageUrl(locale, path)}#${s.slug}` } })),
+    },
+    extra: serviceNodes(locale),
+  });
 
   return (
     <>
+      <JsonLd data={ld} />
       <PageHeader
         eyebrow={d.eyebrow}
         title={

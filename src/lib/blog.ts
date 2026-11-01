@@ -15,6 +15,7 @@ export type PostMeta = {
   title: string;
   seoTitle?: string;
   description: string;
+  summary?: string; // 2–3 sentence direct answer, shown first and used by answer engines
   date: string; // ISO
   updated?: string; // ISO
   author: string;
@@ -45,6 +46,7 @@ function toMeta(slug: string, data: Record<string, unknown>, content: string, lo
     title: String(data.title ?? slug),
     seoTitle: data.seoTitle ? String(data.seoTitle) : undefined,
     description: String(data.description ?? ""),
+    summary: data.summary ? String(data.summary) : undefined,
     date: String(data.date ?? new Date().toISOString().slice(0, 10)),
     updated: data.updated ? String(data.updated) : undefined,
     author: String(data.author ?? "MFY Innovatech"),

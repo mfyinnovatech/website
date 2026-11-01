@@ -18,7 +18,6 @@ export function TestimonialVideoCard({ item, index, className = "" }: Props) {
       onClick={() =>
         open({ id: item.id, title: `${item.name} — ${item.topic}`, category: label, orientation: "portrait" })
       }
-      aria-label={`${d.videoStories.playAria}: ${item.name}, ${item.topic}`}
       className={`group relative block w-full overflow-hidden rounded-2xl border border-line bg-navy text-start transition-colors duration-300 hover:border-blue focus-visible:border-blue ${className}`}
     >
       <div className="relative aspect-[9/16]">
@@ -31,6 +30,7 @@ export function TestimonialVideoCard({ item, index, className = "" }: Props) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-navy/25" />
 
+        <span className="sr-only">{d.videoStories.playAria}: </span>
         <span className="absolute start-4 top-4 rounded-full border border-white/20 bg-navy/40 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-white/85 backdrop-blur">
           {label}
         </span>

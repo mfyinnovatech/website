@@ -7,7 +7,9 @@ import { TechGrid } from "@/components/brand/TechGrid";
 import { Stage } from "@/components/ui/Stage";
 import { formatDate, getAllPosts, getPost, hasTranslation } from "@/lib/blog";
 import { site } from "@/lib/content";
-import { getDict, isLocale, localeHref, locales, type Locale } from "@/lib/i18n";
+import { getContent, getDict, isLocale, localeHref, locales, type Locale } from "@/lib/i18n";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { breadcrumbs, FOUNDER_ID, ORG_ID, WEBSITE_ID, pageUrl } from "@/lib/seo";
 
 type Params = { slug: string; locale: string };
 
@@ -25,8 +27,10 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const languages: Record<string, string> = {};
   for (const l of locales) if (hasTranslation(slug, l)) languages[l] = `${site.url}${localeHref(l, `/blog/${slug}`)}`;
   languages["x-default"] = `${site.url}/blog/${slug}`;
+  /* Keep the whole title visible in results: drop the brand suffix when it would push past ~60 chars */
+  const withBrand = `${title} · ${site.name}`;
   return {
-    title,
+    title: withBrand.length > 60 ? { absolute: title } : title,
     description: post.description,
     keywords: post.tags,
     authors: [{ name: post.author }],
@@ -59,36 +63,39 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
   const all = getAllPosts(locale);
   const idx = all.findIndex((p) => p.slug === post.slug);
   const next = all[(idx + 1) % all.length];
-  const url = `${site.url}${L(`/blog/${post.slug}`)}`;
+  const url = pageUrl(locale, `/blog/${post.slug}`);
 
-  const jsonLd: Record<string, unknown>[] = [
+  const founder = getContent(locale).team[0];
+  const authorIsFounder = post.author === founder.name || post.author === getContent("en").team[0].name;
+  const graph: Record<string, unknown>[] = [
     {
-      "@context": "https://schema.org",
       "@type": "BlogPosting",
+      "@id": `${url}#article`,
       headline: post.title,
       description: post.description,
+      ...(post.summary ? { abstract: post.summary } : {}),
       datePublished: post.date,
       dateModified: post.updated ?? post.date,
-      author: { "@type": "Person", name: post.author, worksFor: { "@type": "Organization", name: site.legalName } },
-      publisher: { "@type": "Organization", name: site.name, url: site.url },
+      author: authorIsFounder ? { "@id": FOUNDER_ID } : { "@type": "Person", name: post.author, worksFor: { "@id": ORG_ID } },
+      publisher: { "@id": ORG_ID },
+      image: `${site.url}/og-default.png`,
       mainEntityOfPage: url,
+      isPartOf: { "@id": WEBSITE_ID },
+      articleSection: post.category,
       keywords: post.tags.join(", "),
+      wordCount: post.content.trim().split(/\s+/).length,
       inLanguage: post.locale,
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: d.home, item: `${site.url}${L("/")}` },
-        { "@type": "ListItem", position: 2, name: d.breadcrumb, item: `${site.url}${L("/blog")}` },
-        { "@type": "ListItem", position: 3, name: post.title, item: url },
-      ],
-    },
+    breadcrumbs(locale, [
+      { name: d.breadcrumb, path: "/blog" },
+      { name: post.title, path: `/blog/${post.slug}` },
+    ]),
   ];
   if (post.faqs?.length) {
-    jsonLd.push({
-      "@context": "https://schema.org",
+    graph.push({
       "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      inLanguage: post.locale,
       mainEntity: post.faqs.map((f) => ({
         "@type": "Question",
         name: f.q,
@@ -99,7 +106,7 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <JsonLd data={{ "@context": "https://schema.org", "@graph": graph }} />
 
       {/* Article header */}
       <section className="relative overflow-hidden bg-cloud pt-[var(--nav-offset)]">
@@ -131,6 +138,12 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
       <Stage>
         <article lang={post.locale} dir={post.locale === "ar" ? "rtl" : "ltr"}>
           <div className="mx-auto max-w-3xl">
+            {post.summary && (
+              <aside aria-label={d.summaryLabel} className="mb-10 rounded-2xl border border-line bg-cloud p-6 sm:p-7">
+                <p className="eyebrow text-blue">{d.summaryLabel}</p>
+                <p className="mt-3 text-[1.0625rem] leading-relaxed text-ink">{post.summary}</p>
+              </aside>
+            )}
             <Markdown content={post.content} />
 
             {post.faqs && post.faqs.length > 0 && (

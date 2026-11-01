@@ -52,7 +52,7 @@ export function PartnerStrip({ locale }: { locale: Locale }) {
                     alt={c.name}
                     width={c.width}
                     height={c.height}
-                    style={{ width: c.width, height: c.height }}
+                    style={{ width: c.width, height: "auto", maxWidth: "100%" }}
                     className="opacity-70 grayscale transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:opacity-100 group-hover:grayscale-0"
                   />
                 </span>

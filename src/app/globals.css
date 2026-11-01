@@ -19,8 +19,8 @@
   --color-line-2: #c9d2f2;
   --color-ink: #061030;
   --color-ink-2: #3a4466;
-  --color-ink-3: #6b7699;
-  --color-ink-4: #8a95b8;
+  --color-ink-3: #5c6789; /* ≥4.5:1 on white, cloud and mist */
+  --color-ink-4: #626d90; /* ≥4.5:1 on white and cloud */
 
   /* Type */
   --font-display: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
@@ -468,4 +468,26 @@ html[lang="ar"] [dir="ltr"] {
 }
 @media (prefers-reduced-motion: reduce) {
   .dot-glint { animation: none; }
+}
+
+/* Hero entrance: CSS-only so it starts on first paint, before JavaScript loads.
+   "rise" never hides the element (transform only), so the hero text counts as
+   painted immediately for Largest Contentful Paint. */
+@keyframes word-rise {
+  from { transform: translateY(110%); }
+  to { transform: none; }
+}
+.word-rise {
+  display: inline-block;
+  animation: word-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes rise {
+  from { transform: translateY(var(--rise, 16px)); }
+  to { transform: none; }
+}
+.rise {
+  animation: rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .word-rise, .rise { animation: none; }
 }

@@ -16,7 +16,6 @@ export function VideoCard({ video, size = "md", priority }: Props) {
       type="button"
       onClick={() => open({ id: video.id, title: video.title, category: video.category, orientation: "landscape" })}
       className="group block w-full text-start"
-      aria-label={`${d.work.play} ${video.title}`}
     >
       <div className="relative aspect-video overflow-hidden rounded-xl bg-navy">
         <Image
@@ -28,6 +27,7 @@ export function VideoCard({ video, size = "md", priority }: Props) {
           className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" />
+        <span className="sr-only">{d.work.play}: </span>
         <span className="absolute start-4 top-4 rounded-full bg-white/90 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-navy backdrop-blur">
           {video.category}
         </span>

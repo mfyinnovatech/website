@@ -4,6 +4,8 @@ import { ContactForm } from "@/components/sections/ContactForm";
 import { FAQ } from "@/components/sections/FAQ";
 import { site } from "@/lib/content";
 import { getDict, isLocale, languageAlternates, localeHref, type Locale } from "@/lib/i18n";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { ORG_ID, pageGraph } from "@/lib/seo";
 
 type Params = { locale: string };
 const path = "/contact";
@@ -23,8 +25,17 @@ export default async function ContactPage({ params }: { params: Promise<Params> 
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : "en";
   const d = getDict(locale).contact;
+  const ld = pageGraph(locale, {
+    type: "ContactPage",
+    path,
+    name: d.metaTitle,
+    description: d.metaDescription,
+    trail: [{ name: d.metaTitle, path }],
+    mainEntity: { "@id": ORG_ID },
+  });
   return (
     <>
+      <JsonLd data={ld} />
       <PageHeader
         eyebrow={d.eyebrow}
         title={
