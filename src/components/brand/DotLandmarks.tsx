@@ -339,7 +339,7 @@ export function DotLandmarks({ labels, className = "" }: { labels: string[]; cla
           ))}
         </g>
       </svg>
-      <div className="relative mt-3 h-7 lg:h-5">
+      <div className="relative mt-3 h-8">
         <AnimatePresence mode="wait" initial={false}>
           <motion.p
             key={scene}
