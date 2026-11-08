@@ -17,6 +17,8 @@ export const site = {
   instagram: "https://www.instagram.com/mfyinnovatech/",
   youtube: "https://www.youtube.com/@mfyinnovatech",
   facebook: "https://www.facebook.com/mfyinnovatech/",
+  /* WhatsApp is on the Kuwait line */
+  whatsapp: "96555663826",
   /* Phone lines; country codes match the labels in the dictionaries */
   phones: [
     { country: "KW", display: "+965 5566 3826", tel: "+96555663826" },

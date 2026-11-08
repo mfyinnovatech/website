@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Markdown } from "@/components/blog/Markdown";
 import { TechGrid } from "@/components/brand/TechGrid";
 import { Stage } from "@/components/ui/Stage";
@@ -9,6 +9,7 @@ import { formatDate, getAllPosts, getPost, hasTranslation } from "@/lib/blog";
 import { site } from "@/lib/content";
 import { getContent, getDict, isLocale, localeHref, locales, type Locale } from "@/lib/i18n";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { DirectContact } from "@/components/sections/DirectContact";
 import { breadcrumbs, FOUNDER_ID, ORG_ID, WEBSITE_ID, pageUrl } from "@/lib/seo";
 
 type Params = { slug: string; locale: string };
@@ -170,20 +171,8 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
               ))}
             </div>
 
-            {/* CTA */}
-            <div className="mt-14 rounded-2xl bg-navy p-8 text-white lg:p-10">
-              <p className="eyebrow text-blue-soft">{d.talk}</p>
-              <h2 className="mt-4 font-display text-2xl font-semibold lg:text-3xl">{d.haveProject}</h2>
-              <p className="mt-3 max-w-xl text-white/70">{d.projectText}</p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link href={L("/contact")} className="btn btn-white">
-                  {d.start} <ArrowUpRight size={16} className="rtl:-scale-x-100" />
-                </Link>
-                <Link href={L("/services/erp-implementation")} className="btn btn-ghost-dark">
-                  {d.odooServices}
-                </Link>
-              </div>
-            </div>
+            {/* Direct contact: WhatsApp (pre-filled with this article), phones, email */}
+            <DirectContact locale={locale} topic={post.title} className="mt-14" />
 
             {/* Prev / next */}
             <div className="mt-12 flex flex-col gap-4 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between">

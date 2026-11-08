@@ -3,6 +3,7 @@ import { getAllPosts, getPost } from "@/lib/blog";
 import { getContent, getDict } from "@/lib/i18n";
 import { pageUrl } from "@/lib/seo";
 import { servicePath } from "@/lib/service-pages";
+import { LANDING_SLUGS, getLanding } from "@/lib/landing-pages";
 
 /* ─────────────────────────────────────────────
    llms.txt (llmstxt.org): a plain-Markdown briefing for AI assistants and
@@ -47,6 +48,13 @@ export function buildLlmsTxt({ full = false } = {}) {
   c.services.forEach((s, i) => {
     L.push(`- [${s.title}](${pageUrl("en", servicePath(s.slug))}): ${s.description} (Arabic: ${ar.services[i].title}, ${pageUrl("ar", servicePath(s.slug))})`);
   });
+  L.push("");
+
+  L.push("## By market", "");
+  for (const sl of LANDING_SLUGS) {
+    const p = getLanding("en", sl)!;
+    L.push(`- [${p.seoTitle}](${pageUrl("en", `/${sl}`)}): ${p.answer} Arabic: ${pageUrl("ar", `/${sl}`)}`);
+  }
   L.push("");
 
   L.push("## Main pages", "");

@@ -4,6 +4,7 @@ import { Logo } from "@/components/ui/Logo";
 import { BackToTop } from "./BackToTop";
 import { getContent, getDict, localeHref, type Locale } from "@/lib/i18n";
 import { LanguageSwitch } from "@/components/i18n/LanguageSwitch";
+import { LANDING_SLUGS } from "@/lib/landing-pages";
 
 /* Footer — light ground, faded lockup behind a centred mark tile, "Get connected"
    heading, four white social pills, hairline, then quick links · copyright · back to top. */
@@ -96,6 +97,16 @@ export function Footer({ locale }: { locale: Locale }) {
             ))}
           </p>
         </div>
+
+        {/* Markets: links to the market landing pages from every page */}
+        <nav aria-label={getDict(locale).landing.markets} className="relative mt-12 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[14px]">
+          <span className="mono-label text-ink-3">{getDict(locale).landing.markets}</span>
+          {LANDING_SLUGS.map((sl) => (
+            <Link key={sl} href={localeHref(locale, `/${sl}`)} className="font-display font-semibold text-navy hover:text-blue">
+              {getDict(locale).landing.names[sl]}
+            </Link>
+          ))}
+        </nav>
 
         {/* Bottom row */}
         <div className="relative mt-16 border-t border-line pb-10 pt-8 sm:mt-24">

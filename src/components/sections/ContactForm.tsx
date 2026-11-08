@@ -145,6 +145,17 @@ export function ContactForm() {
                 </a>
               </Row>
             ))}
+            <Row label={t.rowWhatsApp}>
+              <a
+                href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(d.direct.prefill(t.metaTitle))}`}
+                target="_blank"
+                rel="noopener"
+                dir="ltr"
+                className="font-mono text-[15px] hover:text-blue"
+              >
+                {site.phones.find((ph) => ph.country === "KW")?.display}
+              </a>
+            </Row>
             <Row label={t.rowBased}>{site.location}</Row>
             <Row label={t.rowResponse}>{t.responseValue}</Row>
           </dl>

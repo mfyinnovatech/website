@@ -3,6 +3,7 @@ import { site } from "@/lib/content";
 import { getAllPosts, hasTranslation } from "@/lib/blog";
 import { languageAlternates, localeHref, locales } from "@/lib/i18n";
 import { SERVICE_PATHS } from "@/lib/service-pages";
+import { LANDING_SLUGS } from "@/lib/landing-pages";
 
 /* Last real change to the static pages. Bump this when page copy changes, so
    search engines can trust lastmod (a value that changes on every deploy is ignored). */
@@ -14,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/services",
     ...Object.values(SERVICE_PATHS).map((s) => `/services/${s}`),
+    ...LANDING_SLUGS.map((s) => `/${s}`),
     "/work",
     "/about",
     "/blog",
@@ -26,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${site.url}${localeHref(l, p)}`,
       lastModified: now,
       changeFrequency: (p === "/" || p === "/blog" ? "weekly" : "monthly") as "weekly" | "monthly",
-      priority: p === "/" ? 1 : p === "/blog" || p.startsWith("/services/") ? 0.8 : 0.7,
+      priority: p === "/" ? 1 : p === "/blog" || p.startsWith("/services/") || LANDING_SLUGS.includes(p.slice(1)) ? 0.8 : 0.7,
       alternates: { languages: languageAlternates(site.url, p) },
     }))
   );

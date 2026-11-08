@@ -92,4 +92,6 @@ We are an official Odoo partner working remote-first with clients in Kuwait, the
 
 Two things set us apart from a pure software vendor. First, we have a 3D and product team, so the same studio that structures your ERP can produce the launch films for your products. Second, our accounting team also runs the books inside Odoo for clients who want it, which means the chart of accounts is designed by people who will close the month in it.
 
-If you are comparing Odoo implementation companies in Kuwait, [send us your requirements](/contact). You will get questions back within one business day.
+For an overview of how we work with Kuwaiti companies, see our [Odoo partner in Kuwait](/odoo-partner-kuwait) page, and for payments and integrations read [connecting your ERP to KNET, banks and e-commerce in Kuwait](/blog/erp-integrations-kuwait-knet-banks-ecommerce).
+
+If you are comparing Odoo implementation companies in Kuwait, [send us your requirements](/contact) or message us on WhatsApp at +965 5566 3826. You will get questions back within one business day.
