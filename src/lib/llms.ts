@@ -86,7 +86,7 @@ export function buildLlmsTxt({ full = false } = {}) {
       L.push(`### ${p.title}`, "", `Source: ${pageUrl("en", `/blog/${p.slug}`)} · Published ${p.date} · By ${p.author}`, "");
       if (p.summary) L.push(`Short answer: ${p.summary}`, "");
       // Article headings are demoted two levels so they nest under this section
-      L.push(p.content.trim().replace(/^(#{1,4}) /gm, (_m, h: string) => `${h}## `), "");
+      L.push(p.content.trim().replace(/^\[\[[\w:-]+\]\]$/gm, "(Interactive calculator on the web page.)").replace(/^(#{1,4}) /gm, (_m, h: string) => `${h}## `), "");
       if (p.faqs?.length) {
         L.push("#### Questions", "");
         for (const f of p.faqs) L.push(`**${f.q}** ${f.a}`, "");

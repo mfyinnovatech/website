@@ -1,6 +1,12 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
+import { SaasVsCustomCalculator } from "@/components/blog/SaasVsCustomCalculator";
+
+/* Interactive blocks an article can place with a marker paragraph, e.g. [[calculator:saas-vs-custom]] */
+const EMBEDS: Record<string, () => React.ReactNode> = {
+  "calculator:saas-vs-custom": () => <SaasVsCustomCalculator />,
+};
 
 function slugify(text: string) {
   return text
@@ -35,7 +41,12 @@ export function Markdown({ content }: { content: string }) {
         h3: ({ children }) => (
           <h3 className="mt-9 font-display text-xl font-semibold tracking-[-0.01em] text-ink">{children}</h3>
         ),
-        p: ({ children }) => <p className="mt-5 text-[1.0625rem] leading-[1.7] text-ink-2">{children}</p>,
+        p: ({ children }) => {
+          const marker = textOf(children).trim().match(/^\[\[([\w:-]+)\]\]$/);
+          const embed = marker && EMBEDS[marker[1]];
+          if (embed) return <>{embed()}</>;
+          return <p className="mt-5 text-[1.0625rem] leading-[1.7] text-ink-2">{children}</p>;
+        },
         ul: ({ children }) => <ul className="mt-5 list-disc space-y-2 ps-6 text-[1.0625rem] leading-[1.7] text-ink-2 marker:text-blue">{children}</ul>,
         ol: ({ children }) => <ol className="mt-5 list-decimal space-y-2 ps-6 text-[1.0625rem] leading-[1.7] text-ink-2 marker:font-mono marker:text-blue">{children}</ol>,
         li: ({ children }) => <li className="ps-1">{children}</li>,
