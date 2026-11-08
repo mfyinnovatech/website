@@ -9,7 +9,7 @@ export const site = {
   legalName: "MFYINNOVATECH LLC",
   url: "https://www.mfyinnova.tech",
   description:
-    "MFY Innovatech is an official Odoo partner and software studio building custom web and mobile products, AI and data solutions, Odoo ERP implementations and 3D product animation for companies on five continents.",
+    "MFY Innovatech is a software, ERP and AI company building custom web and mobile products, ERP systems, AI and data solutions and 3D product animation for companies in Kuwait, the USA and on five continents. It is also an official Odoo partner.",
   email: "maryam@mfyinnova.tech",
   linkedin: "https://www.linkedin.com/in/maryammehboobalam/", // founder's profile: visitors connect with her directly
   /* Company profiles (also published as the organization's sameAs for search and AI engines) */

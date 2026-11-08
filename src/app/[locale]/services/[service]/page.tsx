@@ -15,7 +15,7 @@ import { OdooPanel } from "@/components/brand/OdooPanel";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/lib/content";
 import { getContent, getDict, isLocale, languageAlternates, localeHref, type Locale } from "@/lib/i18n";
-import { ORG_ID, pageGraph, pageUrl } from "@/lib/seo";
+import { ORG_ID, ogImages, pageGraph, pageUrl } from "@/lib/seo";
 import { PROOF, RELATED, SERVICE_PATHS, getServicePage, servicePath, slugForPath } from "@/lib/service-pages";
 
 type Params = { locale: string; service: string };
@@ -41,7 +41,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     title: p.seoTitle,
     description: p.metaDescription,
     alternates: { canonical: pageUrl(locale, path), languages: languageAlternates(site.url, path) },
-    openGraph: { title: p.seoTitle, description: p.metaDescription, url: pageUrl(locale, path), type: "website" },
+    openGraph: { title: p.seoTitle, description: p.metaDescription, url: pageUrl(locale, path), type: "website", images: ogImages(locale, path, p.h1) },
+    twitter: { card: "summary_large_image", title: p.seoTitle, description: p.metaDescription, images: ogImages(locale, path, p.h1) },
   };
 }
 

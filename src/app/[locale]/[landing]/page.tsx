@@ -16,7 +16,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/lib/content";
 import { getPost } from "@/lib/blog";
 import { getContent, getDict, isLocale, languageAlternates, localeHref, type Locale } from "@/lib/i18n";
-import { ORG_ID, pageGraph, pageUrl } from "@/lib/seo";
+import { ORG_ID, ogImages, pageGraph, pageUrl } from "@/lib/seo";
 import { servicePath } from "@/lib/service-pages";
 import { LANDINGS, LANDING_SLUGS, getLanding } from "@/lib/landing-pages";
 
@@ -42,7 +42,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
     title: long ? { absolute: page.seoTitle } : page.seoTitle,
     description: page.metaDescription,
     alternates: { canonical: pageUrl(locale, path), languages: languageAlternates(site.url, path) },
-    openGraph: { title: page.seoTitle, description: page.metaDescription, url: pageUrl(locale, path), type: "website" },
+    openGraph: { title: page.seoTitle, description: page.metaDescription, url: pageUrl(locale, path), type: "website", images: ogImages(locale, path, page.h1) },
+    twitter: { card: "summary_large_image", title: page.seoTitle, description: page.metaDescription, images: ogImages(locale, path, page.h1) },
   };
 }
 

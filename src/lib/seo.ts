@@ -14,6 +14,13 @@ export const ORG_ID = `${site.url}/#org`;
 export const WEBSITE_ID = `${site.url}/#website`;
 export const FOUNDER_ID = `${site.url}/#founder`;
 
+/* The page's generated share card (opengraph-image route), at its public URL:
+   English cards live at the bare path, which the proxy rewrites to /en internally. */
+export function ogImages(locale: Locale, path: string, alt: string) {
+  const url = `${pageUrl(locale, path)}/opengraph-image`;
+  return [{ url, width: 1200, height: 630, alt }];
+}
+
 export function pageUrl(locale: Locale, path: string) {
   const p = localeHref(locale, path);
   return p === "/" ? site.url : `${site.url}${p}`;

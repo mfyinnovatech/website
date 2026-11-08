@@ -22,7 +22,7 @@ export function buildLlmsTxt({ full = false } = {}) {
   L.push(`# ${site.name}`, "");
   L.push(`> ${c.site.description}`, "");
   L.push(
-    `${site.legalName} is a founder-led, remote-first software studio and an official Odoo partner. ` +
+    `${site.legalName} is a founder-led, remote-first software, ERP and AI company, and an official Odoo partner. ` +
       `It works with clients across North America, Europe, the Gulf (including Kuwait, the UAE, Saudi Arabia and Qatar), Africa and Australia. ` +
       `The website is published in English and Arabic.`,
     ""

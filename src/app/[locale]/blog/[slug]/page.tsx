@@ -10,7 +10,7 @@ import { site } from "@/lib/content";
 import { getContent, getDict, isLocale, localeHref, locales, type Locale } from "@/lib/i18n";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { DirectContact } from "@/components/sections/DirectContact";
-import { breadcrumbs, FOUNDER_ID, ORG_ID, WEBSITE_ID, pageUrl } from "@/lib/seo";
+import { breadcrumbs, FOUNDER_ID, ORG_ID, WEBSITE_ID, ogImages, pageUrl } from "@/lib/seo";
 
 type Params = { slug: string; locale: string };
 
@@ -47,9 +47,9 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       modifiedTime: post.updated ?? post.date,
       authors: [post.author],
       tags: post.tags,
-      images: [{ url: "/og-default.png", width: 1200, height: 630, alt: post.title }],
+      images: ogImages(locale, `/blog/${post.slug}`, post.title),
     },
-    twitter: { card: "summary_large_image", title, description: post.description, images: ["/og-default.png"] },
+    twitter: { card: "summary_large_image", title, description: post.description, images: ogImages(locale, `/blog/${post.slug}`, post.title) },
   };
 }
 
