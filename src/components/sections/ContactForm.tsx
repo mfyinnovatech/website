@@ -157,6 +157,11 @@ export function ContactForm() {
               </a>
             </Row>
             <Row label={t.rowBased}>{site.location}</Row>
+            <Row label={t.rowOffice}>
+              <address className="not-italic">
+                <bdi dir="ltr">{site.address.display}</bdi>
+              </address>
+            </Row>
             <Row label={t.rowResponse}>{t.responseValue}</Row>
           </dl>
         </div>

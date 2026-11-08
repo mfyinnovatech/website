@@ -32,6 +32,7 @@ export function buildLlmsTxt({ full = false } = {}) {
   L.push(`- Official Odoo partner: yes`);
   L.push(`- Founder: ${c.team[0].name} (${c.team[0].title})`);
   L.push(`- Languages: English, Arabic`);
+  L.push(`- Registered office: ${site.address.display}`);
   L.push(`- Contact: ${site.email}`);
   for (const ph of site.phones) L.push(`- Phone (${ph.country === "KW" ? "Kuwait" : "Pakistan"}): ${ph.display}`);
   L.push(`- LinkedIn: ${site.linkedinCompany}`);

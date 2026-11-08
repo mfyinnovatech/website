@@ -25,6 +25,15 @@ export const site = {
     { country: "PK", display: "+92 335 9078929", tel: "+923359078929" },
   ],
   location: "Remote-first · Clients on five continents",
+  /* Registered office of MFYINNOVATECH LLC (same address as the Clutch listing) */
+  address: {
+    street: "117 S Lexington Street STE 100",
+    city: "Harrisonville",
+    region: "MO",
+    postalCode: "64701",
+    country: "US",
+    display: "117 S Lexington Street STE 100, Harrisonville, MO 64701, USA",
+  },
   partner: {
     name: "Odoo",
     label: "Official Odoo partner",

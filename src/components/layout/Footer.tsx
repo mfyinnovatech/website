@@ -96,6 +96,9 @@ export function Footer({ locale }: { locale: Locale }) {
               </a>
             ))}
           </p>
+          <address className="mt-3 text-center text-[14px] not-italic text-ink-3" dir="ltr">
+            {site.legalName} · {site.address.display}
+          </address>
         </div>
 
         {/* Markets: links to the market landing pages from every page */}

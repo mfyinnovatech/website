@@ -285,6 +285,7 @@ export const ar: Dict = {
     copyEmail: "نسخ عنوان البريد",
     rowLinkedIn: "LinkedIn",
     rowBased: "المقر",
+    rowOffice: "المكتب",
     rowResponse: "الرد",
     rowWhatsApp: "واتساب",
     phoneLabels: { KW: "الكويت", PK: "باكستان" } as Record<string, string>,

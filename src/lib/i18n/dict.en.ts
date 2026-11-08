@@ -282,6 +282,7 @@ export const en = {
     copyEmail: "Copy email address",
     rowLinkedIn: "LinkedIn",
     rowBased: "Based",
+    rowOffice: "Office",
     rowResponse: "Response",
     rowWhatsApp: "WhatsApp",
     phoneLabels: { KW: "Kuwait", PK: "Pakistan" } as Record<string, string>,
