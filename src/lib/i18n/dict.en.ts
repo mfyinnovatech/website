@@ -139,6 +139,7 @@ export const en = {
     h2b: "the precision.",
     onLinkedIn: "on LinkedIn",
     onInstagram: "on Instagram",
+    fullProfile: "Full profile",
   },
   insights: {
     label: "From the blog",

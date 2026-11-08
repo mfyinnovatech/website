@@ -1,6 +1,7 @@
 import { site } from "@/lib/content";
 import { getContent, getDict, localeHref, type Locale } from "@/lib/i18n";
 import { servicePath } from "@/lib/service-pages";
+import { AUTHOR_FACTS, AUTHOR_PATH } from "@/lib/author";
 
 /* ─────────────────────────────────────────────
    Structured data (schema.org JSON-LD) shared across pages.
@@ -98,8 +99,11 @@ export function organizationGraph(locale: Locale) {
       "@type": "Person",
       "@id": FOUNDER_ID,
       name: founder.name,
+      url: pageUrl("en", AUTHOR_PATH),
       jobTitle: founder.role,
       description: founder.bio,
+      alumniOf: { "@type": "CollegeOrUniversity", name: AUTHOR_FACTS.alumniOf },
+      knowsAbout: AUTHOR_FACTS.knowsAbout,
       image: founder.photo ? `${site.url}${founder.photo}` : undefined,
       worksFor: { "@id": ORG_ID },
       sameAs: [founder.linkedin, founder.instagram].filter(real),
@@ -169,7 +173,7 @@ export function breadcrumbs(locale: Locale, trail: { name: string; path: string 
   };
 }
 
-type PageType = "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage" | "FAQPage";
+type PageType = "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage" | "FAQPage" | "ProfilePage";
 
 /* A page node plus its breadcrumb, wrapped as a graph ready for a <script> tag */
 export function pageGraph(

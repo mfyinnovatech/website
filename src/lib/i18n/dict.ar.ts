@@ -142,6 +142,7 @@ export const ar: Dict = {
     h2b: "يقفون خلف الدقة.",
     onLinkedIn: "على LinkedIn",
     onInstagram: "على Instagram",
+    fullProfile: "الملف الكامل",
   },
   insights: {
     label: "من المدونة",

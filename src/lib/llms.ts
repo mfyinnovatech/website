@@ -30,7 +30,7 @@ export function buildLlmsTxt({ full = false } = {}) {
   L.push("## Key facts", "");
   L.push(`- Legal name: ${site.legalName}`);
   L.push(`- Official Odoo partner: yes`);
-  L.push(`- Founder: ${c.team[0].name} (${c.team[0].title})`);
+  L.push(`- Founder: ${c.team[0].name} (${c.team[0].title}), profile: ${pageUrl("en", "/about/maryam-mehboob")}`);
   L.push(`- Languages: English, Arabic`);
   L.push(`- Registered office: ${site.address.display}`);
   L.push(`- Contact: ${site.email}`);

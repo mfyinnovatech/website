@@ -2,7 +2,9 @@ import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { MonogramTile } from "@/components/brand/MonogramTile";
 import type { TeamMember } from "@/lib/content";
 import Image from "next/image";
-import { getContent, getDict, type Locale } from "@/lib/i18n";
+import { getContent, getDict, localeHref, type Locale } from "@/lib/i18n";
+import Link from "next/link";
+import { AUTHOR_PATH } from "@/lib/author";
 
 /* Team — dark rounded stage with a spotlight from the top, centred label and
    headline, one large featured card beside stacked compact cards. */
@@ -42,7 +44,7 @@ export function Team({ locale, num = "07" }: { locale: Locale; num?: string }) {
         <Stagger className="relative mt-14 grid gap-6 lg:mt-20 lg:grid-flow-col lg:grid-cols-2 lg:grid-rows-2">
           {team.slice(0, 4).map((m) => (
             <StaggerItem key={m.name} className="h-full">
-              <FeaturedCard m={m} d={d} />
+              <FeaturedCard m={m} d={d} locale={locale} />
             </StaggerItem>
           ))}
         </Stagger>
@@ -96,7 +98,7 @@ function Socials({ m, d, size = "md" }: { m: TeamMember; d: ReturnType<typeof ge
   );
 }
 
-function FeaturedCard({ m, d }: { m: TeamMember; d: ReturnType<typeof getDict> }) {
+function FeaturedCard({ m, d, locale }: { m: TeamMember; d: ReturnType<typeof getDict>; locale?: Locale }) {
   return (
     <article className="flex h-full flex-col rounded-[40px] bg-navy-2 p-8 sm:p-10">
       <Portrait m={m} size="lg" />
@@ -107,6 +109,11 @@ function FeaturedCard({ m, d }: { m: TeamMember; d: ReturnType<typeof getDict> }
             {m.role} · {m.title}
           </p>
           <p className="mt-4 max-w-md text-[0.95rem] text-white/70">{m.bio}</p>
+          {locale && m.featured && (
+            <Link href={localeHref(locale, AUTHOR_PATH)} className="mt-5 inline-flex items-center gap-1.5 font-display text-sm font-semibold text-blue-soft hover:text-white">
+              {d.team.fullProfile} <span aria-hidden className="rtl:-scale-x-100">→</span>
+            </Link>
+          )}
         </div>
         <Socials m={m} d={d} />
       </div>

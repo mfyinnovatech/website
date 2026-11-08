@@ -18,6 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...LANDING_SLUGS.map((s) => `/${s}`),
     "/work",
     "/about",
+    "/about/maryam-mehboob",
     "/blog",
     "/contact",
     "/privacy",

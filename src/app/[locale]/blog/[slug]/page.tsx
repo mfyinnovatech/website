@@ -10,6 +10,7 @@ import { site } from "@/lib/content";
 import { getContent, getDict, isLocale, localeHref, locales, type Locale } from "@/lib/i18n";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { DirectContact } from "@/components/sections/DirectContact";
+import { AUTHOR_PATH } from "@/lib/author";
 import { breadcrumbs, FOUNDER_ID, ORG_ID, WEBSITE_ID, ogImages, pageUrl } from "@/lib/seo";
 
 type Params = { slug: string; locale: string };
@@ -125,7 +126,14 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
             <p className="text-lead mt-6">{post.description}</p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5 text-sm text-ink-3">
               <span>
-                {d.by} <span className="font-semibold text-ink">{post.author}</span>
+                {d.by}{" "}
+                {authorIsFounder ? (
+                  <Link href={L(AUTHOR_PATH)} rel="author" className="font-semibold text-ink underline decoration-line underline-offset-4 hover:text-blue">
+                    {post.author}
+                  </Link>
+                ) : (
+                  <span className="font-semibold text-ink">{post.author}</span>
+                )}
               </span>
               <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
               <span>{post.readingMinutes} {d.minRead}</span>
