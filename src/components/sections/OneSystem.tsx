@@ -7,7 +7,6 @@ import { ArrowRight, BarChart3, Boxes, Factory, Landmark, ShoppingCart, Users } 
 import { Reveal } from "@/components/ui/Reveal";
 import { Logo } from "@/components/ui/Logo";
 import { useLocale } from "@/components/i18n/LocaleProvider";
-import { BrandVideo } from "@/components/sections/BrandVideo";
 
 /* One system — hub-and-spoke: six operating areas connected to a single
    MFY × Odoo database at the centre (AgencyAI "all features in one" pattern). */
@@ -34,9 +33,6 @@ export function OneSystem({ num = "03" }: { num?: string }) {
             {o.lead}
           </p>
         </Reveal>
-
-        {/* The 2-minute brand video tells this section's story */}
-        <BrandVideo className="mx-auto mt-14 max-w-6xl lg:mt-16" />
 
         {/* Diagram */}
         <div className="relative mt-14 lg:mt-20">

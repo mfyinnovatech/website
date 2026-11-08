@@ -32,9 +32,9 @@ export const en = {
     disciplinesAria: "Disciplines",
     disciplines: ["Software & AI", "ERP · Odoo", "3D animation", "Finance ops"],
     landmarksCaption: "Across the globe",
-    playReel: "Play reel",
-    reelLabel: "Reel 01 · 3D product animation",
-    reelNote: "Modeled · lit · animated in-house",
+    playReel: "Play the MFY Innovatech video",
+    reelLabel: "Watch · 2 min",
+    reelNote: "Software · ERP · AI · 3D",
     proof: [
       ["50+", "projects delivered"],
       ["9", "3D productions released"],

@@ -42,8 +42,8 @@ export function Hero() {
   const { open } = useLightbox();
   const { d, c, href } = useLocale();
   const h = d.hero;
-  const videos = c.videos;
-  const reel = videos.find((v) => v.featured) ?? videos[0];
+  /* The panel under the hero plays MFY's 2-minute company video */
+  const reel = c.brandVideo;
 
   return (
     <section className="relative overflow-hidden bg-cloud pt-[var(--nav-offset)]">
@@ -112,16 +112,16 @@ export function Hero() {
           </motion.aside>
         </div>
 
-        {/* Reel panel — the first proof: a real MFY 3D production */}
+        {/* Company video panel: MFY in two minutes (thumbnail is the video's opening logo frame) */}
         <div className="rise mt-14 sm:mt-16 lg:mt-20" style={{ animationDelay: "0.5s", ["--rise" as string]: "32px" }}>
           <button
             type="button"
-            onClick={() => open({ id: reel.id, title: reel.title, category: reel.category, orientation: "landscape" })}
+            onClick={() => open({ id: reel.id, title: reel.title, category: h.reelLabel, orientation: "landscape" })}
             className="group relative block w-full overflow-hidden rounded-2xl bg-navy text-start"
           >
-            <div className="relative aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9]">
+            <div className="relative aspect-video lg:aspect-[21/9]">
               <Image
-                src={`/work/${reel.id}.jpg`}
+                src={reel.thumbnail}
                 alt=""
                 fill
                 priority
@@ -137,16 +137,17 @@ export function Hero() {
               <Cross className="bottom-5 right-5 hidden sm:block" />
 
               <span className="sr-only">{h.playReel}: </span>
-              <span className="absolute left-1/2 top-1/2 inline-flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-navy shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:bg-blue group-hover:text-white sm:h-20 sm:w-20">
-                <Play size={22} fill="currentColor" className="ms-1" />
-              </span>
 
-              <div className="absolute inset-x-0 bottom-0 flex flex-col gap-3 p-6 text-white sm:flex-row sm:items-end sm:justify-between sm:gap-4 sm:p-8">
+              {/* Text bottom-start, play button bottom-end, so the logo in the frame stays clear */}
+              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5 text-white sm:p-8">
                 <div>
                   <p className="eyebrow text-blue-soft">{h.reelLabel}</p>
-                  <p className="mt-2 font-display text-lg font-medium sm:text-xl">{reel.title}</p>
+                  <p className="mt-2 font-display text-lg font-medium sm:text-xl">{d.brandVideo.heading}</p>
+                  <p className="mono-label mt-2 hidden text-white/60 sm:block">{h.reelNote}</p>
                 </div>
-                <p className="mono-label hidden text-white/60 sm:block">{h.reelNote}</p>
+                <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-white text-navy shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 group-hover:bg-blue group-hover:text-white sm:h-20 sm:w-20">
+                  <Play size={22} fill="currentColor" className="ms-1" />
+                </span>
               </div>
             </div>
           </button>
