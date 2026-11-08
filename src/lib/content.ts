@@ -136,6 +136,7 @@ export type Video = {
   client: string;
   category: string;
   year: string;
+  uploaded: string; // ISO date from YouTube; required by Google for video results
   featured?: boolean;
 };
 
@@ -147,6 +148,7 @@ export const videos: Video[] = [
     client: "Hyperbaric medical equipment",
     category: "Product animation",
     year: "2025",
+    uploaded: "2025-07-30T06:32:36-07:00",
     featured: true,
   },
   {
@@ -155,6 +157,7 @@ export const videos: Video[] = [
     client: "Hyperbaric medical equipment",
     category: "Product animation",
     year: "2025",
+    uploaded: "2025-07-30T06:23:13-07:00",
     featured: true,
   },
   {
@@ -163,6 +166,7 @@ export const videos: Video[] = [
     client: "Hyperbaric medical equipment",
     category: "Product animation",
     year: "2025",
+    uploaded: "2025-07-30T06:27:15-07:00",
   },
   {
     id: "1X-zlaGFwPI",
@@ -170,6 +174,7 @@ export const videos: Video[] = [
     client: "Hyperbaric medical equipment",
     category: "Product animation",
     year: "2025",
+    uploaded: "2025-07-30T06:15:29-07:00",
   },
   {
     id: "X1ExjME3kSM",
@@ -177,13 +182,15 @@ export const videos: Video[] = [
     client: "Hyperbaric medical equipment",
     category: "Product animation",
     year: "2025",
+    uploaded: "2025-07-30T06:07:46-07:00",
   },
   {
     id: "H3YglDR0wjk",
     title: "Performance shoe",
     client: "Footwear concept",
     category: "Product animation",
-    year: "2025",
+    year: "2024",
+    uploaded: "2024-06-05T01:33:31-07:00",
     featured: true,
   },
   {
@@ -191,7 +198,8 @@ export const videos: Video[] = [
     title: "Vitamin supplement",
     client: "Consumer health",
     category: "Product animation",
-    year: "2025",
+    year: "2024",
+    uploaded: "2024-06-02T03:56:15-07:00",
   },
   {
     id: "NSK-yFkdTB0",
@@ -199,13 +207,15 @@ export const videos: Video[] = [
     client: "Consumer packaging",
     category: "Product animation",
     year: "2025",
+    uploaded: "2025-01-18T05:19:05-08:00",
   },
   {
     id: "96FKrPCF6vg",
     title: "Industrial can design",
     client: "Consumer packaging",
     category: "Product animation",
-    year: "2025",
+    year: "2024",
+    uploaded: "2024-06-26T07:36:23-07:00",
   },
 ];
 

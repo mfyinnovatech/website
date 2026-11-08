@@ -45,6 +45,7 @@ export default async function WorkPage({ params }: { params: Promise<Params> }) 
           thumbnailUrl: `${site.url}/work/${v.id}.jpg`,
           embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`,
           contentUrl: `https://www.youtube.com/watch?v=${v.id}`,
+          uploadDate: v.uploaded,
           creator: { "@id": ORG_ID },
           inLanguage: locale,
         },
