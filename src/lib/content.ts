@@ -348,7 +348,7 @@ export const team: TeamMember[] = [
     name: "Maryam Mehboob",
     role: "Founder",
     title: "ERP & technology expert",
-    bio: "Leads the Odoo partnership, client engagements and delivery. Structures the ERP, the accounts and the process behind every project.",
+    bio: "Leads the company, its Odoo partnership and client relationships, and sets the standard the team delivers ERP projects to.",
     initials: "MM",
     linkedin: "https://www.linkedin.com/in/maryammehboobalam/",
     instagram: "https://www.instagram.com/biz_maryam_/",

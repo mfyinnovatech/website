@@ -59,10 +59,10 @@ const en: AuthorCopy = {
   eyebrow: "Founder · Author",
   name: "Maryam Mehboob",
   role: "Founder of MFY Innovatech · ERP, AI and digital transformation consultant",
-  lead: "Maryam leads every MFY Innovatech engagement herself, from the first workflow analysis to development, go-live and training, so clients get the business view and the technical view from one person.",
+  lead: "Maryam is the founder of MFY Innovatech. She sets the direction for the company's ERP, software and AI work, alongside a team of engineers, analysts and designers who deliver each project from workflow analysis to go-live and training.",
   answerLabel: "In short",
   answer:
-    "Maryam Mehboob is the founder of MFY Innovatech and an ERP, AI and digital transformation consultant. A Computer Science graduate of COMSATS University Islamabad, she started as an Odoo developer and functional consultant. She now leads ERP implementations, custom software and AI automation projects for companies in the USA, Canada, Kuwait and the Gulf.",
+    "Maryam Mehboob is the founder of MFY Innovatech and an ERP, AI and digital transformation consultant. A Computer Science graduate of COMSATS University Islamabad, she started as an Odoo developer and functional consultant. Today she heads the MFY Innovatech team, which delivers ERP implementations, custom software and AI automation for companies in the USA, Canada, Kuwait and the Gulf.",
   expertiseTitle: "What she works on",
   expertise: [
     { title: "ERP implementation and rescue", text: "New implementations, version upgrades and recovery of stalled projects, on Odoo Online, On-Premise and Odoo.sh." },
@@ -81,7 +81,7 @@ const en: AuthorCopy = {
     "Top Rated on Upwork",
     "Founder of MFY Innovatech, an official Odoo partner",
   ],
-  resultTitle: "A result she led",
+  resultTitle: "A client result",
   resultIntro: "A US distributor with 4 warehouses and more than 3,000 SKUs ran on QuickBooks, spreadsheets and one person's memory. After an ERP implementation covering inventory, purchasing and manufacturing:",
   result: [
     "Stock-outs fell from 2–3 a week to near zero within two months",
@@ -113,10 +113,10 @@ const ar: AuthorCopy = {
   eyebrow: "المؤسِّسة · الكاتبة",
   name: "مريم محبوب",
   role: "مؤسِّسة MFY Innovatech · مستشارة ERP والذكاء الاصطناعي والتحول الرقمي",
-  lead: "تقود مريم كل مشروع في MFY Innovatech بنفسها، من تحليل سير العمل الأول إلى التطوير والإطلاق والتدريب، فيحصل العميل على الرؤية التجارية والتقنية من شخص واحد.",
+  lead: "مريم هي مؤسِّسة MFY Innovatech. تحدد توجه أعمال الشركة في أنظمة ERP والبرمجيات والذكاء الاصطناعي، إلى جانب فريق من المهندسين والمحللين والمصممين يتولى تسليم كل مشروع من تحليل سير العمل إلى الإطلاق والتدريب.",
   answerLabel: "باختصار",
   answer:
-    "مريم محبوب مؤسِّسة MFY Innovatech ومستشارة في أنظمة ERP والذكاء الاصطناعي والتحول الرقمي. تخرجت في علوم الحاسوب من جامعة COMSATS في إسلام آباد، وبدأت مطوِّرة ومستشارة وظيفية لأنظمة Odoo. وتقود اليوم مشاريع تنفيذ ERP والبرمجيات المخصصة وأتمتة الذكاء الاصطناعي لشركات في الولايات المتحدة وكندا والكويت والخليج.",
+    "مريم محبوب مؤسِّسة MFY Innovatech ومستشارة في أنظمة ERP والذكاء الاصطناعي والتحول الرقمي. تخرجت في علوم الحاسوب من جامعة COMSATS في إسلام آباد، وبدأت مطوِّرة ومستشارة وظيفية لأنظمة Odoo. وتقود اليوم فريق MFY Innovatech الذي ينفذ مشاريع ERP والبرمجيات المخصصة وأتمتة الذكاء الاصطناعي لشركات في الولايات المتحدة وكندا والكويت والخليج.",
   expertiseTitle: "مجالات عملها",
   expertise: [
     { title: "تنفيذ أنظمة ERP وإنقاذ المشاريع", text: "تنفيذات جديدة وترقيات إصدارات وإنقاذ المشاريع المتعثرة، على Odoo Online وOn-Premise وOdoo.sh." },
@@ -135,7 +135,7 @@ const ar: AuthorCopy = {
     "تقييم Top Rated على منصة Upwork",
     "مؤسِّسة MFY Innovatech، الشريك الرسمي لـOdoo",
   ],
-  resultTitle: "نتيجة قادتها",
+  resultTitle: "نتيجة لأحد العملاء",
   resultIntro: "موزّع أمريكي لديه 4 مستودعات وأكثر من 3,000 صنف كان يعمل على QuickBooks وجداول البيانات وذاكرة شخص واحد. بعد تنفيذ نظام ERP يغطي المخزون والمشتريات والتصنيع:",
   result: [
     "انخفض نفاد المخزون من 2–3 مرات أسبوعياً إلى ما يقارب الصفر خلال شهرين",

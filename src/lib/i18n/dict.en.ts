@@ -223,7 +223,7 @@ export const en = {
     eyebrow: "About the studio",
     h1a: "Precise, bold and",
     h1b: "built to be trusted.",
-    lead: "MFYINNOVATECH LLC is a founder-led software studio. Founders who still design, build and analyse the work themselves, with a team that shares the same standard.",
+    lead: "MFYINNOVATECH LLC is a founder-led software company: an experienced leadership team and specialists in engineering, ERP, data and 3D, all held to the same standard.",
     cta: "Work with us",
     storyLabel: "The studio",
     storyH2: "One team, from the first diagram to the accounting close.",
