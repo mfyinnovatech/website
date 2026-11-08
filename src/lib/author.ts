@@ -1,7 +1,7 @@
 import type { Locale } from "@/lib/i18n";
 
 /* Founder author page (/about/maryam-mehboob). Every fact here comes from Maryam's own
-   LinkedIn profile (checked 2026-11-08): degree, background, industries, the distributor
+   LinkedIn profile (checked 2026-11-08): degree, industries, the distributor
    result and the recommendation. Keep it in sync with that profile; add nothing unverified. */
 
 export const AUTHOR_PATH = "/about/maryam-mehboob";
@@ -62,7 +62,7 @@ const en: AuthorCopy = {
   lead: "Maryam is the founder of MFY Innovatech. She sets the direction for the company's ERP, software and AI work, alongside a team of engineers, analysts and designers who deliver each project from workflow analysis to go-live and training.",
   answerLabel: "In short",
   answer:
-    "Maryam Mehboob is the founder of MFY Innovatech and an ERP, AI and digital transformation consultant. A Computer Science graduate of COMSATS University Islamabad, she started as an Odoo developer and functional consultant. Today she heads the MFY Innovatech team, which delivers ERP implementations, custom software and AI automation for companies in the USA, Canada, Kuwait and the Gulf.",
+    "Maryam Mehboob is the founder of MFY Innovatech and an ERP, AI and digital transformation consultant. A Computer Science graduate of COMSATS University Islamabad, today she heads the MFY Innovatech team, which delivers ERP implementations, custom software and AI automation for companies in the USA, Canada, Kuwait and the Gulf.",
   expertiseTitle: "What she works on",
   expertise: [
     { title: "ERP implementation and rescue", text: "New implementations, version upgrades and recovery of stalled projects, on Odoo Online, On-Premise and Odoo.sh." },
@@ -77,7 +77,6 @@ const en: AuthorCopy = {
   credentialsTitle: "Background and credentials",
   credentials: [
     "Computer Science graduate, COMSATS University Islamabad",
-    "Started as an Odoo developer and functional consultant",
     "Top Rated on Upwork",
     "Founder of MFY Innovatech, an official Odoo partner",
   ],
@@ -116,7 +115,7 @@ const ar: AuthorCopy = {
   lead: "مريم هي مؤسِّسة MFY Innovatech. تحدد توجه أعمال الشركة في أنظمة ERP والبرمجيات والذكاء الاصطناعي، إلى جانب فريق من المهندسين والمحللين والمصممين يتولى تسليم كل مشروع من تحليل سير العمل إلى الإطلاق والتدريب.",
   answerLabel: "باختصار",
   answer:
-    "مريم محبوب مؤسِّسة MFY Innovatech ومستشارة في أنظمة ERP والذكاء الاصطناعي والتحول الرقمي. تخرجت في علوم الحاسوب من جامعة COMSATS في إسلام آباد، وبدأت مطوِّرة ومستشارة وظيفية لأنظمة Odoo. وتقود اليوم فريق MFY Innovatech الذي ينفذ مشاريع ERP والبرمجيات المخصصة وأتمتة الذكاء الاصطناعي لشركات في الولايات المتحدة وكندا والكويت والخليج.",
+    "مريم محبوب مؤسِّسة MFY Innovatech ومستشارة في أنظمة ERP والذكاء الاصطناعي والتحول الرقمي. تخرجت في علوم الحاسوب من جامعة COMSATS في إسلام آباد، وتقود اليوم فريق MFY Innovatech الذي ينفذ مشاريع ERP والبرمجيات المخصصة وأتمتة الذكاء الاصطناعي لشركات في الولايات المتحدة وكندا والكويت والخليج.",
   expertiseTitle: "مجالات عملها",
   expertise: [
     { title: "تنفيذ أنظمة ERP وإنقاذ المشاريع", text: "تنفيذات جديدة وترقيات إصدارات وإنقاذ المشاريع المتعثرة، على Odoo Online وOn-Premise وOdoo.sh." },
@@ -131,7 +130,6 @@ const ar: AuthorCopy = {
   credentialsTitle: "الخلفية والمؤهلات",
   credentials: [
     "خريجة علوم الحاسوب، جامعة COMSATS إسلام آباد",
-    "بدأت مطوِّرة ومستشارة وظيفية لأنظمة Odoo",
     "تقييم Top Rated على منصة Upwork",
     "مؤسِّسة MFY Innovatech، الشريك الرسمي لـOdoo",
   ],
