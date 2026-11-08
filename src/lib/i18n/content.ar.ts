@@ -217,3 +217,20 @@ export const clients: en.Client[] = by(en.clients, "key", {
 
 export const tools = en.tools;
 export const featuredTools = en.featuredTools;
+
+export const brandVideo = {
+  ...en.brandVideo,
+  description:
+    "تعمل معظم الشركات على جداول البيانات وتطبيقات منفصلة وشخص ينسخ البيانات بينها. تستبدل MFY Innovatech ذلك بنظام واحد متزامن للمبيعات والمخزون والمشتريات والمحاسبة والموارد البشرية والرواتب، وتبني برمجيات مخصصة وتطبيقات iOS وAndroid وحلول ذكاء اصطناعي وأتمتة ورسوماً ثلاثية الأبعاد واقعية للمنتجات.",
+  chapters: [
+    { t: 0, label: "جداول البيانات مقابل نظام واحد" },
+    { t: 21, label: "من نحن" },
+    { t: 32, label: "ما الذي نبنيه" },
+    { t: 43, label: "قاعدة بيانات واحدة لكل أعمالك" },
+    { t: 55, label: "الرسوم ثلاثية الأبعاد للمنتجات" },
+    { t: 65, label: "عملاء في خمس قارات" },
+    { t: 78, label: "العملاء وآراؤهم" },
+    { t: 95, label: "كيف نعمل" },
+    { t: 109, label: "ابدأ مشروعك" },
+  ],
+};

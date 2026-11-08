@@ -11,6 +11,7 @@ export type Playable = {
   title: string;
   category: string;
   orientation?: "landscape" | "portrait";
+  start?: number; // seconds into the video
 };
 
 type Ctx = { open: (v: Playable) => void };
@@ -78,7 +79,7 @@ export function VideoLightboxProvider({ children }: { children: ReactNode }) {
               <div className={`w-full overflow-hidden rounded-xl bg-black shadow-2xl ${video.orientation === "portrait" ? "aspect-[9/16]" : "aspect-video"}`}>
                 <iframe
                   className="h-full w-full"
-                  src={`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&rel=0&modestbranding=1`}
+                  src={`https://www.youtube-nocookie.com/embed/${video.id}?autoplay=1&rel=0&modestbranding=1${video.start ? `&start=${video.start}` : ""}`}
                   title={video.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

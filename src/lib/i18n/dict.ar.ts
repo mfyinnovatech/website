@@ -175,6 +175,7 @@ export const ar: Dict = {
     founderLinkedin: "مريم على LinkedIn",
     instagram: "Instagram",
     facebook: "Facebook",
+    youtube: "YouTube",
     odoo: "شريك Odoo",
     email: "راسلنا",
     links: { services: "الخدمات", work: "أعمالنا", about: "من نحن", blog: "المدونة", privacy: "الخصوصية", terms: "الشروط" },
@@ -184,6 +185,13 @@ export const ar: Dict = {
     language: "اللغة",
   },
   lightbox: { close: "إغلاق الفيديو" },
+  brandVideo: {
+    eyebrow: "شاهد · دقيقتان",
+    heading: "MFY Innovatech في دقيقتين.",
+    play: "تشغيل الفيديو",
+    chapters: "في هذا الفيديو",
+    langNote: "الفيديو باللغة الإنجليزية",
+  },
   about: {
     metaTitle: "من نحن",
     metaDescription:

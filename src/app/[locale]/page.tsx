@@ -12,7 +12,7 @@ import { PartnerStrip } from "@/components/sections/PartnerStrip";
 import { OneSystem } from "@/components/sections/OneSystem";
 import { getContent, getDict, isLocale, type Locale } from "@/lib/i18n";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { pageGraph, pageUrl } from "@/lib/seo";
+import { brandVideoNode, pageGraph, pageUrl } from "@/lib/seo";
 
 type Params = { locale: string };
 
@@ -27,6 +27,7 @@ export default async function Home({ params }: { params: Promise<Params> }) {
     name: d.meta.title,
     description: d.meta.description,
     extra: [
+      brandVideoNode(locale),
       {
         "@type": "FAQPage",
         "@id": `${pageUrl(locale, "/")}#faq`,

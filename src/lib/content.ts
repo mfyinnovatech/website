@@ -15,6 +15,7 @@ export const site = {
   /* Company profiles (also published as the organization's sameAs for search and AI engines) */
   linkedinCompany: "https://www.linkedin.com/company/mfyinnovatech/",
   instagram: "https://www.instagram.com/mfyinnovatech/",
+  youtube: "https://www.youtube.com/@mfyinnovatech",
   facebook: "https://www.facebook.com/mfyinnovatech/",
   /* Phone lines; country codes match the labels in the dictionaries */
   phones: [
@@ -685,3 +686,30 @@ export const featuredTools = [
   "odoo", "n8n", "blender", "flutter", "nextdotjs", "react", "python", "pytorch",
   "postgresql", "docker", "figma", "wordpress", "zapier", "hubspot", "gohighlevel", "meta",
 ];
+
+/* ─────────────────────────────────────────────
+   Brand video — "Still Running Your Business on Spreadsheets?" (YouTube).
+   Chapters come from the video's own YouTube description; they power the
+   on-page "In this video" list and Google's key moments (Clip structured data).
+   ───────────────────────────────────────────── */
+export const brandVideo = {
+  id: "Epl7L2gE9Ak",
+  title: "Still Running Your Business on Spreadsheets? | MFY Innovatech",
+  description:
+    "Most businesses run on spreadsheets, disconnected apps and someone copying data between them. MFY Innovatech replaces that with one synced system for sales, inventory, purchasing, accounting, HR and payroll, and builds custom software, iOS and Android apps, AI and automation, and photoreal 3D product animation.",
+  uploaded: "2026-11-05T16:51:55-08:00",
+  duration: "PT2M2S",
+  seconds: 122,
+  thumbnail: "/video/mfy-intro.jpg",
+  chapters: [
+    { t: 0, label: "Spreadsheets vs one system" },
+    { t: 21, label: "Who we are" },
+    { t: 32, label: "What we build" },
+    { t: 43, label: "One database for your whole business" },
+    { t: 55, label: "3D product animation" },
+    { t: 65, label: "Clients on five continents" },
+    { t: 78, label: "Clients and testimonials" },
+    { t: 95, label: "How we work" },
+    { t: 109, label: "Start your project" },
+  ],
+};

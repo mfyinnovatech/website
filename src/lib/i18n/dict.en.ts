@@ -172,6 +172,7 @@ export const en = {
     founderLinkedin: "Maryam on LinkedIn",
     instagram: "Instagram",
     facebook: "Facebook",
+    youtube: "YouTube",
     odoo: "Odoo partner",
     email: "Email us",
     links: { services: "Services", work: "Work", about: "About", blog: "Blog", privacy: "Privacy", terms: "Terms" },
@@ -181,6 +182,13 @@ export const en = {
     language: "Language",
   },
   lightbox: { close: "Close video" },
+  brandVideo: {
+    eyebrow: "Watch · 2 min",
+    heading: "MFY Innovatech in two minutes.",
+    play: "Play video",
+    chapters: "In this video",
+    langNote: "",
+  },
   about: {
     metaTitle: "About",
     metaDescription:

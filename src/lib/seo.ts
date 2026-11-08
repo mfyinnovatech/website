@@ -38,7 +38,8 @@ export function organizationGraph(locale: Locale) {
       email: site.email,
       description: c.site.description,
       founder: { "@id": FOUNDER_ID },
-      sameAs: [site.linkedinCompany, site.instagram, site.facebook],
+      sameAs: [site.linkedinCompany, site.instagram, site.facebook, site.youtube],
+      subjectOf: { "@id": `${site.url}/#brand-video` },
       areaServed: AREA_SERVED.map((code) => ({ "@type": "Country", name: code })),
       knowsLanguage: ["en", "ar"],
       knowsAbout: [
@@ -115,6 +116,34 @@ export function serviceNodes(locale: Locale) {
     url: pageUrl(locale, servicePath(s.slug)),
     inLanguage: locale,
   }));
+}
+
+/* MFY's brand video, with its YouTube chapters as Clips (Google "key moments") */
+export function brandVideoNode(locale: Locale) {
+  const v = getContent(locale).brandVideo;
+  const watch = `https://www.youtube.com/watch?v=${v.id}`;
+  return {
+    "@type": "VideoObject",
+    "@id": `${site.url}/#brand-video`,
+    name: v.title,
+    description: v.description,
+    thumbnailUrl: [`${site.url}${v.thumbnail}`, `https://i.ytimg.com/vi/${v.id}/maxresdefault.jpg`],
+    uploadDate: v.uploaded,
+    duration: v.duration,
+    embedUrl: `https://www.youtube-nocookie.com/embed/${v.id}`,
+    contentUrl: watch,
+    inLanguage: "en",
+    publisher: { "@id": ORG_ID },
+    creator: { "@id": ORG_ID },
+    about: { "@id": ORG_ID },
+    hasPart: v.chapters.map((ch, i) => ({
+      "@type": "Clip",
+      name: ch.label,
+      startOffset: ch.t,
+      endOffset: v.chapters[i + 1]?.t ?? v.seconds,
+      url: `${watch}&t=${ch.t}s`,
+    })),
+  };
 }
 
 export function breadcrumbs(locale: Locale, trail: { name: string; path: string }[]) {

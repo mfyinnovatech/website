@@ -26,6 +26,7 @@ export function getContent(locale: Locale) {
     clients: c.clients,
     tools: c.tools,
     featuredTools: c.featuredTools,
+    brandVideo: c.brandVideo,
   };
 }
 

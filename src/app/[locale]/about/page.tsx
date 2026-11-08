@@ -13,7 +13,8 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { site } from "@/lib/content";
 import { getContent, getDict, isLocale, languageAlternates, localeHref, type Locale } from "@/lib/i18n";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { FOUNDER_ID, ORG_ID, pageGraph } from "@/lib/seo";
+import { FOUNDER_ID, ORG_ID, brandVideoNode, pageGraph } from "@/lib/seo";
+import { BrandVideo } from "@/components/sections/BrandVideo";
 
 type Params = { locale: string };
 const path = "/about";
@@ -52,7 +53,7 @@ export default async function AboutPage({ params }: { params: Promise<Params> })
     description: d.metaDescription,
     trail: [{ name: d.metaTitle, path }],
     mainEntity: { "@id": ORG_ID },
-    extra: people,
+    extra: [...people, brandVideoNode(locale)],
   });
 
   return (
@@ -72,6 +73,11 @@ export default async function AboutPage({ params }: { params: Promise<Params> })
           </Link>
         }
       />
+
+      {/* Brand video — the company in two minutes */}
+      <Stage id="intro-video">
+        <BrandVideo />
+      </Stage>
 
       {/* Story — Navy stage */}
       <Stage id="story" tone="navy">

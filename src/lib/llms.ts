@@ -36,6 +36,8 @@ export function buildLlmsTxt({ full = false } = {}) {
   L.push(`- LinkedIn: ${site.linkedinCompany}`);
   L.push(`- Instagram: ${site.instagram}`);
   L.push(`- Facebook: ${site.facebook}`);
+  L.push(`- YouTube: ${site.youtube}`);
+  L.push(`- Company video (2 min): https://www.youtube.com/watch?v=${c.brandVideo.id}`);
   L.push(`- Founder on LinkedIn: ${site.linkedin}`);
   L.push(`- Response time: within one business day`);
   L.push(`- How projects start: a conversation about the business and its goals, then scope, milestones and success measures agreed in writing before building`);
