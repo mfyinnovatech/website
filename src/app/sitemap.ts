@@ -6,7 +6,7 @@ import { SERVICE_PATHS } from "@/lib/service-pages";
 
 /* Last real change to the static pages. Bump this when page copy changes, so
    search engines can trust lastmod (a value that changes on every deploy is ignored). */
-const PAGES_UPDATED = new Date("2026-11-02");
+const PAGES_UPDATED = new Date("2026-11-08");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = PAGES_UPDATED;
