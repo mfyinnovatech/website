@@ -54,7 +54,7 @@ export function organizationGraph(locale: Locale) {
       },
       description: c.site.description,
       founder: { "@id": FOUNDER_ID },
-      sameAs: [site.linkedinCompany, site.instagram, site.facebook, site.youtube],
+      sameAs: [site.linkedinCompany, site.instagram, site.facebook, site.youtube, site.clutch],
       areaServed: AREA_SERVED.map((code) => ({ "@type": "Country", name: code })),
       knowsLanguage: ["en", "ar"],
       knowsAbout: [
