@@ -267,6 +267,8 @@ export const en = {
     faqText: "Straight answers before the first call.",
     relatedLabel: "Related services",
     relatedTitle: "Often combined with.",
+    readingLabel: "Guides",
+    readingTitle: "Read before you decide.",
     proofVideos: "3D work",
     cta: "Start a project",
   },
@@ -330,6 +332,9 @@ export const en = {
     allPosts: "All posts",
     feedTitle: "MFY Innovatech — Blog",
     summaryLabel: "Short answer",
+    relatedLabel: "Keep reading",
+    relatedTitle: "Related guides",
+    serviceLabel: "Related service",
   },
   legal: {
     lastUpdated: "Last updated September 2026.",

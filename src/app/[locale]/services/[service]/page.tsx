@@ -16,7 +16,8 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { site } from "@/lib/content";
 import { getContent, getDict, isLocale, languageAlternates, localeHref, type Locale } from "@/lib/i18n";
 import { ORG_ID, ogImages, pageGraph, pageUrl } from "@/lib/seo";
-import { PROOF, RELATED, SERVICE_PATHS, getServicePage, servicePath, slugForPath } from "@/lib/service-pages";
+import { PROOF, RELATED, SERVICE_PATHS, SERVICE_POSTS, getServicePage, servicePath, slugForPath } from "@/lib/service-pages";
+import { getPost } from "@/lib/blog";
 
 type Params = { locale: string; service: string };
 
@@ -181,6 +182,33 @@ export default async function ServiceDetail({ params }: { params: Promise<Params
       {proof === "quotes" && <Quotes num="" />}
 
       <FAQ num="" items={p.faqs} eyebrow={t.faqLabel} title={t.faqTitle} text={t.faqText} />
+
+      {/* Guides: links from this service (hub) to its supporting articles */}
+      {(() => {
+        const guides = (SERVICE_POSTS[slug] ?? [])
+          .map((s) => getPost(s, locale))
+          .filter((x): x is NonNullable<typeof x> => !!x);
+        if (guides.length === 0) return null;
+        return (
+          <Stage id="guides">
+            <SectionHeader eyebrow={t.readingLabel} title={t.readingTitle} />
+            <Stagger as="ul" className="mt-12 grid gap-4 md:grid-cols-2">
+              {guides.map((g) => (
+                <StaggerItem as="li" key={g.slug}>
+                  <Link
+                    href={L(`/blog/${g.slug}`)}
+                    className="group flex h-full flex-col rounded-[28px] bg-cloud p-7 ring-1 ring-navy/[0.04] transition-colors hover:bg-mist"
+                  >
+                    <p className="mono-label text-blue">{g.category}</p>
+                    <h3 className="mt-3 font-display text-lg font-semibold leading-snug text-navy group-hover:text-blue">{g.title}</h3>
+                    <p className="mt-3 flex-1 text-[0.95rem] text-ink-2">{g.description}</p>
+                  </Link>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </Stage>
+        );
+      })()}
 
       {/* Related services */}
       <Stage id="related">

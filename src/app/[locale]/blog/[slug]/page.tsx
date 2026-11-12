@@ -5,7 +5,8 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Markdown } from "@/components/blog/Markdown";
 import { TechGrid } from "@/components/brand/TechGrid";
 import { Stage } from "@/components/ui/Stage";
-import { formatDate, getAllPosts, getPost, hasTranslation } from "@/lib/blog";
+import { formatDate, getAllPosts, getPost, getRelatedPosts, hasTranslation } from "@/lib/blog";
+import { serviceForPost, servicePath } from "@/lib/service-pages";
 import { site } from "@/lib/content";
 import { getContent, getDict, isLocale, localeHref, locales, type Locale } from "@/lib/i18n";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -66,6 +67,9 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
   const idx = all.findIndex((p) => p.slug === post.slug);
   const next = all[(idx + 1) % all.length];
   const url = pageUrl(locale, `/blog/${post.slug}`);
+  const related = getRelatedPosts(post.slug, locale, 3);
+  const svcSlug = serviceForPost(post.slug);
+  const svc = svcSlug ? getContent(locale).services.find((s) => s.slug === svcSlug) : undefined;
 
   const founder = getContent(locale).team[0];
   const authorIsFounder = post.author === founder.name || post.author === getContent("en").team[0].name;
@@ -178,6 +182,43 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
                 </span>
               ))}
             </div>
+
+            {/* Related service and guides (internal links from this article) */}
+            {svc && svcSlug && (
+              <Link
+                href={L(servicePath(svcSlug))}
+                className="group mt-14 flex items-center justify-between gap-4 rounded-2xl border border-line bg-cloud p-6 transition-colors hover:bg-mist"
+              >
+                <span>
+                  <span className="eyebrow text-blue">{d.serviceLabel}</span>
+                  <span className="mt-2 block font-display text-lg font-semibold text-navy group-hover:text-blue">{svc.title}</span>
+                  <span className="mt-1 block text-[0.95rem] text-ink-2">{svc.short}</span>
+                </span>
+                <ArrowRight size={18} className="shrink-0 text-navy rtl:-scale-x-100" />
+              </Link>
+            )}
+
+            {related.length > 0 && (
+              <section className="mt-14" aria-labelledby="related-heading">
+                <p className="eyebrow text-blue">{d.relatedLabel}</p>
+                <h2 id="related-heading" className="mt-2 font-display text-2xl font-semibold text-ink">
+                  {d.relatedTitle}
+                </h2>
+                <ul className="mt-6 divide-y divide-line border-y border-line">
+                  {related.map((r) => (
+                    <li key={r.slug}>
+                      <Link href={L(`/blog/${r.slug}`)} className="group flex items-start justify-between gap-4 py-5">
+                        <span>
+                          <span className="block font-display text-lg font-medium text-ink group-hover:text-blue">{r.title}</span>
+                          <span className="mt-1 block text-[0.95rem] text-ink-2">{r.description}</span>
+                        </span>
+                        <ArrowRight size={16} className="mt-1.5 shrink-0 text-ink-3 rtl:-scale-x-100" />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             {/* Direct contact: WhatsApp (pre-filled with this article), phones, email */}
             <DirectContact locale={locale} topic={post.title} className="mt-14" />

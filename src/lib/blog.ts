@@ -101,6 +101,26 @@ export function getPost(slug: string, locale: Locale = "en"): Post | null {
   return { ...toMeta(slug, src.data, src.content, own ? locale : "en"), content: src.content };
 }
 
+/* Up to `n` posts related to `slug`: shared tags (English metadata, so both languages match)
+   and the same category; ties go to the newer post. Only posts available in `locale`. */
+export function getRelatedPosts(slug: string, locale: Locale = "en", n = 3): PostMeta[] {
+  const en = getAllPosts("en");
+  const self = en.find((p) => p.slug === slug);
+  if (!self) return [];
+  const tags = new Set(self.tags.map((t) => t.toLowerCase()));
+  const local = new Map(getAllPosts(locale).map((p) => [p.slug, p]));
+  return en
+    .filter((p) => p.slug !== slug && local.has(p.slug))
+    .map((p, i) => ({
+      p,
+      i,
+      score: p.tags.filter((t) => tags.has(t.toLowerCase())).length * 2 + (p.category === self.category ? 1 : 0),
+    }))
+    .sort((a, b) => b.score - a.score || a.i - b.i)
+    .slice(0, n)
+    .map(({ p }) => local.get(p.slug)!);
+}
+
 export function formatDate(iso: string, locale: Locale = "en") {
   const d = new Date(iso + (iso.length === 10 ? "T00:00:00Z" : ""));
   /* Latin digits in both languages; Arabic month names for the Arabic site */

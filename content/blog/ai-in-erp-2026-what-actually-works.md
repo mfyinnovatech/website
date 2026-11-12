@@ -52,7 +52,7 @@ No model configures a chart of accounts for a Kuwaiti trading company, decides y
 
 ## How to adopt AI in your ERP without regret
 
-1. **Clean the data first.** Models trained on duplicated customers and mislabelled products learn the mess. Data cleanup is a workstream, not a side task.
+1. **Clean the data first.** Models trained on duplicated customers and mislabelled products learn the mess. Data cleanup is a workstream, not a side task, and one of the main reasons [ERP projects go over budget](/blog/why-erp-projects-go-over-budget).
 2. **Pick one workflow with a number.** Supplier bill processing time, forecast error, days to close the month. If you cannot measure it, you cannot tell whether the feature worked.
 3. **Keep a human in the loop for anything that posts.** Drafts and flags can be automatic. Ledger entries, stock moves and master-data changes get a named approver and an audit trail.
 4. **Prefer features inside the ERP over parallel tools.** A model that writes into Odoo through its API keeps one source of truth. A separate AI tool with its own copy of your data creates the second truth you just spent an implementation removing.
@@ -60,6 +60,6 @@ No model configures a chart of accounts for a Kuwaiti trading company, decides y
 
 ## Where Odoo stands
 
-Recent Odoo versions ship AI-assisted features such as document digitization for bills and expenses and generated text in several apps, and each release adds more. For forecasting, anomaly detection and reporting assistants, we build alongside Odoo through its API, so the ERP stays the single source of truth and the models can be swapped as better ones arrive.
+Recent Odoo versions ship AI-assisted features such as document digitization for bills and expenses and generated text in several apps, and each release adds more. For forecasting, anomaly detection and reporting assistants, we build alongside Odoo through its API, so the ERP stays the single source of truth and the models can be swapped as better ones arrive. That is the approach behind our [AI and data solutions](/services/ai-data-solutions), and the same API work connects Odoo to [payment gateways, banks and online stores](/blog/erp-integrations-kuwait-knet-banks-ecommerce).
 
 If you want to know which of these would pay back in your company first, [tell us what your team spends the most manual hours on](/contact). That is usually where the first project is.

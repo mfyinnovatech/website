@@ -270,6 +270,8 @@ export const ar: Dict = {
     faqText: "إجابات مباشرة قبل أول اتصال.",
     relatedLabel: "خدمات مرتبطة",
     relatedTitle: "غالباً ما تُجمع مع.",
+    readingLabel: "أدلة",
+    readingTitle: "اقرأ قبل أن تقرر.",
     proofVideos: "أعمال ثلاثية الأبعاد",
     cta: "ابدأ مشروعك",
   },
@@ -333,6 +335,9 @@ export const ar: Dict = {
     allPosts: "كل المقالات",
     feedTitle: "MFY Innovatech — المدونة",
     summaryLabel: "الإجابة المختصرة",
+    relatedLabel: "تابع القراءة",
+    relatedTitle: "أدلة ذات صلة",
+    serviceLabel: "الخدمة المرتبطة",
   },
   legal: {
     lastUpdated: "آخر تحديث: سبتمبر 2026.",

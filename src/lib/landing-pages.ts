@@ -12,7 +12,7 @@ export const LANDINGS: Record<
   "software-company-kuwait": {
     market: "KW",
     services: ["web-saas", "mobile", "erp-odoo", "ai-data", "automation-cloud", "finance-ops"],
-    posts: ["erp-integrations-kuwait-knet-banks-ecommerce", "best-odoo-implementation-company-in-kuwait", "why-hr-payroll-implementations-go-over-budget"],
+    posts: ["saas-vs-custom-software-cost-ai-era", "erp-integrations-kuwait-knet-banks-ecommerce", "best-odoo-implementation-company-in-kuwait", "why-hr-payroll-implementations-go-over-budget"],
   },
   "odoo-partner-kuwait": {
     market: "KW",
@@ -23,7 +23,7 @@ export const LANDINGS: Record<
   "software-development-company-usa": {
     market: "US",
     services: ["web-saas", "mobile", "ai-data", "erp-odoo", "3d", "automation-cloud"],
-    posts: ["how-to-plan-an-erp-budget", "erp-project-over-budget-how-to-recover", "why-hr-payroll-implementations-go-over-budget", "ai-in-erp-2026-what-actually-works"],
+    posts: ["saas-vs-custom-software-cost-ai-era", "how-to-plan-an-erp-budget", "erp-project-over-budget-how-to-recover", "ai-in-erp-2026-what-actually-works"],
     clients: ["ohs", "naas"],
   },
 };

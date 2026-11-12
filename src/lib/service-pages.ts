@@ -41,6 +41,33 @@ export const PROOF: Record<string, "videos" | "stories" | "quotes"> = {
   growth: "stories",
 };
 
+/* Articles each service page links to (hub -> supporting guides). The first service listing a
+   post is also the service that post links back to. */
+export const SERVICE_POSTS: Record<string, string[]> = {
+  "erp-odoo": [
+    "best-odoo-implementation-company-in-kuwait",
+    "how-to-plan-an-erp-budget",
+    "why-erp-projects-go-over-budget",
+    "erp-project-over-budget-how-to-recover",
+  ],
+  "web-saas": ["saas-vs-custom-software-cost-ai-era"],
+  "ai-data": ["ai-in-erp-2026-what-actually-works", "saas-vs-custom-software-cost-ai-era"],
+  "automation-cloud": ["erp-integrations-kuwait-knet-banks-ecommerce", "ai-in-erp-2026-what-actually-works"],
+  "finance-ops": ["why-hr-payroll-implementations-go-over-budget", "how-to-plan-an-erp-budget"],
+};
+
+const POST_SERVICE: Record<string, string> = {
+  "saas-vs-custom-software-cost-ai-era": "web-saas",
+  "ai-in-erp-2026-what-actually-works": "ai-data",
+  "erp-integrations-kuwait-knet-banks-ecommerce": "automation-cloud",
+  "why-hr-payroll-implementations-go-over-budget": "finance-ops",
+};
+
+/* The service page a blog post links back to */
+export function serviceForPost(postSlug: string): string | undefined {
+  return POST_SERVICE[postSlug] ?? Object.keys(SERVICE_POSTS).find((k) => SERVICE_POSTS[k].includes(postSlug));
+}
+
 export const servicePath = (slug: string) => `/services/${SERVICE_PATHS[slug]}`;
 
 export function slugForPath(segment: string) {

@@ -42,7 +42,7 @@ Users see the system for the first time at go-live, enter data the wrong way, an
 
 ## The fixed-scope approach
 
-This is how we run Odoo projects at MFY, and it is why our estimates hold.
+This is how we run [Odoo implementation projects](/services/erp-implementation) at MFY, and it is why our estimates hold.
 
 **Discovery first.** A structured session on your processes, systems, data and the outcome you need. We ask the awkward questions before we commit to anything, not after.
 
@@ -61,5 +61,7 @@ This is how we run Odoo projects at MFY, and it is why our estimates hold.
 ## What this looks like in numbers
 
 A phased, written-scope project usually goes live in 8 to 14 weeks for the first phase and needs a contingency of 10 to 15 percent. The overruns you read about come from projects with no scope, full customization from day one and training in the last week. The difference is not the software or the partner's hourly rate. It is whether the decisions were made before the invoice, or after it.
+
+For the cost side, see [how to plan an ERP budget](/blog/how-to-plan-an-erp-budget). If your project is already past its budget, here is [how to get an over-budget ERP project back on track](/blog/erp-project-over-budget-how-to-recover).
 
 If you are planning an ERP project and want to see what a written phase-one scope looks like for a company like yours, [ask us for one](/contact). We write it before any work starts.
