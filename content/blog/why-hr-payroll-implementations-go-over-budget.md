@@ -1,9 +1,10 @@
 ---
 title: "Why HR and Payroll System Implementations Go Over Budget (and How to Prevent It)"
-seoTitle: "Why HRIS Implementations Go Over Budget"
-description: "The real reasons HRIS and payroll implementations run over budget, from hidden data and integration work to part-time teams, and how to keep yours on plan."
+seoTitle: "Why HRIS Implementations Go Over Budget: 7 Causes and Fixes"
+description: "HRIS and payroll projects overrun because the budget covers the software, not the data, integrations, payroll rules and staff time. 7 causes, fixes and a checklist."
 summary: "HR and payroll system implementations go over budget mainly because the budget covers the software but not the work around it: cleaning employee data, building integrations with finance and attendance systems, configuring local payroll rules, training, and the internal time of HR and IT staff. Projects also overrun when they are staffed part-time, customised before standard features are tried, and not tracked against budget at each stage. A written, phased scope with data cleanup from week one prevents most of it."
 date: "2026-11-08"
+updated: "2026-11-12"
 author: "Maryam Mehboob"
 category: "HR & payroll"
 tags: ["HRIS", "Payroll", "HR software", "Implementation", "Budget"]
@@ -21,6 +22,18 @@ faqs:
 ---
 
 HR and payroll projects look simple on a proposal: a list of modules, a licence price and an implementation fee. Then the project starts, and the real work appears. Employee files that disagree with each other. Leave balances nobody can explain. A payroll rule that only one person understands. This guide covers why HR and payroll implementations go over budget, in the US, in Kuwait and anywhere else, and what to do so yours does not.
+
+## Why do HRIS implementations go over budget? The 7 causes at a glance
+
+| Cause | Why it costs more | How to prevent it |
+|---|---|---|
+| The budget covers the licence, not the project | Internal staff time for data, decisions, testing and training is never planned | Budget internal tasks next to the partner's, with owners and hours |
+| Messy employee data | Cleanup turns into the longest task in the project | Start data cleanup in week one, with a template and an owner |
+| Integrations nobody priced | Each missing integration becomes a change request | List and price every system HR and payroll must connect to |
+| Local payroll rules and exceptions | Every allowance, overtime rule and contract type is configuration and testing | Document rules before configuration and get payroll to sign them off |
+| Part-time HR and IT staff | The implementation team waits for decisions, and waiting is billed | Name one decision-maker with protected time |
+| Customising before trying the standard | Custom code must be built, tested and maintained through upgrades | Run phase one on standard features |
+| No parallel run, no budget tracking | Errors surface on payday; the overrun surfaces at the end | Run payroll in parallel and review budget at every milestone |
 
 ## 1. The budget covers the licence, not the project
 
@@ -85,4 +98,4 @@ Projects that switch payroll over without a parallel run find errors on payday, 
 
 We implement HR and payroll inside the ERP wherever finance already lives there, so payroll posts to the ledger without another integration. As an [official Odoo partner](/services/erp-implementation), we configure employees, attendance, leave and payroll rules, including [Kuwait-specific rules](/odoo-partner-kuwait), and test them with a parallel run before go-live. The scope, milestones and data plan are written down before configuration starts.
 
-If your HR or payroll project is already running over, read [how to get an ERP project back on track](/blog/erp-project-over-budget-how-to-recover). If you are planning one, start with [how to plan an ERP budget](/blog/how-to-plan-an-erp-budget).
+If your HR or payroll project is already running over, read [how to get an ERP project back on track](/blog/erp-project-over-budget-how-to-recover). If you are planning one, start with [how to plan an ERP budget](/blog/how-to-plan-an-erp-budget) and [how long an ERP implementation really takes](/blog/how-long-does-an-erp-implementation-take).

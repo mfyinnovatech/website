@@ -17,13 +17,13 @@ export const LANDINGS: Record<
   "odoo-partner-kuwait": {
     market: "KW",
     services: ["erp-odoo", "finance-ops", "automation-cloud", "ai-data"],
-    posts: ["best-odoo-implementation-company-in-kuwait", "erp-integrations-kuwait-knet-banks-ecommerce", "erp-project-over-budget-how-to-recover", "how-to-plan-an-erp-budget"],
+    posts: ["best-odoo-implementation-company-in-kuwait", "how-long-does-an-erp-implementation-take", "erp-integrations-kuwait-knet-banks-ecommerce", "how-to-plan-an-erp-budget"],
     odooApps: true,
   },
   "software-development-company-usa": {
     market: "US",
     services: ["web-saas", "mobile", "ai-data", "erp-odoo", "3d", "automation-cloud"],
-    posts: ["saas-vs-custom-software-cost-ai-era", "how-to-plan-an-erp-budget", "erp-project-over-budget-how-to-recover", "ai-in-erp-2026-what-actually-works"],
+    posts: ["saas-vs-custom-software-cost-ai-era", "how-long-does-an-erp-implementation-take", "how-to-plan-an-erp-budget", "ai-in-erp-2026-what-actually-works"],
     clients: ["ohs", "naas"],
   },
 };
