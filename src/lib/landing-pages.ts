@@ -12,12 +12,12 @@ export const LANDINGS: Record<
   "software-company-kuwait": {
     market: "KW",
     services: ["web-saas", "mobile", "erp-odoo", "ai-data", "automation-cloud", "finance-ops"],
-    posts: ["saas-vs-custom-software-cost-ai-era", "erp-integrations-kuwait-knet-banks-ecommerce", "best-odoo-implementation-company-in-kuwait", "why-hr-payroll-implementations-go-over-budget"],
+    posts: ["odoo-vs-sap-business-one-vs-business-central-gcc", "saas-vs-custom-software-cost-ai-era", "erp-integrations-kuwait-knet-banks-ecommerce", "best-odoo-implementation-company-in-kuwait"],
   },
   "odoo-partner-kuwait": {
     market: "KW",
     services: ["erp-odoo", "finance-ops", "automation-cloud", "ai-data"],
-    posts: ["best-odoo-implementation-company-in-kuwait", "how-long-does-an-erp-implementation-take", "erp-integrations-kuwait-knet-banks-ecommerce", "how-to-plan-an-erp-budget"],
+    posts: ["odoo-vs-sap-business-one-vs-business-central-gcc", "best-odoo-implementation-company-in-kuwait", "how-long-does-an-erp-implementation-take", "erp-integrations-kuwait-knet-banks-ecommerce"],
     odooApps: true,
   },
   "software-development-company-usa": {
