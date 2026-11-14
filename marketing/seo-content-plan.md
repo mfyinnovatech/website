@@ -4,6 +4,8 @@ How this plan works: each article is written in English and Arabic, answers a qu
 
 Status: `done`, `next`, or blank (queued). Work top to bottom inside each priority band.
 
+Order: alternate between Priority 1 and the US distributors push (D rows) — one Kuwait/GCC article, then one US distributor article, and so on. D1 is a landing page, not a blog post; D2 needs Maryam's OK on naming the client, so skip it until she confirms.
+
 ## Priority 1: high intent, low competition, fits a service
 
 | # | Article | Market | Service page | Search evidence | Status |
@@ -42,6 +44,25 @@ Status: `done`, `next`, or blank (queued). Work top to bottom inside each priori
 | 21 | Arabic and English apps: building RTL properly | GCC | mobile, web-saas | |
 | 22 | Digital marketing for B2B companies in Kuwait: what works | KW | growth | |
 
+## US distributors push
+
+Why: Maryam's published result is a US distributor (4 warehouses, 3,000+ SKUs, live in 10 weeks), and her industries are medical devices, industrial equipment, manufacturing and wholesale distribution. Distribution activity is concentrated in the New York–New Jersey area (largest wholesale trade by establishments in the 2012 Census), Dallas–Fort Worth, Phoenix, Savannah, Los Angeles/Inland Empire, Chicago, Atlanta and Houston.
+
+Search reality (Google autocomplete, US, Nov 2026): city queries such as "odoo partner houston" or "erp consultant dallas" are too small to register; industry queries are strong: "wholesale distribution software (small business)", "best erp for distribution companies", "inventory management software for distributors / wholesale", "erp for wholesale / food / electrical distributors".
+
+Approach: rank nationally on distributor topics, and add regional proof where it is real (case studies, client industries, Texas presence via Maryam's Houston base). Do not create thin city-by-city pages (Google treats them as doorway pages).
+
+| # | Page or article | Type | Status |
+|---|---|---|---|
+| D1 | ERP and inventory software for wholesale distributors (USA) | Landing page `/erp-for-wholesale-distributors` (EN + AR), linked from the USA page | |
+| D2 | US distributor case study: from QuickBooks and spreadsheets to ERP in 10 weeks | Article (needs Maryam's OK on client naming) | |
+| D3 | Inventory management software for distributors: what to look for | Article | |
+| D4 | Wholesale distribution software for small business: options compared | Article | |
+| D5 | ERP for food and beverage distributors (lot tracking, expiry, recalls) | Article | |
+| D6 | ERP for medical device distributors (UDI, lot and serial, FDA records) | Article | |
+| D7 | ERP for electrical and industrial supply distributors | Article | |
+| D8 | QuickBooks to ERP: signs a distributor has outgrown it | Article | |
+
 ## Rules for every article
 
 - Answer the search question in the first paragraph and the "short answer" box; then tables, steps and FAQs.
@@ -50,13 +71,47 @@ Status: `done`, `next`, or blank (queued). Work top to bottom inside each priori
 - English and Arabic versions; add each new post to `SERVICE_POSTS` in `src/lib/service-pages.ts` and to the relevant landing page `posts` list.
 - After publishing: IndexNow ping, Search Console indexing request (EN + AR), and a carousel for LinkedIn, Facebook and Instagram when the topic suits it.
 
-## Search Console question filter
+## Search Console regex filters (one-click views)
 
-Saved view (bookmark it): Performance > Query > Custom (regex), matching question and buying-intent words in English and Arabic:
+Search Console keeps one filter at a time, so each view below is a saved link. Open it in Maryam's Chrome (signed in to Search Console).
 
-`(?i)^(who|what|where|when|why|how|which|is|are|can|does|do|should|will)\b|\b(vs|versus|cost|costs|price|pricing|best|top|alternative|alternatives|compare|comparison|guide|checklist|requirements)\b|(كيف|لماذا|ما هو|ما هي|كم|أفضل|افضل|مقارنة|سعر|تكلفة|متطلبات)`
+1. **Questions and buying intent (EN + AR)**
 
-Every week, add any new question queries without a matching article to this plan.
+   Regex: `(?i)^(who|what|where|when|why|how|which|is|are|can|does|do|should|will)\b|\b(vs|versus|cost|costs|price|pricing|best|top|alternative|alternatives|compare|comparison|guide|checklist|requirements)\b|(كيف|لماذا|ما هو|ما هي|كم|أفضل|افضل|مقارنة|سعر|تكلفة|متطلبات)`
+
+   Link: https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Amfyinnova.tech&num_of_months=3&query=~%28%3Fi%29%5E%28who%7Cwhat%7Cwhere%7Cwhen%7Cwhy%7Chow%7Cwhich%7Cis%7Care%7Ccan%7Cdoes%7Cdo%7Cshould%7Cwill%29%5Cb%7C%5Cb%28vs%7Cversus%7Ccost%7Ccosts%7Cprice%7Cpricing%7Cbest%7Ctop%7Calternative%7Calternatives%7Ccompare%7Ccomparison%7Cguide%7Cchecklist%7Crequirements%29%5Cb%7C%28%D9%83%D9%8A%D9%81%7C%D9%84%D9%85%D8%A7%D8%B0%D8%A7%7C%D9%85%D8%A7%20%D9%87%D9%88%7C%D9%85%D8%A7%20%D9%87%D9%8A%7C%D9%83%D9%85%7C%D8%A3%D9%81%D8%B6%D9%84%7C%D8%A7%D9%81%D8%B6%D9%84%7C%D9%85%D9%82%D8%A7%D8%B1%D9%86%D8%A9%7C%D8%B3%D8%B9%D8%B1%7C%D8%AA%D9%83%D9%84%D9%81%D8%A9%7C%D9%85%D8%AA%D8%B7%D9%84%D8%A8%D8%A7%D8%AA%29
+
+2. **Questions only (FAQ and AEO ideas)**
+
+   Regex: `(?i)^(who|what|where|when|why|how|which|is|are|can|does|do|should)\b|\?$|(كيف|لماذا|ما هو|ما هي|متى|هل|كم)`
+
+   Link: https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Amfyinnova.tech&num_of_months=3&query=~%28%3Fi%29%5E%28who%7Cwhat%7Cwhere%7Cwhen%7Cwhy%7Chow%7Cwhich%7Cis%7Care%7Ccan%7Cdoes%7Cdo%7Cshould%29%5Cb%7C%5C%3F%24%7C%28%D9%83%D9%8A%D9%81%7C%D9%84%D9%85%D8%A7%D8%B0%D8%A7%7C%D9%85%D8%A7%20%D9%87%D9%88%7C%D9%85%D8%A7%20%D9%87%D9%8A%7C%D9%85%D8%AA%D9%89%7C%D9%87%D9%84%7C%D9%83%D9%85%29
+
+3. **Ready to hire (commercial)**
+
+   Regex: `(?i)\b(company|companies|agency|partner|services|developer|developers|consultant|hire|near me)\b|(شركة|شركات|مطور|خدمات)`
+
+   Link: https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Amfyinnova.tech&num_of_months=3&query=~%28%3Fi%29%5Cb%28company%7Ccompanies%7Cagency%7Cpartner%7Cservices%7Cdeveloper%7Cdevelopers%7Cconsultant%7Chire%7Cnear%20me%29%5Cb%7C%28%D8%B4%D8%B1%D9%83%D8%A9%7C%D8%B4%D8%B1%D9%83%D8%A7%D8%AA%7C%D9%85%D8%B7%D9%88%D8%B1%7C%D8%AE%D8%AF%D9%85%D8%A7%D8%AA%29
+
+4. **Kuwait and GCC**
+
+   Regex: `(?i)\b(kuwait|kw|q8|gcc|saudi|ksa|uae|dubai|qatar|bahrain|oman|knet|zatca)\b|(الكويت|السعودية|الإمارات|دبي|قطر|الخليج)`
+
+   Link: https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Amfyinnova.tech&num_of_months=3&query=~%28%3Fi%29%5Cb%28kuwait%7Ckw%7Cq8%7Cgcc%7Csaudi%7Cksa%7Cuae%7Cdubai%7Cqatar%7Cbahrain%7Coman%7Cknet%7Czatca%29%5Cb%7C%28%D8%A7%D9%84%D9%83%D9%88%D9%8A%D8%AA%7C%D8%A7%D9%84%D8%B3%D8%B9%D9%88%D8%AF%D9%8A%D8%A9%7C%D8%A7%D9%84%D8%A5%D9%85%D8%A7%D8%B1%D8%A7%D8%AA%7C%D8%AF%D8%A8%D9%8A%7C%D9%82%D8%B7%D8%B1%7C%D8%A7%D9%84%D8%AE%D9%84%D9%8A%D8%AC%29
+
+5. **Long queries, 6+ words (AI search)**
+
+   Regex: `^(\S+\s+){5,}\S+$`
+
+   Link: https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Amfyinnova.tech&num_of_months=3&query=~%5E%28%5CS%2B%5Cs%2B%29%7B5%2C%7D%5CS%2B%24
+
+6. **US distributors and wholesale**
+
+   Regex: `(?i)\b(distribut\w*|wholesale\w*|warehouse\w*|inventory|3pl|fulfil\w*|texas|houston|dallas|new jersey|chicago|atlanta|california|florida)\b`
+
+   Link: https://search.google.com/search-console/performance/search-analytics?resource_id=sc-domain%3Amfyinnova.tech&num_of_months=3&query=~%28%3Fi%29%5Cb%28distribut%5Cw%2A%7Cwholesale%5Cw%2A%7Cwarehouse%5Cw%2A%7Cinventory%7C3pl%7Cfulfil%5Cw%2A%7Ctexas%7Chouston%7Cdallas%7Cnew%20jersey%7Cchicago%7Catlanta%7Ccalifornia%7Cflorida%29%5Cb
+
+Weekly use: filters 2 and 4 → new articles for unanswered questions; filter 3 → title and description rewrites where we appear but get no clicks; filter 5 → add short direct answers to existing articles; filter 6 → track the US distributor push.
 
 ## Weekly CTR review
 
