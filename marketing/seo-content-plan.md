@@ -4,7 +4,7 @@ How this plan works: each article is written in English and Arabic, answers a qu
 
 Status: `done`, `next`, or blank (queued). Work top to bottom inside each priority band.
 
-Order: alternate between Priority 1 and the US distributors push (D rows) — one Kuwait/GCC article, then one US distributor article, and so on. D1 is a landing page, not a blog post; D2 needs Maryam's OK on naming the client, so skip it until she confirms.
+Order: alternate between Priority 1 and the US distributors push (D rows) — one Kuwait/GCC article, then one US distributor article, and so on. D1 is a landing page, not a blog post; D2 is approved as an anonymous case study: never name the client; describe it only as "a US distributor with 4 warehouses and 3,000+ SKUs" and use only the published results (stock-outs from 2–3 a week to near zero within two months, 90% of purchase orders from reorder rules, month-end close from 4 days to half a day, live in 10 weeks, paid back by month 4). Do not invent its industry, location or quotes.
 
 ## Priority 1: high intent, low competition, fits a service
 
@@ -55,7 +55,7 @@ Approach: rank nationally on distributor topics, and add regional proof where it
 | # | Page or article | Type | Status |
 |---|---|---|---|
 | D1 | ERP and inventory software for wholesale distributors (USA) | Landing page `/erp-for-wholesale-distributors` (EN + AR), linked from the USA page | |
-| D2 | US distributor case study: from QuickBooks and spreadsheets to ERP in 10 weeks | Article (needs Maryam's OK on client naming) | |
+| D2 | US distributor case study: from QuickBooks and spreadsheets to ERP in 10 weeks | Article (anonymous; client must not be named) | |
 | D3 | Inventory management software for distributors: what to look for | Article | |
 | D4 | Wholesale distribution software for small business: options compared | Article | |
 | D5 | ERP for food and beverage distributors (lot tracking, expiry, recalls) | Article | |
