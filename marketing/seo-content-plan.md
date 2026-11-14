@@ -9,7 +9,8 @@ Status: `done`, `next`, or blank (queued). Work top to bottom inside each priori
 | # | Article | Market | Service page | Search evidence | Status |
 |---|---|---|---|---|---|
 | 1 | KNET payment gateway integration: how it works, costs and timelines for Kuwaiti businesses | KW | automation-cloud, web-saas | "knet payment gateway integration / api / test card" | done |
-| 2 | How much does it cost to build an app in 2026 (and how much AI really saves) | US, GCC | mobile | "how much does it cost to build an app with ai", "...for my business" | next |
+| 1b | How to choose a software company in Kuwait (Arabic-first: "افضل شركة برمجة بالكويت") | KW | web-saas, mobile | Search Console: "شركة برمجة" (pos 6), "افضل شركة برمجة بالكويت", "software development companies in kuwait", "erp software company kuwait" | next |
+| 2 | How much does it cost to build an app in 2026 (and how much AI really saves) | US, GCC | mobile | "how much does it cost to build an app with ai", "...for my business" | |
 | 3 | ZATCA e-invoicing Phase 2: requirements and ERP integration checklist | SA, GCC | finance-ops, erp-odoo | "zatca e-invoicing requirements / integration / waves" | |
 | 4 | Odoo vs QuickBooks: when a growing US company should switch | US | erp-odoo | "odoo vs quickbooks (online / enterprise)" | |
 | 5 | Mobile app development in Kuwait: cost, timeline and how to choose a company | KW | mobile | "mobile app development company kuwait" | |
@@ -48,6 +49,14 @@ Status: `done`, `next`, or blank (queued). Work top to bottom inside each priori
 - MFY is a team led by the founder; never "Maryam does everything".
 - English and Arabic versions; add each new post to `SERVICE_POSTS` in `src/lib/service-pages.ts` and to the relevant landing page `posts` list.
 - After publishing: IndexNow ping, Search Console indexing request (EN + AR), and a carousel for LinkedIn, Facebook and Instagram when the topic suits it.
+
+## Search Console question filter
+
+Saved view (bookmark it): Performance > Query > Custom (regex), matching question and buying-intent words in English and Arabic:
+
+`(?i)^(who|what|where|when|why|how|which|is|are|can|does|do|should|will)\b|\b(vs|versus|cost|costs|price|pricing|best|top|alternative|alternatives|compare|comparison|guide|checklist|requirements)\b|(كيف|لماذا|ما هو|ما هي|كم|أفضل|افضل|مقارنة|سعر|تكلفة|متطلبات)`
+
+Every week, add any new question queries without a matching article to this plan.
 
 ## Weekly CTR review
 
