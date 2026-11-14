@@ -8,8 +8,8 @@ Status: `done`, `next`, or blank (queued). Work top to bottom inside each priori
 
 | # | Article | Market | Service page | Search evidence | Status |
 |---|---|---|---|---|---|
-| 1 | KNET payment gateway integration: how it works, costs and timelines for Kuwaiti businesses | KW | automation-cloud, web-saas | "knet payment gateway integration / api / test card" | next |
-| 2 | How much does it cost to build an app in 2026 (and how much AI really saves) | US, GCC | mobile | "how much does it cost to build an app with ai", "...for my business" | |
+| 1 | KNET payment gateway integration: how it works, costs and timelines for Kuwaiti businesses | KW | automation-cloud, web-saas | "knet payment gateway integration / api / test card" | done |
+| 2 | How much does it cost to build an app in 2026 (and how much AI really saves) | US, GCC | mobile | "how much does it cost to build an app with ai", "...for my business" | next |
 | 3 | ZATCA e-invoicing Phase 2: requirements and ERP integration checklist | SA, GCC | finance-ops, erp-odoo | "zatca e-invoicing requirements / integration / waves" | |
 | 4 | Odoo vs QuickBooks: when a growing US company should switch | US | erp-odoo | "odoo vs quickbooks (online / enterprise)" | |
 | 5 | Mobile app development in Kuwait: cost, timeline and how to choose a company | KW | mobile | "mobile app development company kuwait" | |
