@@ -50,13 +50,14 @@ export const SERVICE_POSTS: Record<string, string[]> = {
     "best-odoo-implementation-company-in-kuwait",
     "how-to-plan-an-erp-budget",
   ],
-  "web-saas": ["saas-vs-custom-software-cost-ai-era"],
+  "web-saas": ["saas-vs-custom-software-cost-ai-era", "knet-payment-gateway-integration-kuwait"],
   "ai-data": ["ai-in-erp-2026-what-actually-works", "saas-vs-custom-software-cost-ai-era"],
-  "automation-cloud": ["erp-integrations-kuwait-knet-banks-ecommerce", "ai-in-erp-2026-what-actually-works"],
+  "automation-cloud": ["knet-payment-gateway-integration-kuwait", "erp-integrations-kuwait-knet-banks-ecommerce", "ai-in-erp-2026-what-actually-works"],
   "finance-ops": ["why-hr-payroll-implementations-go-over-budget", "how-to-plan-an-erp-budget"],
 };
 
 const POST_SERVICE: Record<string, string> = {
+  "knet-payment-gateway-integration-kuwait": "automation-cloud",
   "why-erp-projects-go-over-budget": "erp-odoo",
   "erp-project-over-budget-how-to-recover": "erp-odoo",
   "saas-vs-custom-software-cost-ai-era": "web-saas",

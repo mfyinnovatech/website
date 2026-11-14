@@ -12,7 +12,7 @@ export const LANDINGS: Record<
   "software-company-kuwait": {
     market: "KW",
     services: ["web-saas", "mobile", "erp-odoo", "ai-data", "automation-cloud", "finance-ops"],
-    posts: ["odoo-vs-sap-business-one-vs-business-central-gcc", "saas-vs-custom-software-cost-ai-era", "erp-integrations-kuwait-knet-banks-ecommerce", "best-odoo-implementation-company-in-kuwait"],
+    posts: ["knet-payment-gateway-integration-kuwait", "odoo-vs-sap-business-one-vs-business-central-gcc", "saas-vs-custom-software-cost-ai-era", "erp-integrations-kuwait-knet-banks-ecommerce"],
   },
   "odoo-partner-kuwait": {
     market: "KW",

@@ -32,6 +32,8 @@ KNET is Kuwait's national debit network, and for most local customers it is the 
 - **How it charges.** KNET takes the payment in a single step. There is no separate authorisation and capture, so refunds and partial refunds are handled as their own transactions. Your ERP must record them that way.
 - **What to automate.** Each successful payment should create or match an invoice payment in the ERP, and each refund should create a credit and a refund entry, with the gateway reference stored on both.
 
+For the gateway itself (bank or provider, fees, documents, testing and the 2026 changes), see our [KNET payment gateway integration guide](/blog/knet-payment-gateway-integration-kuwait).
+
 ## Bank statements and reconciliation
 
 Gateways settle in batches, often net of fees. Bank lines then show one amount for many customer payments.
