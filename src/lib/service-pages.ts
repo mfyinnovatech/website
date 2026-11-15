@@ -54,6 +54,7 @@ export const SERVICE_POSTS: Record<string, string[]> = {
   "ai-data": ["ai-in-erp-2026-what-actually-works", "saas-vs-custom-software-cost-ai-era"],
   "automation-cloud": ["knet-payment-gateway-integration-kuwait", "erp-integrations-kuwait-knet-banks-ecommerce", "ai-in-erp-2026-what-actually-works"],
   "finance-ops": ["why-hr-payroll-implementations-go-over-budget", "how-to-plan-an-erp-budget"],
+  "3d": ["3d-product-animation-medical-equipment-case-study"],
 };
 
 const POST_SERVICE: Record<string, string> = {
