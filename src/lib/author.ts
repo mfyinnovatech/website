@@ -41,6 +41,7 @@ export type AuthorCopy = {
   resultIntro: string;
   result: string[];
   resultNote: string;
+  caseStudy: string;
   principlesTitle: string;
   principles: { title: string; text: string }[];
   quoteTitle: string;
@@ -89,6 +90,7 @@ const en: AuthorCopy = {
     "Implemented in 10 weeks; the project paid for itself by month 4",
   ],
   resultNote: "As published on Maryam's LinkedIn profile.",
+  caseStudy: "Read the full case study",
   principlesTitle: "How she approaches a project",
   principles: [
     { title: "Start where it hurts most", text: "Go live with the part of the business in the most pain, make it stable and let the team win once before adding the next part. Big-bang go-lives send people back to the old spreadsheet." },
@@ -142,6 +144,7 @@ const ar: AuthorCopy = {
     "اكتمل التنفيذ في 10 أسابيع، واسترد المشروع تكلفته بحلول الشهر الرابع",
   ],
   resultNote: "كما نُشر في ملف مريم على LinkedIn.",
+  caseStudy: "اقرأ دراسة الحالة كاملة",
   principlesTitle: "كيف تتعامل مع المشروع",
   principles: [
     { title: "ابدأ من حيث الألم الأكبر", text: "أطلق الجزء الأكثر معاناة في الشركة أولاً، وثبّته، ودع الفريق يحقق نجاحاً واحداً قبل إضافة الجزء التالي. الإطلاق الشامل دفعة واحدة يعيد الناس إلى جداول البيانات القديمة." },

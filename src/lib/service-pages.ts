@@ -45,10 +45,10 @@ export const PROOF: Record<string, "videos" | "stories" | "quotes"> = {
    post is also the service that post links back to. */
 export const SERVICE_POSTS: Record<string, string[]> = {
   "erp-odoo": [
+    "us-distributor-quickbooks-to-erp-case-study",
     "odoo-vs-sap-business-one-vs-business-central-gcc",
     "how-long-does-an-erp-implementation-take",
     "best-odoo-implementation-company-in-kuwait",
-    "how-to-plan-an-erp-budget",
   ],
   "web-saas": ["saas-vs-custom-software-cost-ai-era", "knet-payment-gateway-integration-kuwait"],
   "ai-data": ["ai-in-erp-2026-what-actually-works", "saas-vs-custom-software-cost-ai-era"],
@@ -57,6 +57,7 @@ export const SERVICE_POSTS: Record<string, string[]> = {
 };
 
 const POST_SERVICE: Record<string, string> = {
+  "how-to-plan-an-erp-budget": "erp-odoo",
   "knet-payment-gateway-integration-kuwait": "automation-cloud",
   "why-erp-projects-go-over-budget": "erp-odoo",
   "erp-project-over-budget-how-to-recover": "erp-odoo",

@@ -23,13 +23,13 @@ export const LANDINGS: Record<
   "software-development-company-usa": {
     market: "US",
     services: ["web-saas", "mobile", "ai-data", "erp-odoo", "3d", "automation-cloud"],
-    posts: ["saas-vs-custom-software-cost-ai-era", "how-long-does-an-erp-implementation-take", "how-to-plan-an-erp-budget", "ai-in-erp-2026-what-actually-works"],
+    posts: ["us-distributor-quickbooks-to-erp-case-study", "saas-vs-custom-software-cost-ai-era", "how-long-does-an-erp-implementation-take", "ai-in-erp-2026-what-actually-works"],
     clients: ["ohs", "naas"],
   },
   "erp-for-wholesale-distributors": {
     market: "US",
     services: ["erp-odoo", "automation-cloud", "finance-ops", "ai-data"],
-    posts: ["how-long-does-an-erp-implementation-take", "how-to-plan-an-erp-budget", "saas-vs-custom-software-cost-ai-era", "ai-in-erp-2026-what-actually-works"],
+    posts: ["us-distributor-quickbooks-to-erp-case-study", "how-long-does-an-erp-implementation-take", "how-to-plan-an-erp-budget", "saas-vs-custom-software-cost-ai-era"],
     odooApps: true,
   },
 };

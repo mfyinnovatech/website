@@ -55,7 +55,7 @@ Approach: rank nationally on distributor topics, and add regional proof where it
 | # | Page or article | Type | Status |
 |---|---|---|---|
 | D1 | ERP and inventory software for wholesale distributors (USA) | Landing page `/erp-for-wholesale-distributors` (EN + AR), linked sitewide from the footer | done |
-| D2 | US distributor case study: from QuickBooks and spreadsheets to ERP in 10 weeks | Article (anonymous; client must not be named) | |
+| D2 | US distributor case study: from QuickBooks and spreadsheets to ERP in 10 weeks | Article (anonymous; client must not be named) | done |
 | D3 | Inventory management software for distributors: what to look for | Article | |
 | D4 | Wholesale distribution software for small business: options compared | Article | |
 | D5 | ERP for food and beverage distributors (lot tracking, expiry, recalls) | Article | |

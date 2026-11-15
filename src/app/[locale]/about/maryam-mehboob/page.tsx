@@ -147,6 +147,9 @@ export default async function AuthorPage({ params }: { params: Promise<Params> }
               ))}
             </ul>
             <p className="mt-3 text-sm text-ink-3">{a.resultNote}</p>
+            <Link href={localeHref(locale, "/blog/us-distributor-quickbooks-to-erp-case-study")} className="link-arrow mt-4 inline-flex">
+              {a.caseStudy} <ArrowRight size={15} className="rtl:-scale-x-100" />
+            </Link>
 
             <h2 className="mt-14 font-display text-2xl font-semibold tracking-[-0.02em] text-ink lg:text-[1.75rem]">{a.principlesTitle}</h2>
             <dl className="mt-6 divide-y divide-line border-y border-line">
