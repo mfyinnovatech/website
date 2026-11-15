@@ -11,7 +11,8 @@ import { site } from "@/lib/content";
 import { getContent, getDict, isLocale, localeHref, locales, type Locale } from "@/lib/i18n";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { DirectContact } from "@/components/sections/DirectContact";
-import { AUTHOR_PATH } from "@/lib/author";
+import { AUTHOR_PATH, getAuthor } from "@/lib/author";
+import Image from "next/image";
 import { breadcrumbs, FOUNDER_ID, ORG_ID, WEBSITE_ID, ogImages, pageUrl } from "@/lib/seo";
 
 type Params = { slug: string; locale: string };
@@ -140,6 +141,11 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
                 )}
               </span>
               <time dateTime={post.date}>{formatDate(post.date, locale)}</time>
+              {post.updated && post.updated !== post.date && (
+                <span>
+                  {d.updatedLabel} <time dateTime={post.updated}>{formatDate(post.updated, locale)}</time>
+                </span>
+              )}
               <span>{post.readingMinutes} {d.minRead}</span>
             </div>
           </div>
@@ -182,6 +188,31 @@ export default async function BlogPost({ params }: { params: Promise<Params> }) 
                 </span>
               ))}
             </div>
+
+            {/* About the author (E-E-A-T: who wrote this and why they know) */}
+            {authorIsFounder && (
+              <aside aria-label={d.aboutAuthor} className="mt-14 flex flex-col gap-5 rounded-2xl border border-line bg-cloud p-6 sm:flex-row sm:items-start">
+                {founder.photo && (
+                  <Image src={founder.photo} alt={post.author} width={72} height={72} className="h-[72px] w-[72px] shrink-0 rounded-full object-cover" />
+                )}
+                <div>
+                  <p className="eyebrow text-blue">{d.aboutAuthor}</p>
+                  <p className="mt-2 font-display text-lg font-semibold text-navy">{post.author}</p>
+                  <p className="mt-1 text-sm text-ink-3">{getAuthor(locale).role}</p>
+                  <p className="mt-3 text-[0.95rem] leading-relaxed text-ink-2">{getAuthor(locale).lead}</p>
+                  <p className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm">
+                    <Link href={L(AUTHOR_PATH)} rel="author" className="link-arrow">
+                      {d.authorProfile} <ArrowRight size={14} className="rtl:-scale-x-100" />
+                    </Link>
+                    {founder.linkedin && (
+                      <a href={founder.linkedin} target="_blank" rel="noreferrer" className="link-arrow">
+                        LinkedIn <ArrowRight size={14} className="rtl:-scale-x-100" />
+                      </a>
+                    )}
+                  </p>
+                </div>
+              </aside>
+            )}
 
             {/* Related service and guides (internal links from this article) */}
             {svc && svcSlug && (

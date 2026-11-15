@@ -54,7 +54,7 @@ Approach: rank nationally on distributor topics, and add regional proof where it
 
 | # | Page or article | Type | Status |
 |---|---|---|---|
-| D1 | ERP and inventory software for wholesale distributors (USA) | Landing page `/erp-for-wholesale-distributors` (EN + AR), linked from the USA page | |
+| D1 | ERP and inventory software for wholesale distributors (USA) | Landing page `/erp-for-wholesale-distributors` (EN + AR), linked sitewide from the footer | done |
 | D2 | US distributor case study: from QuickBooks and spreadsheets to ERP in 10 weeks | Article (anonymous; client must not be named) | |
 | D3 | Inventory management software for distributors: what to look for | Article | |
 | D4 | Wholesale distribution software for small business: options compared | Article | |
@@ -62,6 +62,15 @@ Approach: rank nationally on distributor topics, and add regional proof where it
 | D6 | ERP for medical device distributors (UDI, lot and serial, FDA records) | Article | |
 | D7 | ERP for electrical and industrial supply distributors | Article | |
 | D8 | QuickBooks to ERP: signs a distributor has outgrown it | Article | |
+
+## What the research says (Nov 2026) and how we apply it
+
+- Google: AI Overviews and AI Mode use the same index and ranking systems as normal search; there is no special AI markup. So indexing, helpfulness and clear answers come first. ([Google Search Central](https://developers.google.com/search/docs/appearance/ai-features))
+- AI search expands one question into many related searches ("query fan-out"). Every article covers the main question plus the obvious follow-ups (cost, time, risks, alternatives, "for Kuwait/US") as their own H2s and FAQs, and links to the cluster around it. ([Ahrefs](https://ahrefs.com/blog/llm-search))
+- Brand mentions on other sites, and especially YouTube, correlate most strongly with AI visibility; backlinks much less. Off-site: short YouTube explainers per article, LinkedIn posts, directory profiles, and later guest articles. ([Ahrefs](https://ahrefs.com/blog/ai-brand-visibility-correlations))
+- E-E-A-T: show who wrote it and how we know. Every article now shows an author box and an "Updated" date. Use first-hand facts only when verified (the anonymous US distributor results, Kuwait specifics from real projects); never invent experience.
+- Sources, statistics and specific numbers help both readers and citations; padding and keyword stuffing do not. ([Princeton GEO study summary](https://www.airops.com/blog/geo-tactics-citation-lift))
+- When updating an article, add `updated: "YYYY-MM-DD"` so the date shows and Google sees the change.
 
 ## Rules for every article
 

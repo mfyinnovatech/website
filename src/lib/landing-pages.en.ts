@@ -94,4 +94,30 @@ export const landingPagesEn: Record<string, LandingCopy> = {
       { q: "How do we start?", a: "Send the contact form, email or message us. The first conversation is about your business and goals, and the scope and milestones are agreed in writing before anything is built." },
     ],
   },
+  "erp-for-wholesale-distributors": {
+    seoTitle: "ERP & Inventory Software for Wholesale Distributors (USA)",
+    metaDescription:
+      "ERP and inventory software for US wholesale distributors: multi-warehouse stock, reorder rules, lot tracking and accounting, from an official Odoo partner.",
+    eyebrow: "Wholesale distribution · USA",
+    h1: "ERP and inventory software for distributors who have outgrown QuickBooks.",
+    lead: "Inventory across every warehouse, automatic reordering, purchasing, lot and serial tracking and accounting in one system, implemented by a US-registered team and official Odoo partner.",
+    answer:
+      "For a US wholesale distributor, the right ERP connects inventory in every warehouse with purchasing, sales and accounting in one system, so stock levels, reorder points and margins are accurate in real time instead of in spreadsheets. MFY Innovatech, a US-registered official Odoo partner, implements Odoo for distributors with multi-warehouse stock, reorder rules, lot and serial tracking, barcode scanning, landed costs and integrations with online stores and shipping carriers. One US distributor with 4 warehouses and more than 3,000 SKUs went live in 10 weeks and cut stock-outs from 2–3 a week to near zero within two months.",
+    pointsLabel: "Built for distribution",
+    pointsTitle: "The four problems every growing distributor hits, solved in one system.",
+    points: [
+      { title: "Stock you can see in every warehouse", text: "Real-time quantities by warehouse and bin, transfers between locations, cycle counts and barcode scanning, so sales stops promising stock that isn't there." },
+      { title: "Reordering that runs itself", text: "Minimum and maximum rules with vendor lead times draft purchase orders automatically. At one US distributor, reorder rules now create 90% of purchase orders." },
+      { title: "Lot, serial and expiry tracking", text: "Know which lot went to which customer, pick by expiry date, and answer a recall in minutes instead of days." },
+      { title: "Margins and month-end you can trust", text: "Landed costs, customer pricelists and accounting in the same system. The same distributor cut month-end close from 4 days to half a day." },
+    ],
+    servicesTitle: "What we set up for distributors.",
+    faqs: [
+      { q: "What is the best ERP for a small wholesale distributor?", a: "The best ERP is the one that handles your warehouses, reordering, lot or serial tracking and accounting without heavy customisation, at a cost per user that still works as you hire. For many small and mid-sized distributors that is Odoo, NetSuite or Microsoft Dynamics 365 Business Central. Ask each vendor to run your messiest order, with your data, before you choose." },
+      { q: "When should a distributor move from QuickBooks to an ERP?", a: "Usually when stock lives in more than one warehouse, when reordering depends on one person's memory or a spreadsheet, when you need lot or serial tracking, or when month-end close takes days. Those are signs that accounting software alone is no longer enough." },
+      { q: "How long does an ERP implementation take for a distributor?", a: "A focused first phase covering inventory, purchasing and sales typically goes live in 8 to 14 weeks. One US distributor with 4 warehouses and more than 3,000 SKUs went live in 10 weeks. Clean data and a written scope matter more than the software." },
+      { q: "Can the ERP connect to our online store and shipping carriers?", a: "Yes. Odoo connects to e-commerce platforms, shipping carriers and other systems through standard connectors or custom integrations, so orders, stock and tracking numbers update without re-keying." },
+      { q: "Do you work with distributors anywhere in the United States?", a: "Yes. MFYINNOVATECH LLC is registered in the United States and works remote-first with clients across the country, with meeting and support hours agreed to overlap with your time zone." },
+    ],
+  },
 };

@@ -48,7 +48,7 @@ For a mid-sized company implementing a first phase, the work usually breaks down
 | 5. Testing and training | Run real scenarios end to end, then train each role on its own data | 2 to 4 weeks |
 | 6. Go-live and support | Final data load, switch over, close support through the first month-end | 2 to 4 weeks |
 
-A published example: a US distributor with 4 warehouses and more than 3,000 SKUs, running on QuickBooks and spreadsheets, went live on inventory, purchasing and manufacturing in 10 weeks. Stock-outs fell to near zero within two months, and month-end close went from 4 days to half a day.
+A published example: a US distributor with 4 warehouses and more than 3,000 SKUs, running on QuickBooks and spreadsheets, went live on inventory, purchasing and manufacturing in 10 weeks. Stock-outs fell to near zero within two months, and month-end close went from 4 days to half a day. If you run a distribution business, see what that kind of project covers on our [ERP for wholesale distributors](/erp-for-wholesale-distributors) page.
 
 ## What makes ERP implementations take longer
 

@@ -196,6 +196,7 @@ export const en = {
       "software-company-kuwait": "Software company in Kuwait",
       "odoo-partner-kuwait": "Odoo partner in Kuwait",
       "software-development-company-usa": "Software company for the USA",
+      "erp-for-wholesale-distributors": "ERP for US distributors",
     } as Record<string, string>,
   },
   direct: {
@@ -333,6 +334,9 @@ export const en = {
     feedTitle: "MFY Innovatech — Blog",
     summaryLabel: "Short answer",
     relatedLabel: "Keep reading",
+    updatedLabel: "Updated",
+    aboutAuthor: "About the author",
+    authorProfile: "Full profile",
     relatedTitle: "Related guides",
     serviceLabel: "Related service",
   },

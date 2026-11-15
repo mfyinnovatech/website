@@ -199,6 +199,7 @@ export const ar: Dict = {
       "software-company-kuwait": "شركة برمجيات في الكويت",
       "odoo-partner-kuwait": "شريك أودو في الكويت",
       "software-development-company-usa": "شركة برمجيات للولايات المتحدة",
+      "erp-for-wholesale-distributors": "ERP للموزّعين في أمريكا",
     } as Record<string, string>,
   },
   direct: {
@@ -336,6 +337,9 @@ export const ar: Dict = {
     feedTitle: "MFY Innovatech — المدونة",
     summaryLabel: "الإجابة المختصرة",
     relatedLabel: "تابع القراءة",
+    updatedLabel: "آخر تحديث",
+    aboutAuthor: "عن الكاتبة",
+    authorProfile: "الملف الكامل",
     relatedTitle: "أدلة ذات صلة",
     serviceLabel: "الخدمة المرتبطة",
   },
