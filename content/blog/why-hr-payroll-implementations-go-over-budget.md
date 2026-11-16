@@ -4,7 +4,7 @@ seoTitle: "Why HRIS Implementations Go Over Budget: 7 Causes and Fixes"
 description: "HRIS and payroll projects overrun because the budget covers the software, not the data, integrations, payroll rules and staff time. 7 causes, fixes and a checklist."
 summary: "HR and payroll system implementations go over budget mainly because the budget covers the software but not the work around it: cleaning employee data, building integrations with finance and attendance systems, configuring local payroll rules, training, and the internal time of HR and IT staff. Projects also overrun when they are staffed part-time, customised before standard features are tried, and not tracked against budget at each stage. A written, phased scope with data cleanup from week one prevents most of it."
 date: "2026-11-08"
-updated: "2026-11-12"
+updated: "2026-11-16"
 author: "Maryam Mehboob"
 category: "HR & payroll"
 tags: ["HRIS", "Payroll", "HR software", "Implementation", "Budget"]
@@ -59,6 +59,7 @@ Payroll is where general software meets local law.
 
 - **In the United States**, federal and state withholding, benefits deductions and paid leave policies differ by state and by employee, and multi-state teams multiply the rules.
 - **In Kuwait**, payroll needs end-of-service indemnity accruals (15 days' pay per year for the first five years, then one month's pay per year), leave entitlements and PIFSS social security contributions for Kuwaiti nationals. Contribution rates change, so confirm current figures with PIFSS or your advisor.
+- **Also in Kuwait**, salaries for Kuwaiti and expatriate staff are paid into local bank accounts, and since 28 September 2026 the Central Bank of Kuwait's new Kuwait Wage Payment System monitors those transfers for private-sector employers of all sizes ([Fragomen](https://www.fragomen.com/insights/kuwait-new-wage-payment-and-protection-system-launched.html)). Payroll and employment records must match, so budget time to clean employee data and test the salary transfer file with your bank before go-live.
 
 Every exception your company has, such as allowances, overtime rules or special contracts, is configuration and testing time.
 

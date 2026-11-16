@@ -4,14 +4,14 @@ How this plan works: each article is written in English and Arabic, answers a qu
 
 Status: `done`, `next`, or blank (queued). Work top to bottom inside each priority band.
 
-Order: alternate between Priority 1 and the US distributors push (D rows) — one Kuwait/GCC article, then one US distributor article, and so on. D1 is a landing page, not a blog post; D2 is approved as an anonymous case study: never name the client; describe it only as "a US distributor with 4 warehouses and 3,000+ SKUs" and use only the published results (stock-outs from 2–3 a week to near zero within two months, 90% of purchase orders from reorder rules, month-end close from 4 days to half a day, live in 10 weeks, paid back by month 4). Do not invent its industry, location or quotes.
+Order (from 16 Nov 2026): rotate three tracks — ERP modules and payroll (M rows), then Priority 1 (Kuwait/GCC), then the US distributors push (D rows), and repeat. M1 and M2 go first because Kuwait demand is strong and fresh. D1 is a landing page, not a blog post; D2 is approved as an anonymous case study: never name the client; describe it only as "a US distributor with 4 warehouses and 3,000+ SKUs" and use only the published results (stock-outs from 2–3 a week to near zero within two months, 90% of purchase orders from reorder rules, month-end close from 4 days to half a day, live in 10 weeks, paid back by month 4). Do not invent its industry, location or quotes.
 
 ## Priority 1: high intent, low competition, fits a service
 
 | # | Article | Market | Service page | Search evidence | Status |
 |---|---|---|---|---|---|
 | 1 | KNET payment gateway integration: how it works, costs and timelines for Kuwaiti businesses | KW | automation-cloud, web-saas | "knet payment gateway integration / api / test card" | done |
-| 1b | How to choose a software company in Kuwait (Arabic-first: "افضل شركة برمجة بالكويت") | KW | web-saas, mobile | Search Console: "شركة برمجة" (pos 6), "افضل شركة برمجة بالكويت", "software development companies in kuwait", "erp software company kuwait" | next |
+| 1b | How to choose a software company in Kuwait (Arabic-first: "افضل شركة برمجة بالكويت") | KW | web-saas, mobile | Search Console: "شركة برمجة" (pos 6), "افضل شركة برمجة بالكويت", "software development companies in kuwait", "erp software company kuwait" | |
 | 2 | How much does it cost to build an app in 2026 (and how much AI really saves) | US, GCC | mobile | "how much does it cost to build an app with ai", "...for my business" | |
 | 3 | ZATCA e-invoicing Phase 2: requirements and ERP integration checklist | SA, GCC | finance-ops, erp-odoo | "zatca e-invoicing requirements / integration / waves" | |
 | 4 | Odoo vs QuickBooks: when a growing US company should switch | US | erp-odoo | "odoo vs quickbooks (online / enterprise)" | |
@@ -44,6 +44,24 @@ Order: alternate between Priority 1 and the US distributors push (D rows) — on
 | 21 | Arabic and English apps: building RTL properly | GCC | mobile, web-saas | |
 | 22 | Digital marketing for B2B companies in Kuwait: what works | KW | growth | |
 
+## ERP modules and payroll (M rows)
+
+Why: buyers search for one problem at a time (end-of-service, payroll, POS, barcodes, projects), not for "ERP". Generic module topics ("what is an HR system", "best accounting software") are owned by Oracle, SAP, Zoho and review sites, so each article targets a specific, local or practical angle a small site can win. Demand checked with Google autocomplete on 16 Nov 2026.
+
+| # | Article | Market | Service page | Search evidence and research notes | Status |
+|---|---|---|---|---|---|
+| M1 | End-of-service indemnity in Kuwait: how it is calculated (with calculator), and how payroll software accrues it | KW (EN + AR, Arabic matters) | finance-ops, erp-odoo | Strong: "end of service kuwait (calculator / labor law / indemnity calculation)", "indemnity calculator kuwait (2026 / resignation / if terminated)", "حساب نهاية الخدمة الكويت (القطاع الخاص)", "طريقة حساب نهاية الخدمة الكويت". Law: Kuwait Labour Law No. 6 of 2010, Articles 51 and 53. Secondary sources conflict on resignation tiers and on basic vs total salary: quote the official law text only (PAM / official gazette / a Kuwaiti law firm), add "not legal advice; confirm with PAM or a lawyer". Build an embedded calculator (like the existing `[[calculator:...]]` marker) only if the rules are confirmed from the law text.  next |
+| M2 | Kuwait Wage Payment System 2026: what employers must do, and how to automate salary transfers from payroll | KW (EN + AR) | finance-ops, automation-cloud | Fresh: "kuwait wage payment system (cbk)", "kuwait wage protection and payment system". Launched by the Central Bank of Kuwait on 28 Sep 2026 for private-sector employers of all sizes, Kuwaiti and expat salaries via local banks; PAM oversees compliance ([Fragomen](https://www.fragomen.com/insights/kuwait-new-wage-payment-and-protection-system-launched.html)). Labour Law 6/2010 Art. 57 bank-payment rule. Cover: payroll → bank salary file → approvals → payslips → reconciliation. This is also the answer for organisations that want to automate salary payments. | |
+| M3 | POS system in Kuwait: prices, features and how to choose (barcodes, branches, KNET at checkout) | KW (EN + AR) | erp-odoo, automation-cloud | Strong: "pos system kuwait", "pos software kuwait", "pos system price in kuwait", "best pos system in kuwait", "pos machine price in kuwait". Link the KNET article. No MFY prices; typical ranges only if sourced. | |
+| M4 | Barcode inventory system for small business: what you need, what it costs, and when to move off spreadsheets | US | erp-odoo | Strong: "barcode inventory system (for small business / free / excel template / google sheets)", "how do i create a barcode inventory system". Be honest that Excel/Sheets works at small scale; show when it breaks. Link D1 and the distributor case study. | |
+| M5 | Project management in an ERP: timesheets, budgets and billing for service and construction companies | US, GCC | erp-odoo | Good: "project management erp (system / software / module / implementation)", "construction project management erp software". | |
+| M6 | Payroll software in Kuwait: PIFSS, leave, end-of-service and bank transfers in one system (merges Priority 3 #20) | KW (EN + AR) | finance-ops | "payroll software kuwait". PIFSS rates: secondary sources disagree (employer 11.5% vs older 11%, salary cap KWD 2,750 vs 1,750); use only PIFSS official figures or say "confirm current rates with PIFSS". Link M1, M2 and the HR budget article. | |
+| M7 | Best accounting software in Kuwait (KWD 3 decimals, Arabic invoices, multi-currency, no VAT yet) (merges Priority 2 #10) | KW | finance-ops, erp-odoo | "accounting software kuwait", "best accounting software in kuwait", "accounting software used in kuwait". Kuwait has no VAT and no e-invoicing mandate announced as of 2026 (PwC GCC indirect tax roundup Q3 2026); say so and explain readiness. | |
+| M8 | HR system in Kuwait: what to look for (Arabic, PAM, PIFSS, end-of-service, attendance) | KW | finance-ops | Weaker demand ("hr system kuwait"); write after M1, M2, M6 and link them. | |
+| M9 | Document management in an ERP vs a separate DMS | US, GCC | erp-odoo, automation-cloud | Weak demand ("document management system erp"); low priority. | |
+
+Already in the plan and part of this cluster: ZATCA e-invoicing (#3), UAE e-invoicing 2027 (#6), Odoo vs QuickBooks (#4), QuickBooks to ERP (D8). UAE facts checked 16 Nov 2026: pilot from 1 Jul 2026; ASP deadline for AED 50m+ businesses moved to 30 Oct 2026; mandatory for AED 50m+ from 1 Jan 2027, others 1 Jul 2027, government 1 Oct 2027; AED 5,000/month penalty (Cabinet Decision 106 of 2025) — re-verify against mof.gov.ae before writing.
+
 ## US distributors push
 
 Why: Maryam's published result is a US distributor (4 warehouses, 3,000+ SKUs, live in 10 weeks), and her industries are medical devices, industrial equipment, manufacturing and wholesale distribution. Distribution activity is concentrated in the New York–New Jersey area (largest wholesale trade by establishments in the 2012 Census), Dallas–Fort Worth, Phoenix, Savannah, Los Angeles/Inland Empire, Chicago, Atlanta and Houston.
@@ -71,6 +89,20 @@ Approach: rank nationally on distributor topics, and add regional proof where it
 - E-E-A-T: show who wrote it and how we know. Every article now shows an author box and an "Updated" date. Use first-hand facts only when verified (the anonymous US distributor results, Kuwait specifics from real projects); never invent experience.
 - Sources, statistics and specific numbers help both readers and citations; padding and keyword stuffing do not. ([Princeton GEO study summary](https://www.airops.com/blog/geo-tactics-citation-lift))
 - When updating an article, add `updated: "YYYY-MM-DD"` so the date shows and Google sees the change.
+
+### Being found by each AI search engine
+
+| Engine | Where its web answers come from | What we do |
+|---|---|---|
+| Google Search, AI Overviews, AI Mode, Gemini | Google's index | Search Console indexing request after every publish |
+| ChatGPT search | Mainly Bing's index plus OpenAI's own crawler (OAI-SearchBot) | To do: verify the site in Bing Webmaster Tools (import from Search Console) and submit the sitemap; IndexNow ping after every publish (IndexNow feeds Bing) |
+| Claude web search | Brave Search (Anthropic lists Brave as a web search subprocessor) | Allow Claude-SearchBot; Brave discovers pages from links and its own crawl, so internal links and outside mentions matter |
+| Perplexity | Its own index (PerplexityBot) | Allowed in robots.txt |
+| Grok | Web search plus posts on X | Unconfirmed index; posting article links on X helps |
+
+robots.txt already allows GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, Claude-User, PerplexityBot, Google-Extended, Bingbot and others; `/llms.txt` and `/llms-full.txt` exist (no engine has confirmed using llms.txt, so it is a nice-to-have, not a ranking factor).
+
+What gets a page quoted by AI answers: a direct one-paragraph answer under each question heading, tables with specific numbers, named sources, a visible author and date, FAQs matching follow-up questions, and the brand mentioned on other trusted sites.
 
 ## Rules for every article
 
@@ -126,6 +158,17 @@ Weekly use: filters 2 and 4 → new articles for unanswered questions; filter 3 
 
 Each week, read Search Console Performance (last 28 days). For pages with impressions but CTR under 5% at positions 1–15, rewrite the search title and description to match the exact query wording, and add a section that answers the query if it is missing.
 
-## Backlinks (later)
+## Backlinks and brand mentions
 
-Directory profiles done: Clutch, GoodFirms. Later: Kuwait business directories and chambers, guest articles on GCC business and tech sites, partner pages (Odoo app store, KNET/payment partners), and the US distributor case study as a link-worthy asset.
+Directory profiles done: Clutch, GoodFirms.
+
+Do (earned links and mentions, allowed by Google):
+- Kuwait and GCC business directories and chambers (Kuwait Chamber of Commerce and Industry membership listing, Kuwait business directories), and the Odoo partner listing.
+- Guest articles written by Maryam (bylined) on GCC business, HR, finance and tech sites, on topics we know: Kuwait payroll and the wage payment system, e-invoicing readiness, ERP for distributors. Each must be a real article for that site's readers, with at most one natural link back.
+- Expert quotes for journalists (Qwoted, Featured and similar), podcasts and LinkedIn newsletters.
+- Linkable assets: the end-of-service calculator (M1), the distributor case study, the ERP timeline and cost guides.
+- Partner and client mentions where they already agree to be public (e.g. a "built by" credit), never naming clients who asked to stay anonymous.
+
+Do not: buy links, join link exchanges or private blog networks, or pay for "guest posts" on sites that sell links to anyone. Google's spam policies treat these as link schemes, and a penalty would cost more than the links give.
+
+Outreach is sent by Maryam (or with her explicit approval per message); Claude can build the target list and draft each pitch.
