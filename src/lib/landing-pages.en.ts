@@ -43,14 +43,14 @@ export const landingPagesEn: Record<string, LandingCopy> = {
     ],
   },
   "odoo-partner-kuwait": {
-    seoTitle: "Odoo Partner in Kuwait: Implementation & Support",
+    seoTitle: "Odoo Partner Kuwait: Odoo ERP Implementation & Support",
     metaDescription:
-      "MFY Innovatech is an official Odoo partner serving Kuwait: Odoo implementation, KWD accounting, Arabic documents, Kuwait payroll, KNET and WhatsApp support.",
+      "Odoo partner in Kuwait for Odoo ERP implementation, custom modules and support: KWD accounting, Arabic documents, Kuwait payroll and KNET. Also UAE and KSA.",
     eyebrow: "Odoo partner · Kuwait",
     h1: "Your Odoo partner in Kuwait, from the first workshop to month-end close.",
     lead: "An official Odoo partner implementing, customising and supporting Odoo for Kuwaiti companies, with the accounting, Arabic and payroll details right from day one.",
     answer:
-      "MFY Innovatech is an official Odoo partner serving companies in Kuwait. We implement and support Odoo for sales, inventory, purchasing, accounting, manufacturing, HR and payroll, set up three-decimal Kuwaiti dinar accounting and bilingual documents, connect KNET payments, and keep phase one close to standard Odoo so you go live sooner. Talk to us on WhatsApp at +965 5566 3826.",
+      "MFY Innovatech is an official Odoo partner serving companies in Kuwait. We implement and support Odoo for sales, inventory, purchasing, accounting, manufacturing, HR and payroll, set up three-decimal Kuwaiti dinar accounting and bilingual documents, connect KNET payments, and build custom Odoo modules and integrations, and keep phase one close to standard Odoo so you go live sooner. We also implement Odoo for companies in the UAE, Saudi Arabia, Qatar and Bahrain. Talk to us on WhatsApp at +965 5566 3826.",
     pointsLabel: "Why companies choose us",
     pointsTitle: "An Odoo partner that also keeps the books.",
     points: [
@@ -65,6 +65,9 @@ export const landingPagesEn: Record<string, LandingCopy> = {
       { q: "How long does an Odoo implementation take in Kuwait?", a: "A focused first phase typically goes live in 8 to 14 weeks. Timelines stretch when data is dirty, when every process is customised or when nobody inside the company owns the project." },
       { q: "Can you take over an Odoo system another partner set up?", a: "Yes. We audit the current configuration, data and customisations, agree what to keep, and fix what is wrong before adding anything new." },
       { q: "Does Odoo support Kuwaiti dinar and Arabic invoices?", a: "Yes. Odoo supports three-decimal currencies such as the Kuwaiti dinar, Arabic as an interface language, right-to-left layouts and bilingual documents. They need to be configured correctly before any transactions are entered." },
+      { q: "How much does Odoo cost in Kuwait?", a: "There are two parts. The Odoo licence is a price per user per month that Odoo sets for each country, so check the current Kuwait price on odoo.com/pricing. Implementation depends on the apps, number of users, data to migrate and integrations such as KNET or your bank. We give a written estimate for each phase after a discovery call, never a single number on the first call." },
+      { q: "Do you build custom Odoo modules and integrations in Kuwait?", a: "Yes. Our team develops custom Odoo modules when standard Odoo does not cover a process, and connects Odoo to KNET and payment gateways, Kuwaiti banks, online stores, marketplaces and delivery apps. We customise only what pays for itself, so upgrades stay manageable." },
+      { q: "Do you implement Odoo elsewhere in the GCC?", a: "Yes. Besides Kuwait we work with companies in the UAE, Saudi Arabia, Qatar and Bahrain. Each country has its own setup: VAT in the UAE and Saudi Arabia, ZATCA Phase 2 e-invoicing in Saudi Arabia, and mandatory e-invoicing in the UAE from 2027 for larger businesses. Odoo's country localizations cover these, and we configure and test them for your entity." },
       { q: "Can Odoo run payroll for a Kuwaiti company?", a: "Yes, with Kuwait-specific salary rules for end-of-service indemnity, leave and PIFSS contributions for Kuwaiti employees. We configure and test them with a parallel payroll run; confirm current contribution rates with PIFSS or your advisor." },
     ],
   },

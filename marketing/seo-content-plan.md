@@ -4,7 +4,7 @@ How this plan works: each article is written in English and Arabic, answers a qu
 
 Status: `done`, `next`, or blank (queued). Work top to bottom inside each priority band.
 
-Order (from 16 Nov 2026): rotate three tracks — ERP modules and payroll (M rows), then Priority 1 (Kuwait/GCC), then the US distributors push (D rows), and repeat. M1 and M2 go first because Kuwait demand is strong and fresh. D1 is a landing page, not a blog post; D2 is approved as an anonymous case study: never name the client; describe it only as "a US distributor with 4 warehouses and 3,000+ SKUs" and use only the published results (stock-outs from 2–3 a week to near zero within two months, 90% of purchase orders from reorder rules, month-end close from 4 days to half a day, live in 10 weeks, paid back by month 4). Do not invent its industry, location or quotes.
+Order (from 18 Nov 2026): the Odoo partner track (O rows) leads, because the founder wants Odoo leads in Kuwait and the GCC. Rotate O → M → O → Priority 1 → O → D, and repeat. O1 is next. D1 is a landing page, not a blog post; D2 is approved as an anonymous case study: never name the client; describe it only as "a US distributor with 4 warehouses and 3,000+ SKUs" and use only the published results (stock-outs from 2–3 a week to near zero within two months, 90% of purchase orders from reorder rules, month-end close from 4 days to half a day, live in 10 weeks, paid back by month 4). Do not invent its industry, location or quotes.
 
 ## Priority 1: high intent, low competition, fits a service
 
@@ -13,10 +13,10 @@ Order (from 16 Nov 2026): rotate three tracks — ERP modules and payroll (M row
 | 1 | KNET payment gateway integration: how it works, costs and timelines for Kuwaiti businesses | KW | automation-cloud, web-saas | "knet payment gateway integration / api / test card" | done |
 | 1b | How to choose a software company in Kuwait (Arabic-first: "افضل شركة برمجة بالكويت") | KW | web-saas, mobile | Search Console: "شركة برمجة" (pos 6), "افضل شركة برمجة بالكويت", "software development companies in kuwait", "erp software company kuwait" | |
 | 2 | How much does it cost to build an app in 2026 (and how much AI really saves) | US, GCC | mobile | "how much does it cost to build an app with ai", "...for my business" | |
-| 3 | ZATCA e-invoicing Phase 2: requirements and ERP integration checklist | SA, GCC | finance-ops, erp-odoo | "zatca e-invoicing requirements / integration / waves" | |
+| 3 | ZATCA e-invoicing Phase 2: requirements and ERP integration checklist | SA, GCC | finance-ops, erp-odoo | "zatca e-invoicing requirements / integration / waves" | moved to O2 |
 | 4 | Odoo vs QuickBooks: when a growing US company should switch | US | erp-odoo | "odoo vs quickbooks (online / enterprise)" | |
 | 5 | Mobile app development in Kuwait: cost, timeline and how to choose a company | KW | mobile | "mobile app development company kuwait" | |
-| 6 | UAE e-invoicing 2027: timeline, requirements and what your ERP must do | AE | finance-ops, erp-odoo | "uae e-invoicing timeline / requirements / asp" | |
+| 6 | UAE e-invoicing 2027: timeline, requirements and what your ERP must do | AE | finance-ops, erp-odoo | "uae e-invoicing timeline / requirements / asp" | moved to O3 |
 | 7 | Zapier vs Make vs n8n: which automation tool fits your business in 2026 | US, GCC | automation-cloud | "zapier vs make vs n8n (pricing)" | |
 | 8 | NetSuite alternatives for small and mid-sized businesses | US | erp-odoo | "netsuite alternatives for small business" | |
 
@@ -44,13 +44,32 @@ Order (from 16 Nov 2026): rotate three tracks — ERP modules and payroll (M row
 | 21 | Arabic and English apps: building RTL properly | GCC | mobile, web-saas | |
 | 22 | Digital marketing for B2B companies in Kuwait: what works | KW | growth | |
 
+## Odoo partner track (O rows): leads for Odoo work in Kuwait and the GCC
+
+Goal: rank for the searches buyers make before hiring an Odoo partner, and turn readers into enquiries. Every O article ends with a clear call to action (WhatsApp +965 5566 3826, /contact) and links /odoo-partner-kuwait and /services/erp-implementation.
+
+Partner wording rule (18 Nov 2026): MFY is an Odoo partner; never state the partner level (Learning/Ready/Silver/Gold), never claim certified staff, and never tell readers to check the odoo.com partner directory or compare partner levels. Qualify a partner by proof of work: written phased scope, live KWD three-decimal invoices, bilingual documents, KNET and bank integrations, references and published case studies.
+
+Demand evidence: Google autocomplete, Kuwait (gl=kw), 18 Nov 2026.
+
+| # | Topic | Market | Searches to target | Status |
+|---|---|---|---|---|
+| O1 | Odoo implementation cost in Kuwait and the GCC (2026): licence per user by country plus what drives implementation cost | KW, AE, SA (EN + AR) | "odoo implementation cost (in uae)", "odoo pricing uae / ksa", "odoo saudi arabia pricing", "average odoo implementation cost", "odoo implementation fees". Take licence prices only from odoo.com/pricing per country on the day of writing (state the date); no MFY prices; explain cost drivers (apps, users, data, integrations, customisation, hosting, support). | next |
+| O2 | Odoo ZATCA Phase 2 integration: what Odoo covers, setup steps and the current wave deadlines (merges Priority 1 #3) | SA | "odoo zatca", "odoo zatca integration", "odoo zatca phase 2 integration", "odoo zatca module". Source: Odoo Saudi localization docs, ZATCA, Big Four alerts. | |
+| O3 | UAE e-invoicing 2027 in Odoo: ASP, timeline and what to configure (merges Priority 1 #6) | AE | "odoo uae e invoicing", "uae e invoicing odoo apps". Re-verify dates against mof.gov.ae. | |
+| O4 | Odoo in Arabic: bilingual invoices, right-to-left layouts and Arabic reports | KW, GCC (AR matters) | "odoo arabic", "odoo arabic invoice", "odoo arabic right to left", "arabic odoo erp kuwait", "برنامج اودو الكويت", "برنامج أودو المحاسبي بالعربي". | |
+| O5 | How to choose an Odoo partner in the UAE, Saudi Arabia, Qatar and Bahrain: localisation, proof of work and red flags | AE, SA, QA, BH | "odoo partner uae / saudi arabia / qatar / bahrain", "best odoo partner in saudi arabia / uae / bahrain", "odoo implementation partners uae". Follow the partner wording rule above. | |
+| O6 | Odoo for trading and distribution companies in Kuwait: inventory, pricelists, multi-currency purchasing, KNET and delivery apps | KW | "odoo erp kuwait", "odoo system kuwait", "برنامج اودو للمخازن". Link the US distributor case study only as an example of results. | |
+| O7 | Odoo payroll for Kuwait: end-of-service, leave, PIFSS and the bank salary file (merges M6) | KW (EN + AR) | "odoo payroll", "odoo saudi hr" pattern; Kuwait payroll queries from M6. Follow M1/M2 fact caveats. | |
+| O8 | Odoo support and rescue: taking over a stalled or failed Odoo implementation | KW, GCC | "odoo support", "odoo developer kuwait". Link erp-project-over-budget-how-to-recover. | |
+
 ## ERP modules and payroll (M rows)
 
 Why: buyers search for one problem at a time (end-of-service, payroll, POS, barcodes, projects), not for "ERP". Generic module topics ("what is an HR system", "best accounting software") are owned by Oracle, SAP, Zoho and review sites, so each article targets a specific, local or practical angle a small site can win. Demand checked with Google autocomplete on 16 Nov 2026.
 
 | # | Article | Market | Service page | Search evidence and research notes | Status |
 |---|---|---|---|---|---|
-| M1 | End-of-service indemnity in Kuwait: how it is calculated (with calculator), and how payroll software accrues it | KW (EN + AR, Arabic matters) | finance-ops, erp-odoo | Strong: "end of service kuwait (calculator / labor law / indemnity calculation)", "indemnity calculator kuwait (2026 / resignation / if terminated)", "حساب نهاية الخدمة الكويت (القطاع الخاص)", "طريقة حساب نهاية الخدمة الكويت". Law: Kuwait Labour Law No. 6 of 2010, Articles 51 and 53. Secondary sources conflict on resignation tiers and on basic vs total salary: quote the official law text only (PAM / official gazette / a Kuwaiti law firm), add "not legal advice; confirm with PAM or a lawyer". Build an embedded calculator (like the existing `[[calculator:...]]` marker) only if the rules are confirmed from the law text.  next |
+| M1 | End-of-service indemnity in Kuwait: how it is calculated (with calculator), and how payroll software accrues it | KW (EN + AR, Arabic matters) | finance-ops, erp-odoo | Strong: "end of service kuwait (calculator / labor law / indemnity calculation)", "indemnity calculator kuwait (2026 / resignation / if terminated)", "حساب نهاية الخدمة الكويت (القطاع الخاص)", "طريقة حساب نهاية الخدمة الكويت". Law: Kuwait Labour Law No. 6 of 2010, Articles 51 and 53. Secondary sources conflict on resignation tiers and on basic vs total salary: quote the official law text only (PAM / official gazette / a Kuwaiti law firm), add "not legal advice; confirm with PAM or a lawyer". Build an embedded calculator (like the existing `[[calculator:...]]` marker) only if the rules are confirmed from the law text. | |
 | M2 | Kuwait Wage Payment System 2026: what employers must do, and how to automate salary transfers from payroll | KW (EN + AR) | finance-ops, automation-cloud | Fresh: "kuwait wage payment system (cbk)", "kuwait wage protection and payment system". Launched by the Central Bank of Kuwait on 28 Sep 2026 for private-sector employers of all sizes, Kuwaiti and expat salaries via local banks; PAM oversees compliance ([Fragomen](https://www.fragomen.com/insights/kuwait-new-wage-payment-and-protection-system-launched.html)). Labour Law 6/2010 Art. 57 bank-payment rule. Cover: payroll → bank salary file → approvals → payslips → reconciliation. This is also the answer for organisations that want to automate salary payments. | |
 | M3 | POS system in Kuwait: prices, features and how to choose (barcodes, branches, KNET at checkout) | KW (EN + AR) | erp-odoo, automation-cloud | Strong: "pos system kuwait", "pos software kuwait", "pos system price in kuwait", "best pos system in kuwait", "pos machine price in kuwait". Link the KNET article. No MFY prices; typical ranges only if sourced. | |
 | M4 | Barcode inventory system for small business: what you need, what it costs, and when to move off spreadsheets | US | erp-odoo | Strong: "barcode inventory system (for small business / free / excel template / google sheets)", "how do i create a barcode inventory system". Be honest that Excel/Sheets works at small scale; show when it breaks. Link D1 and the distributor case study. | |
