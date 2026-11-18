@@ -45,6 +45,7 @@ export const PROOF: Record<string, "videos" | "stories" | "quotes"> = {
    post is also the service that post links back to. */
 export const SERVICE_POSTS: Record<string, string[]> = {
   "erp-odoo": [
+    "odoo-implementation-cost-kuwait-gcc",
     "us-distributor-quickbooks-to-erp-case-study",
     "odoo-vs-sap-business-one-vs-business-central-gcc",
     "how-long-does-an-erp-implementation-take",

@@ -17,7 +17,7 @@ export const LANDINGS: Record<
   "odoo-partner-kuwait": {
     market: "KW",
     services: ["erp-odoo", "finance-ops", "automation-cloud", "ai-data"],
-    posts: ["best-odoo-implementation-company-in-kuwait", "odoo-vs-sap-business-one-vs-business-central-gcc", "knet-payment-gateway-integration-kuwait", "erp-integrations-kuwait-knet-banks-ecommerce"],
+    posts: ["odoo-implementation-cost-kuwait-gcc", "best-odoo-implementation-company-in-kuwait", "odoo-vs-sap-business-one-vs-business-central-gcc", "knet-payment-gateway-integration-kuwait"],
     odooApps: true,
   },
   "software-development-company-usa": {

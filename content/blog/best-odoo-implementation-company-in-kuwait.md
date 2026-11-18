@@ -89,6 +89,8 @@ Kuwait's Odoo demand comes mostly from distribution and trading companies, contr
 7. Who supports us through the first month-end close, and at what cost after that?
 8. Who owns the code, the database and the admin credentials?
 
+For what drives the licence and implementation cost, see [Odoo implementation cost in Kuwait and the GCC](/blog/odoo-implementation-cost-kuwait-gcc).
+
 ## How MFY Innovatech works with Kuwaiti companies
 
 We are an official Odoo partner working remote-first with clients in Kuwait, the UAE, Saudi Arabia and Qatar, with overlap hours agreed per project. Our process is written down before we build: [discover, define, build, run](/services#process). Scope and milestones are agreed in writing, and any change is discussed openly before we continue.
