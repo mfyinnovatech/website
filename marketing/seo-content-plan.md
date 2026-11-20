@@ -115,9 +115,9 @@ Approach: rank nationally on distributor topics, and add regional proof where it
 |---|---|---|
 | Google Search, AI Overviews, AI Mode, Gemini | Google's index | Search Console indexing request after every publish |
 | ChatGPT search | Mainly Bing's index plus OpenAI's own crawler (OAI-SearchBot) | To do: verify the site in Bing Webmaster Tools (import from Search Console) and submit the sitemap; IndexNow ping after every publish (IndexNow feeds Bing) |
-| Claude web search | Brave Search (Anthropic lists Brave as a web search subprocessor) | Allow Claude-SearchBot; Brave discovers pages from links and its own crawl, so internal links and outside mentions matter |
+| Claude web search | Brave Search (Anthropic lists Brave as a web search subprocessor) | 20 Nov 2026: Brave had none of our pages (site:mfyinnova.tech empty). Submitted 12 key URLs at search.brave.com/submit-url from Maryam's browser; every new article is submitted too (scheduled task). No Brave webmaster console exists; links and mentions from other sites also drive discovery. Re-check site:mfyinnova.tech on Brave in 2–3 weeks. |
 | Perplexity | Its own index (PerplexityBot) | Allowed in robots.txt |
-| Grok | Web search plus posts on X | Unconfirmed index; posting article links on X helps |
+| Grok | Its own web search plus posts on X; xAI has not disclosed which web index it uses (checked 20 Nov 2026) | Post every article on X from the company and founder accounts with a one-line answer, not just a link; keep Bing and Google indexing healthy since most AI engines lean on them; earn mentions on other sites |
 
 robots.txt already allows GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, Claude-User, PerplexityBot, Google-Extended, Bingbot and others; `/llms.txt` and `/llms-full.txt` exist (no engine has confirmed using llms.txt, so it is a nice-to-have, not a ranking factor).
 
